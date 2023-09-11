@@ -95,5 +95,5 @@ header{
 }
 
 .gradientButton{
-      background: linear-gradient(to right, #4472ad, #009dea);
+      background: linear-gradient(to right, var(--gradOne), var(--gradTwo));
 }

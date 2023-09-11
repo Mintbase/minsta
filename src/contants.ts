@@ -18,3 +18,10 @@ export const constants = {
   mintbaseBaseUrl,
   mintbaseWalletUrl
 };
+
+
+const configVars = JSON.parse(process.env.NEXT_PUBLIC_MINSTA_CONFIG as string)
+
+export const config = {
+  colors: configVars.colors
+}

@@ -9,7 +9,8 @@ import Providers from "@/providers/providers";
 import Navigation from "@/components/navigation";
 import Modal from "@/components/modal";
 import RewardsModal from "@/components/RewardsModal";
-import Script from 'next/script'
+import Script from "next/script";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,9 +24,17 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
+
+
   return (
     <html lang="en">
-         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-DD269D0DWF" />
+   
+
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-DD269D0DWF"
+      />
       <Script id="google-analytics">
         {`
            window.dataLayer = window.dataLayer || [];

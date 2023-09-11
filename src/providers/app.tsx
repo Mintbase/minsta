@@ -2,10 +2,11 @@ import React, { useContext, useState, createContext } from "react";
 import { useRouter } from "next/navigation";
 import { useWallet } from "@mintbase-js/react";
 import { constants } from "@/contants";
-import { Heebo } from 'next/font/google'
+import { Heebo } from "next/font/google";
+import { globalStyles } from "@/style/global";
 
-const heebo = Heebo({ subsets: ['latin'] })
 
+const heebo = Heebo({ subsets: ["latin"] });
 
 export const AppContext = createContext<{
   cameraRef: React.MutableRefObject<any> | undefined;
@@ -16,9 +17,8 @@ export const AppContext = createContext<{
   closeModal: () => void;
   isMainModalOpen: boolean;
   isRewardsModalOpen: boolean;
-  mintImage: (photo:string) => void;
-    isLoading:boolean
-
+  mintImage: (photo: string) => void;
+  isLoading: boolean;
 }>({
   cameraRef: undefined,
   setCameraRef: (ref: React.MutableRefObject<any> | undefined) => null,
@@ -28,8 +28,8 @@ export const AppContext = createContext<{
   closeModal: () => null,
   isMainModalOpen: false,
   isRewardsModalOpen: false,
-  mintImage: (photo:string) => null,
-  isLoading: false
+  mintImage: (photo: string) => null,
+  isLoading: false,
 });
 
 interface IAppConsumer {
@@ -41,8 +41,8 @@ interface IAppConsumer {
   closeModal: () => void;
   isMainModalOpen: boolean;
   isRewardsModalOpen: boolean;
-  mintImage: (photo:string) => void;
-  isLoading:false
+  mintImage: (photo: string) => void;
+  isLoading: false;
 }
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
@@ -51,7 +51,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   >(undefined);
   const [currentPhoto, setCurrentPhoto] = useState(false);
   const { selector, activeAccountId } = useWallet();
-    const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   const { push } = useRouter();
 
@@ -79,10 +79,10 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     setCurrentPhoto(true);
   };
 
-  const _mintImage = async (photo:string) => {
-    if(!activeAccountId) return null
+  const _mintImage = async (photo: string) => {
+    if (!activeAccountId) return null;
     const wallet = await selector.wallet();
-    setLoading(true)
+    setLoading(true);
 
     const response = await fetch("/api/upload", {
       method: "POST",
@@ -97,12 +97,10 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     const uploadedDataResult = await response.json();
 
     const currentUrl = new URL(window.location.href);
- 
+
     const protocol = currentUrl.protocol;
     const domain = currentUrl.hostname;
     const port = currentUrl.port;
-
-  
 
     const result = await wallet?.signAndSendTransaction({
       signerId: activeAccountId,
@@ -127,31 +125,35 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
       // @ts-ignore
       successUrl: `${protocol}//${domain}${!port ? "" : ":" + port}`,
     });
-
   };
 
+  console.log(process.env, 'process.env')
+
   return (
-    <> <style jsx global>{`
+    <>
+      {" "}
+      <style jsx global>{`
         html {
           font-family: ${heebo.style.fontFamily};
         }
+        ${globalStyles}
       `}</style>
-    <AppContext.Provider
-      value={{
-        cameraRef,
-        setCameraRef,
-        takePicture,
-        currentPhoto,
-        openModal: handleOpenModal,
-        closeModal: handleCloseModal,
-        isMainModalOpen,
-        isRewardsModalOpen,
-        mintImage: _mintImage,
-        isLoading: isLoading
-      }}
-    >
-      {children}
-    </AppContext.Provider>
+      <AppContext.Provider
+        value={{
+          cameraRef,
+          setCameraRef,
+          takePicture,
+          currentPhoto,
+          openModal: handleOpenModal,
+          closeModal: handleCloseModal,
+          isMainModalOpen,
+          isRewardsModalOpen,
+          mintImage: _mintImage,
+          isLoading: isLoading,
+        }}
+      >
+        {children}
+      </AppContext.Provider>
     </>
   );
 };
