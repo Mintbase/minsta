@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 import Bundlr from "@bundlr-network/client";
 import dataUriToBuffer from "data-uri-to-buffer";
-import { constants } from "@/contants";
+import { constants } from "@/constants";
 
 const bundlr = new Bundlr(
   "http://node1.bundlr.network",

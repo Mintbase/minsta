@@ -1,7 +1,7 @@
 import React, { useContext, useState, createContext } from "react";
 import { useRouter } from "next/navigation";
 import { useWallet } from "@mintbase-js/react";
-import { constants } from "@/contants";
+import { constants } from "@/constants";
 import { Heebo } from "next/font/google";
 import { globalStyles } from "@/style/global";
 

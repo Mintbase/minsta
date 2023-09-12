@@ -4,7 +4,7 @@ import { useFeed, useFirstToken } from "@/hooks/feed.hook";
 import { DynamicGrid } from "@/components/DynamicGrid";
 import { useEffect, useRef, useState } from "react";
 import { NetworkStatus } from "@apollo/client";
-import { constants } from "@/contants";
+import { constants } from "@/constants";
 import Link from "next/link";
 
 import { getCachedImage } from "@/utils/cachedImage";

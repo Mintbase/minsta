@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { constants } from "@/contants";
+import { constants } from "@/constants";
 import { useWallet } from "@mintbase-js/react";
 
 const ViewYourNfts = () => {

@@ -1,4 +1,4 @@
-import { config } from "@/contants";
+import { config } from "@/constants";
 
 
 
