@@ -9,6 +9,9 @@ const css = `:root {
           --secondary: #${config.colors.secondary};
           --gradOne: #${config.colors.gradOne};
           --gradTwo: #${config.colors.gradTwo};
+          --cardOne: #${config.colors.cardOne};
+          --cardTwo: #${config.colors.cardTwo};
+          --linkColor: #${config.colors.linkColor};
         }`;
 
 const outputPath = path.resolve(__dirname, "src/style/global.css");

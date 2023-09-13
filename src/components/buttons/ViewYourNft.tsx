@@ -14,7 +14,7 @@ const ViewYourNfts = () => {
         rel="noopener noreferrer"
         passHref
         href={`${constants.mintbaseBaseUrl}/human/${activeAccountId}/owned/0`}
-        className="link-styles text-sm"
+        className="text-linkColor text-sm"
       >
         View your NFTs
       </Link>

@@ -72,7 +72,7 @@ export default function Leaderboard() {
       <div className="flex text-center gap-10">
         <ViewYourNfts />
         <button
-          className="link-styles text-sm"
+          className="text-linkColor text-sm"
           onClick={() => openModal("rewards")}
         >
           View Rewards
@@ -85,8 +85,8 @@ export default function Leaderboard() {
           return (
             <Link
               key={`${account}-${index}`}
-              className={`w-full h-16 flex p-4 items-center justify-between rounded-xl bg-[#E8EAF0] ${
-                isCurrentUser ? "border-2 border-[#049BE8]" : ""
+              className={`w-full h-16 flex p-4 items-center justify-between rounded-xl bg-cardOne ${
+                isCurrentUser ? "border-2 border-cardTwo" : ""
               }`}
               target="_blank"
               rel="noopener noreferrer"

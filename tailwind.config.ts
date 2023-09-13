@@ -18,6 +18,9 @@ const config: Config = {
         secondary: "var(--secondary)",
         gradOne: "var(--gradOne)",
         gradTwo: "var(--gradTwo)",
+        cardOne: "var(--cardOne)",
+        cardTwo: "var(--cardTwo)",
+        linkColor:"var(--linkColor)"
       },
          gradientColorStopPositions: {
         33: '33%',
