@@ -1,5 +1,5 @@
 "use client";
-import { constants } from "@/contants";
+import { constants } from "@/constants";
 import { useApp } from "@/providers/app";
 import { useWallet } from "@mintbase-js/react";
 import { usePathname, useRouter } from "next/navigation";

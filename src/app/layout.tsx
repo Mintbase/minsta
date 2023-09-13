@@ -11,7 +11,6 @@ import Modal from "@/components/modal";
 import RewardsModal from "@/components/RewardsModal";
 import Script from "next/script";
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 // export const metadata: Metadata = {
@@ -24,13 +23,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
-
-
   return (
     <html lang="en">
-   
-
+  
       <Script
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-DD269D0DWF"

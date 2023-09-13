@@ -1,4 +1,4 @@
-import { constants } from "@/contants";
+import { constants } from "@/constants";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({

@@ -1,4 +1,4 @@
-import { constants } from "@/contants";
+import { constants } from "@/constants";
 import DataProvider from "./apollo";
 import { AppProvider } from "./app";
 import { WalletContextProvider } from "@mintbase-js/react";

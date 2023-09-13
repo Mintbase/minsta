@@ -1,6 +1,6 @@
 "use client";
 
-import { constants } from "@/contants";
+import { constants } from "@/constants";
 import { gql, useQuery } from "@apollo/client";
 import { isUndefined } from "lodash";
 import { useMemo } from "react";

@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { FETCH_FEED, FETCH_FIRST_TOKEN } from "../data/feed.graphl";
-import { constants } from "@/contants";
+import { constants } from "@/constants";
 
 export const REQUEST_HEADERS = {
   "Cache-Control": "public, max-age=31536000, immutable",
