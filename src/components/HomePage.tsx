@@ -40,7 +40,7 @@ const ImageThumb = ({ token, index }: any) => {
           onClick={(e) => {
             e.preventDefault();
             window.open(
-              `https://twitter.com/intent/tweet?url=${constants.mintbaseBaseUrl}/meta/${token?.metadata_id}%2F&via=mintbase&text=Exploring%20unforgettable%20moments%20at%20%23NEARAPAC%20with%20%40NearVietnamHub%20%40Mintbase%20%40NEARProtocol%20%23BOS%20%23NEAR`,
+              `https://twitter.com/intent/tweet?url=${constants.mintbaseBaseUrl}/meta/${token?.metadata_id}%2F&via=mintbase&text=`,
               "_blank"
             );
           }}

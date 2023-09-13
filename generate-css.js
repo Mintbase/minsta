@@ -2,7 +2,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const config = JSON.parse(process.env.MINSTA_CONFIG);
+const config = JSON.parse(process.env.MINSTA_COLORS);
 
 const css = `:root {
           --primary: #${config.colors.primary};

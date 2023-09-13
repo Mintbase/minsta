@@ -10,12 +10,7 @@ const tokenContractAddress =
 const mintbaseBaseUrl = process.env.NEXT_PUBLIC_MINTBASE_BASE_URL || "https://testnet.wallet.mintbase.xyz"
 const mintbaseWalletUrl = process.env.NEXT_PUBLIC_MINTBASE_WALLET_URL || "https://testnet.wallet.mintbase.xyz"
 
-export const config = JSON.parse((process.env.MINSTA_CONFIG as string) || "{}");
-
-
-  // const envVar = process.env.NEXT_PUBLIC_MINSTA_CONFIG as any
-  // const hasEnvVar = JSON.parse((process.env.NEXT_PUBLIC_MINSTA_CONFIG as string) || "{}")
-// export const minstaConfig =  JSON.parse(process.env.NEXT_PUBLIC_MINSTA_CONFIG as string)
+export const config = JSON.parse((process.env.MINSTA_COLORS as string) || "{}");
 
 
 export const constants = {
