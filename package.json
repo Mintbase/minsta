@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+   "build:css": "node generate-css.js",
+    "build": "bun run build:css && next build",
+    "dev:css": "node generate-css.js && next dev",
+    "dev": "bun run dev:css",
     "start": "next start",
     "lint": "next lint"
   },

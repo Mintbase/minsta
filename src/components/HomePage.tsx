@@ -57,12 +57,10 @@ export const HomePage = () => {
 
   const searchParams = useSearchParams();
 
-  const hasAccountID = searchParams.get("account_id"); 
+  const hasAccountID = searchParams.get("account_id");
   const { push } = useRouter();
 
-
   // if(hasAccountID) push('/camera')
-
 
   const { loading, networkStatus, data, refetchImages } = useFeed({
     accountId: constants.proxyContractAddress,
@@ -86,58 +84,58 @@ export const HomePage = () => {
     // Check if both newToken and data are different from their previous values
     if (newToken !== prevNewToken.current && data !== prevData.current) {
       // Both newToken and data have changed, update the UI or take action here
-      
+
       // Update the refs to store the current values
       prevNewToken.current = newToken;
       prevData.current = data;
     }
   }, [newToken, data]);
 
+  const blockedMedia = blockedNfts as string[];
 
-
-
-
-
-  const blockedMedia = blockedNfts as string[]
-
-  const firstTokenisBlocked = newToken?.metadata_id && blockedNfts?.includes(newToken?.metadata_id)
-
+  const firstTokenisBlocked =
+    newToken?.metadata_id && blockedNfts?.includes(newToken?.metadata_id);
 
   return (
-    <main className="container mx-auto flex flex-col items-center justify-center space-y-4">
-      <DynamicGrid mdCols={2} nColsXl={4} nColsXXl={6}>
-        {!newToken?.media ? (
-          <div
-            className="aspect-square rounded overflow-x-hidden cursor-pointer storeImg"
-            key={1}
-          >
-            <div className="rounded animate-pulse w-full h-full bg-gray-600 dark:bg-gray-800" />
-          </div>
-        ) : !firstTokenisBlocked || typeof firstTokenisBlocked == 'undefined'? (
-          <ImageThumb key={1} token={newToken} index={1} />
-        ): null}
+    <>
+    
+      <main className="container mx-auto flex flex-col items-center justify-center space-y-4">
+        <DynamicGrid mdCols={2} nColsXl={4} nColsXXl={6}>
+          {!newToken?.media ? (
+            <div
+              className="aspect-square rounded overflow-x-hidden cursor-pointer storeImg"
+              key={1}
+            >
+              <div className="rounded animate-pulse w-full h-full bg-gray-600 dark:bg-gray-800" />
+            </div>
+          ) : !firstTokenisBlocked ||
+            typeof firstTokenisBlocked == "undefined" ? (
+            <ImageThumb key={1} token={newToken} index={1} />
+          ) : null}
 
-        {!items && loading
-          ? lists?.map((listItem) => {
-              return (
-                <div
-                  className="aspect-square rounded overflow-x-hidden cursor-pointer storeImg"
-                  key={listItem} // Use a unique key here, like listItem
-                >
-                  <div className="rounded animate-pulse w-full h-full bg-gray-600 dark:bg-gray-800" />
-                </div>
-              );
-            })
-          : data?.map((token: any, index: number) => {
+          {!items && loading
+            ? lists?.map((listItem) => {
+                return (
+                  <div
+                    className="aspect-square rounded overflow-x-hidden cursor-pointer storeImg"
+                    key={listItem} // Use a unique key here, like listItem
+                  >
+                    <div className="rounded animate-pulse w-full h-full bg-gray-600 dark:bg-gray-800" />
+                  </div>
+                );
+              })
+            : data?.map((token: any, index: number) => {
+                if (
+                  !!blockedMedia &&
+                  blockedMedia.includes(token?.metadata_id)
+                ) {
+                  return null;
+                }
 
-
-              if(!!blockedMedia && blockedMedia.includes(token?.metadata_id)) {
-                return null
-              }
-
-              return <ImageThumb key={index} token={token} index={index} />;
-            })}
-      </DynamicGrid>
-    </main>
+                return <ImageThumb key={index} token={token} index={index} />;
+              })}
+        </DynamicGrid>
+      </main>
+    </>
   );
 };

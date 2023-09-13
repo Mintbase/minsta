@@ -3,8 +3,7 @@ import { useRouter } from "next/navigation";
 import { useWallet } from "@mintbase-js/react";
 import { constants } from "@/constants";
 import { Heebo } from "next/font/google";
-import { globalStyles } from "@/style/global";
-
+import '../style/global.css'
 
 const heebo = Heebo({ subsets: ["latin"] });
 
@@ -45,7 +44,11 @@ interface IAppConsumer {
   isLoading: false;
 }
 
-export const AppProvider = ({ children }: { children: React.ReactNode }) => {
+
+
+
+
+export const AppProvider = ({ children, pageProps }: { children: React.ReactNode, pageProps:any }) => {
   const [cameraRef, _setCameraRef] = useState<
     React.MutableRefObject<any> | undefined
   >(undefined);
@@ -128,6 +131,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
 
+
   return (
     <>
       {" "}
@@ -135,7 +139,6 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
         html {
           font-family: ${heebo.style.fontFamily};
         }
-        ${globalStyles}
       `}</style>
       <AppContext.Provider
         value={{
