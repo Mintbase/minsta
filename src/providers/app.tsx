@@ -48,7 +48,7 @@ interface IAppConsumer {
 
 
 
-export const AppProvider = ({ children, pageProps }: { children: React.ReactNode, pageProps:any }) => {
+export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [cameraRef, _setCameraRef] = useState<
     React.MutableRefObject<any> | undefined
   >(undefined);
