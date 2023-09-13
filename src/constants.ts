@@ -1,5 +1,5 @@
 
-const setup = JSON.parse(process.env.MINSTA_SETUP as string)
+const setup = JSON.parse((process.env.MINSTA_SETUP as string) || "{}");
 
 
 const appName: string = process.env.NEXT_PUBLIC_APP_NAME || "NEARAPAC";
@@ -21,6 +21,7 @@ export const constants = {
   tokenContractAddress,
   network,
   mintbaseBaseUrl,
-  mintbaseWalletUrl
+  mintbaseWalletUrl,
+  isClosed: setup.closed
 };
 

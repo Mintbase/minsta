@@ -3,11 +3,19 @@
 import { Mint } from "@/components/Mint";
 import { Spinner } from "@/components/Spinner";
 import { FooterButton } from "@/components/footer";
+import { constants } from "@/constants";
 import { useApp } from "@/providers/app";
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import Webcam from "react-webcam";
 
-export default function CameraPage() {
+const CameraComponent = () => {
+  const { isClosed } = constants;
+  if (isClosed) return null;
+
+  return <CameraPage />;
+};
+
+function CameraPage() {
   const { setCameraRef } = useApp();
   const [facingMode, setFacingMode] = useState("environment");
   const [cameraLoaded, setCameraLoaded] = useState(false);
@@ -152,3 +160,5 @@ export default function CameraPage() {
     </>
   );
 }
+
+export default CameraComponent;
