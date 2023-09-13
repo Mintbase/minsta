@@ -1,16 +1,17 @@
 
+const setup = JSON.parse(process.env.MINSTA_SETUP as string)
+
+
 const appName: string = process.env.NEXT_PUBLIC_APP_NAME || "NEARAPAC";
 const arweaveKey = JSON.parse((process.env.ARWEAVE_KEY as string) || "{}");
-const network = process.env.NEXT_PUBLIC_NEAR_NETWORK || "testnet";
+const network = setup.network|| "testnet";
 const proxyContractAddress =
-  process.env.NEXT_PUBLIC_PROXY_CONTRACT_ADDRESS || "1.minsta.mintbus.testnet";
+ setup.contract || "1.minsta.mintbus.testnet";
 const tokenContractAddress =
-  process.env.NEXT_PUBLIC_TOKEN_CONTRACT_ADDRESS || "minsta.mintspace2.testnet";
+  setup.token || "minsta.mintspace2.testnet";
 
-const mintbaseBaseUrl = process.env.NEXT_PUBLIC_MINTBASE_BASE_URL || "https://testnet.wallet.mintbase.xyz"
-const mintbaseWalletUrl = process.env.NEXT_PUBLIC_MINTBASE_WALLET_URL || "https://testnet.wallet.mintbase.xyz"
-
-export const config = JSON.parse((process.env.MINSTA_COLORS as string) || "{}");
+const mintbaseBaseUrl = setup.wallet
+const mintbaseWalletUrl = setup.wallet || "https://testnet.wallet.mintbase.xyz"
 
 
 export const constants = {
