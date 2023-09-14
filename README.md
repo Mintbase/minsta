@@ -45,14 +45,14 @@ pnpm install
 - config:
 ```
 NEXT_PUBLIC_MINSTA_SETUP={"closed":"false","wallet":"https://testnet.wallet.mintbase.xyz","token":"minsta.mintspace2.testnet","contract":"1.minsta.mintbus.testnet","network":"testnet","title":"NEARAPAC"}
-```
+
 closed: if set to true will close the minting and hide the footer
 wallet: wallet url
 token: token address
 contract: contract address
 network: near network
 title: app title
-
+```
 
 - texts:
 
