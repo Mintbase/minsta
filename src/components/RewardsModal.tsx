@@ -5,11 +5,7 @@ import { useApp } from "@/providers/app";
 import { useWallet } from "@mintbase-js/react";
 import React, { useEffect } from "react";
 
-const RewardsModal = ({ children }: { children?: React.ReactNode }) => {
-
- const texts = JSON.parse((process.env.MINSTA_TEXTS as string) || "{}");
-
-
+const RewardsModal = ({ children, texts }: { children?: React.ReactNode, texts: any }) => {
 
   const { isRewardsModalOpen, closeModal } = useApp();
   const { connect, isConnected, activeAccountId } = useWallet();

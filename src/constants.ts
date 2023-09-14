@@ -1,6 +1,5 @@
 
-const setup = JSON.parse((process.env.MINSTA_SETUP as string) || "{}");
-
+const setup = JSON.parse((process.env.NEXT_PUBLIC_MINSTA_SETUP as string) || "{}");
 
 const appName: string = process.env.NEXT_PUBLIC_APP_NAME || "NEARAPAC";
 const arweaveKey = JSON.parse((process.env.ARWEAVE_KEY as string) || "{}");

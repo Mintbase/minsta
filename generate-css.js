@@ -12,6 +12,7 @@ const css = `:root {
           --cardOne: #${config.colors.cardOne};
           --cardTwo: #${config.colors.cardTwo};
           --linkColor: #${config.colors.linkColor};
+          --icon: #${config.colors.icon};
         }`;
 
 const outputPath = path.resolve(__dirname, "src/style/global.css");
