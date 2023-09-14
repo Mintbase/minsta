@@ -10,6 +10,10 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
   const { isMainModalOpen, closeModal } = useApp();
   const { connect, isConnected, activeAccountId } = useWallet();
 
+  const texts = JSON.parse((process.env.NEXT_PUBLIC_MINSTA_TEXTS as string) || "{}");
+
+
+
   useEffect(() => {
     if (!isMainModalOpen) return;
     // Disable scrolling on the background (body) when the modal is open
@@ -46,15 +50,15 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
           <div className="text-black flex flex-col gap-8 items-start mb-12">
             <div className="flex gap-3 items-center">
               <img src="/images/photo_camera-2.svg"></img>
-              <p className="text-sm">Take a picture at NEAR APAC</p>
+              <p className="text-sm">{texts.about.first}</p>
             </div>
             <div className="flex gap-3 items-center">
               <img src="/images/file_arrow_up.svg"></img>
-              <p className="text-sm">Upload and it will mint as an NFT</p>
+              <p className="text-sm">{texts.about.sec}</p>
             </div>
             <div className="flex gap-3 items-center ml-1">
               <img src="/images/trophy.svg"></img>
-              <p className="text-sm">Climb up the Leaderboard by minting</p>
+              <p className="text-sm">{texts.about.third}</p>
             </div>
           </div>
 

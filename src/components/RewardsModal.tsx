@@ -5,7 +5,8 @@ import { useApp } from "@/providers/app";
 import { useWallet } from "@mintbase-js/react";
 import React, { useEffect } from "react";
 
-const RewardsModal = ({ children }: { children?: React.ReactNode }) => {
+const RewardsModal = ({ children, texts }: { children?: React.ReactNode, texts: any }) => {
+
   const { isRewardsModalOpen, closeModal } = useApp();
   const { connect, isConnected, activeAccountId } = useWallet();
 
@@ -41,18 +42,17 @@ const RewardsModal = ({ children }: { children?: React.ReactNode }) => {
 
           <div className="text-black flex flex-col gap-6 items-start mb-20">
             <div className="gap-3 items-center">
-              <span className="font-bold">10N</span>
-              <p className="text-sm">Top 10 on the Leaderboard</p>
+              <span className="font-bold">{texts.prizes.one}</span>
+              <p className="text-sm">{texts.prizes.title_one}</p>
             </div>
             <div className="gap-3 items-center">
-              <span className="font-bold">5N</span>
-              <p className="text-sm">Top 11-20 on the Leaderboard</p>
+              <span className="font-bold">{texts.prizes.two}</span>
+              <p className="text-sm">{texts.prizes.title_two}</p>
             </div>
             <div className="gap-3 items-center ml-1">
-              <span className="font-bold">5N</span>
+              <span className="font-bold">{texts.prizes.three}</span>
               <p className="text-sm">
-                Most liked tweet with the hashtag{" "}
-                <strong>#NEARAPAC</strong>
+             {texts.prizes.title_three}
               </p>
             </div>
           </div>

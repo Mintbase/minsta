@@ -1,14 +1,16 @@
 import { HomePage } from "@/components/HomePage";
 import { Metadata } from "next";
 
+const envMeta = JSON.parse(process.env.NEXT_PUBLIC_MINSTA_META as string)
+
 export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
-    title: "Mint Moments on NEAR APAC",
-    description: "Share your best moments on NEAR APAC and win prizes!",
+    title: envMeta.title,
+    description: envMeta.description,
     siteId: "1467726470533754880",
     creator: "Mintbase",
-    images: "./images/APAC-thumbnail-1200x630.png",
+    images: envMeta.images,
   },
 };
 

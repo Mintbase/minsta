@@ -1,5 +1,6 @@
 "use client";
 
+import { constants } from "@/constants";
 import { useApp } from "@/providers/app";
 import { useWallet } from "@mintbase-js/react";
 import { usePathname } from "next/navigation";
@@ -27,9 +28,12 @@ const Footer = () => {
   const { takePicture, openModal } = useApp();
 
   const renderFooterButtons = () => {
+    const { isClosed } = constants
+
+
     switch (pathname) {
       case "/":
-        return (
+        return !!isClosed ? (
           <footer className="fixed bottom-0 left-0 flex w-full items-end justify-center bg-[#F3F4F8] h-16">
             <FooterButton
               onClick={
@@ -37,9 +41,9 @@ const Footer = () => {
               }
             />
           </footer>
-        );
+        ): null;
       case "/leaderboard":
-        return (
+        return  !!isClosed ?(
           <footer className="fixed bottom-0 left-0 flex w-full items-end justify-center bg-[#F3F4F8] h-16">
             <FooterButton
               onClick={
@@ -47,7 +51,7 @@ const Footer = () => {
               }
             />
           </footer>
-        );
+        ) : null;
       case "/camera":
         return null;
       default:
