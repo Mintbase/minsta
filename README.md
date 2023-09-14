@@ -1,34 +1,83 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# minsta-main
+	this is the main project for minsta (https://minsta.me) app.
+	all new minsta instances should come from this repository.
+###  What we do here (why this repo exists):
+- New features
+- bug fixes
+- debugs
+- manual testing and QA
+- stress tests
+- MINTS :)
+
+
+
+
 
 ## Getting Started
 
-First, run the development server:
-
+  clone the repo and:
+  if no pnpm do:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+npm install -g pnpm
+```
+  
+```bash
+pnpm install 
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### env vars
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- ui:
+	- add on .env.local:
+ ```
+ MINSTA_COLORS={"colors":{"primary":"F3F4F8","secondary":"000","gradOne":"4472ad","gradTwo":"009dea","cardOne":"E8EAF0","cardTwo":"049BE8","linkColor":"4f58a3","icon":"4B9CE3"}}
+ ```
+  
+  want to add new color? we use tailwind, so you can add in 3 steps:
+   ```
+1.add to the env file on MINSTA_COLORS, an extra property under "colors"
+2. generate-css.js and add the new prop on the :root css code (this code will generate a static css file on build time and add to root vars)
+3. tailwind.config.ts: add the new color on the file, so you can use with classes like text-mycolor, bg-mycolor
+4. use it on the JSX Elements =)
+ ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+- config:
+```
+NEXT_PUBLIC_MINSTA_SETUP={"closed":"false","wallet":"https://testnet.wallet.mintbase.xyz","token":"minsta.mintspace2.testnet","contract":"1.minsta.mintbus.testnet","network":"testnet","title":"NEARAPAC"}
+```
+closed: if set to true will close the minting and hide the footer
+wallet: wallet url
+token: token address
+contract: contract address
+network: near network
+title: app title
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- texts:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
+NEXT_PUBLIC_MINSTA_TEXTS={"prizes":{"one":"10N","two":"5N","three":"5N","title_one":"Top 10 on the Leaderboard","title_two":"Top 11-20 on the Leaderboard","title_three":"Most liked tweet with the hashtag NEARAPAC"},"about":{"first":"Take a picture at NEAR APAC","sec":"Upload and it will mint as an NFT",  "third":"Climb up the Leaderboard by minting"}}
+```
 
-## Deploy on Vercel
+those are texts used on the modals.
+on an ideal situation would be used on a cms or firebase and could be edited by marketing/content team.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+but in the current format it can be edited on env vars no need to change the code on Next.js
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+- meta:
+metadata for social networks and minted nfts share
+
+```
+NEXT_PUBLIC_MINSTA_META={"description":"Share your best moments on NEAR APAC and win prizes!","title":"Mint Moments on NEAR APAC","twitter":"Exploring%20unforgettable%20moments%20at%20%23NEARAPAC%20with%20%40NearVietnamHub%20%40Mintbase%20%40NEARProtocol%20%23BOS%20%23NEAR","image":"./images/APAC-thumbnail-1200x630.png"}
+```
+description: social card description
+title: social card title
+twitter: share text
+
+## running
+now run 
+```bash
+pnpm dev 
+```
