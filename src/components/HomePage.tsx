@@ -67,14 +67,19 @@ export const HomePage = () => {
   });
 
   const isReady = !isFetching;
-  if (isReady && data[0]?.media && !items) {
-    setItems(data);
-  }
+  // if (isReady && data[0]?.media && !items) {
+  //   setItems(data);
+  // }
+
+
+
+
+
 
   const lists = Array.from(Array(23).keys());
 
   const { newToken, refetchToken, blockedNfts } = useFirstToken(false);
-
+  console.log(data, isReady,newToken, 'data')
   // Create refs to keep track of previous values
   const prevNewToken = useRef(newToken);
   const prevData = useRef(data);
@@ -94,6 +99,8 @@ export const HomePage = () => {
 
   const firstTokenisBlocked =
     newToken?.metadata_id && blockedNfts?.includes(newToken?.metadata_id);
+
+    // return null
 
   return (
     <>

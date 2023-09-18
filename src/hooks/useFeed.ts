@@ -11,7 +11,7 @@ const useBlockedNfts = () => {
     () => getBlockedNfts(),
     {
       initialData: null, // Set initial data as null
-      refetchInterval: 1000, // Automatically refetch every 1000ms (1 second)
+      refetchInterval: 10000, // Automatically refetch every 1000ms (1 second)
     }
   );
 
@@ -28,12 +28,14 @@ const useFirstToken = (skip: boolean) => {
       accountId: constants.proxyContractAddress,
       contractAddress: constants.tokenContractAddress,
     },
-    queryOpts: { staleTime: Infinity },
+    queryOpts: { staleTime: Infinity , refetchInterval: 1000,},
   };
 
   const { data, isLoading, refetch: refetchToken } = useGraphQlQuery(queryObj);
 
-  return { newToken: data?.token[0] || null, refetchToken, blockedNfts };
+  console.log(data, isLoading, 'data')
+
+  return { newToken: !isLoading?  data?.data?.token[0] :  null, refetchToken, blockedNfts };
 };
 
 const useFeed = (props: any) => {
@@ -55,8 +57,10 @@ const useFeed = (props: any) => {
     refetch: refetchImages,
   } = useGraphQlQuery(queryObj);
 
+  console.log(data, 'data tokens')
+
   return {
-    data: data?.token,
+    data: data?.data?.token,
     isLoading,
     isFetching,
     refetchImages,

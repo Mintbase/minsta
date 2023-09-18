@@ -1,13 +1,14 @@
-"use client"
+"use client";
 
 import { isUndefined } from "lodash";
 import { useMemo } from "react";
 import { useWallet } from "@mintbase-js/react";
 import { constants } from "@/constants";
 import { useApp } from "@/providers/app";
-import { gql, useQuery } from "@apollo/client";
+import { MINSTA_TEXTS } from "@/data/fallback";
+import { useGraphQlQuery } from "@/data/useGraphQlQuery";
 
-const FetchLeaderboard = gql`
+const FetchLeaderboard = `
   query FetchLeaderboard($contractAddress: String) @cached {
     token: mb_views_nft_tokens(
       where: { nft_contract_id: { _eq: $contractAddress } }
@@ -17,16 +18,18 @@ const FetchLeaderboard = gql`
   }
 `;
 
-
 export const useLeaderBoardData = () => {
+  const queryObj = {
+    queryName: "q_FetchLeaderboard",
+    query: FetchLeaderboard,
+    variables: { contractAddress: constants.tokenContractAddress },
+    queryOpts: { staleTime: Infinity },
+  };
 
- const { data, loading } = useQuery(FetchLeaderboard, {
-    variables: {
-      contractAddress: constants.tokenContractAddress,
-    },
-  });
+  const { data, isLoading: loading } = useGraphQlQuery(queryObj);
 
-  const texts = JSON.parse((process.env.NEXT_PUBLIC_MINSTA_TEXTS as string) || "{}");
+  const texts =
+    JSON.parse(process.env.NEXT_PUBLIC_MINSTA_TEXTS as string) || MINSTA_TEXTS;
 
   const { activeAccountId } = useWallet();
 
@@ -67,7 +70,5 @@ export const useLeaderBoardData = () => {
     return resultArray;
   }, [data]);
 
-
-  return {texts, leaderboard, openModal, activeAccountId}
-
-}
+  return { texts, leaderboard, openModal, activeAccountId };
+};

@@ -1,6 +1,7 @@
 import type { Network } from '@mintbase-js/sdk'
 import { mbjs } from '@mintbase-js/sdk'
 import { nearEndpoints } from './network'
+import { constants } from '@/constants'
 
 export type GqlFetchResult<T> = {
   data?: T
@@ -17,7 +18,6 @@ export const graphQLService = async ({
   network?: Network
 }) => {
   try {
-    const nearNet = network
 
     const data = await graphQlFetch(query, variables, network).then(
       async (data: Response) => {
@@ -39,7 +39,7 @@ export const graphQlFetch = async (
   network?: Network, 
 ): Promise<Response> => {
 
-  const net = network ??  mbjs.keys.network
+  const net = network ??  constants.network
   const isTestnet = net === 'testnet'
 
   const baseUrl = isTestnet

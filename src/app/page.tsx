@@ -1,7 +1,8 @@
 import { HomePage } from "@/components/HomePage";
+import { MINSTA_META } from "@/data/fallback";
 import { Metadata } from "next";
 
-const envMeta = JSON.parse(process.env.NEXT_PUBLIC_MINSTA_META as string)
+const envMeta = JSON.parse(process.env.NEXT_PUBLIC_MINSTA_META as string) || MINSTA_META
 
 export const metadata: Metadata = {
   twitter: {
