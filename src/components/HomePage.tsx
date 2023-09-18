@@ -1,9 +1,8 @@
 "use client";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useFeed, useFirstToken } from "@/hooks/feed.hook";
+import { useFeed, useFirstToken } from "@/hooks/useFeed";
 import { DynamicGrid } from "@/components/DynamicGrid";
 import { useEffect, useRef, useState } from "react";
-import { NetworkStatus } from "@apollo/client";
 import { constants } from "@/constants";
 import Link from "next/link";
 
@@ -62,12 +61,12 @@ export const HomePage = () => {
 
   // if(hasAccountID) push('/camera')
 
-  const { loading, networkStatus, data, refetchImages } = useFeed({
+  const { isLoading, isFetching, data, refetchImages } = useFeed({
     accountId: constants.proxyContractAddress,
     contractAddress: constants.tokenContractAddress,
   });
 
-  const isReady = networkStatus == NetworkStatus.ready;
+  const isReady = !isFetching;
   if (isReady && data[0]?.media && !items) {
     setItems(data);
   }
@@ -113,7 +112,7 @@ export const HomePage = () => {
             <ImageThumb key={1} token={newToken} index={1} />
           ) : null}
 
-          {!items && loading
+          {!items && isLoading
             ? lists?.map((listItem) => {
                 return (
                   <div
