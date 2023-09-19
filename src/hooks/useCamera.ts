@@ -2,7 +2,7 @@ import { useApp } from "@/providers/app";
 import React, { useEffect, useLayoutEffect, useState } from "react";
 
 export const useCamera = () => {
-  const { setCameraRef } = useApp();
+ const { setCameraRef } = useApp();
   const [facingMode, setFacingMode] = useState("environment");
   const [cameraLoaded, setCameraLoaded] = useState(false);
   const [permissionGranted, setPermission] = useState(false);
@@ -22,7 +22,7 @@ export const useCamera = () => {
         clearTimeout(timeout);
       };
     }
-  }, [pageLoaded]); //
+  }, []); //
 
   async function requestCameraPermission() {
     try {
@@ -86,6 +86,16 @@ export const useCamera = () => {
   const tryAgain = () => {
     setPicture(null);
   };
+
+  const [initialLoad, setInitialLoad] = useState(true);
+
+  useEffect(() => {
+    if (permissionGranted && initialLoad) {
+      // Initialize the camera after permission is granted on initial load
+      setCameraLoaded(true);
+      setInitialLoad(false);
+    }
+  }, [permissionGranted, initialLoad]);
 
   return {
     tryAgain,

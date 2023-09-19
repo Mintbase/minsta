@@ -1,5 +1,4 @@
 "use client";
-import { constants } from "@/constants";
 import { useApp } from "@/providers/app";
 import { useWallet } from "@mintbase-js/react";
 import { usePathname, useRouter } from "next/navigation";
@@ -31,7 +30,7 @@ const Header = () => {
           <div className="flex w-full justify-between px-4 items-center">
             <div>
               <button className="font-bold pt-2 lg:pl-10 text-xl" onClick={() => push("/")}>
-                <img src="near-apac-logo.svg" width="140"/>
+                {process.env.NEXT_PUBLIC_APP_TITLE || "Minsta"}
   
                 </button>
             </div>
