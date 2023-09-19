@@ -1,19 +1,20 @@
-import { MINSTA_SETUP } from "./data/fallback";
+require("dotenv").config();
 
-const setup = JSON.parse((process.env.NEXT_PUBLIC_MINSTA_SETUP as string) ) || MINSTA_SETUP;
-
-const appName: string = process.env.NEXT_PUBLIC_APP_NAME || "MINTBASE";
+const appName: string = process.env.NEXT_PUBLIC_APP_TITLE || "MINTBASE";
 const arweaveKey = JSON.parse((process.env.ARWEAVE_KEY as string) || "{}");
-const network = setup.network || "testnet";
+const network = process.env.NEXT_PUBLIC_NETWORK || "testnet";
 const proxyContractAddress =
- setup.contract || "1.minsta.mintbus.testnet";
+  process.env.NEXT_PUBLIC_CONTRACT || "1.minsta.mintbus.testnet";
 const tokenContractAddress =
-  setup.token || "minsta.mintspace2.testnet";
+  process.env.NEXT_PUBLIC_TOKEN || "minsta.mintspace2.testnet";
 
-const mintbaseBaseUrl = setup.wallet || "https://testnet.wallet.mintbase.xyz"
+const mintbaseBaseUrl =
+  process.env.NEXT_PUBLIC_BASE_URL ||
+  "https://testnet.mintbase.xyz";
 
-const mintbaseWalletUrl = setup.wallet || "https://testnet.wallet.mintbase.xyz"
-
+const mintbaseWalletUrl =
+  process.env.NEXT_PUBLIC_WALLET_ADDRESS ||
+  "https://testnet.wallet.mintbase.xyz";
 
 export const constants = {
   appName,
@@ -23,6 +24,5 @@ export const constants = {
   network,
   mintbaseBaseUrl,
   mintbaseWalletUrl,
-  isClosed: setup.closed
+  isClosed: process.env.NEXT_PUBLIC_MINTING_CLOSED || false,
 };
-

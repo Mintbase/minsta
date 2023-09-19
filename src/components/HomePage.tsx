@@ -61,7 +61,7 @@ export const HomePage = () => {
 
   // if(hasAccountID) push('/camera')
 
-  const { isLoading, isFetching, data, refetchImages } = useFeed({
+  const { isLoading, isFetching, data } = useFeed({
     accountId: constants.proxyContractAddress,
     contractAddress: constants.tokenContractAddress,
   });
@@ -71,15 +71,9 @@ export const HomePage = () => {
   //   setItems(data);
   // }
 
-
-
-
-
-
   const lists = Array.from(Array(23).keys());
 
-  const { newToken, refetchToken, blockedNfts } = useFirstToken(false);
-  console.log(data, isReady,newToken, 'data')
+  const { newToken, refetchToken, blockedNfts } = useFirstToken();
   // Create refs to keep track of previous values
   const prevNewToken = useRef(newToken);
   const prevData = useRef(data);

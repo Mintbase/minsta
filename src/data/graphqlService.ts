@@ -1,5 +1,3 @@
-import type { Network } from '@mintbase-js/sdk'
-import { mbjs } from '@mintbase-js/sdk'
 import { nearEndpoints } from './network'
 import { constants } from '@/constants'
 
@@ -15,7 +13,7 @@ export const graphQLService = async ({
 }: {
   query: any
   variables?: Record<string, unknown>
-  network?: Network
+  network?: "testnet" | "mainnet"
 }) => {
   try {
 
@@ -36,7 +34,7 @@ export const graphQLService = async ({
 export const graphQlFetch = async (
   query:string,
   variables:any,
-  network?: Network, 
+  network?: "testnet" | "mainnet", 
 ): Promise<Response> => {
 
   const net = network ??  constants.network

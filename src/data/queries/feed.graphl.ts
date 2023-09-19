@@ -14,7 +14,6 @@ export const FETCH_FEED = `
       }
       order_by: { minted_timestamp: desc },
        offset: 1,
-       limit: 11
     ) {
       id: token_id
       createdAt: minted_timestamp

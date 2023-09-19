@@ -1,5 +1,5 @@
 {
-  "name": "minsta-nearapac",
+  "name": "minsta-main",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -21,6 +21,7 @@
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.14",
     "data-uri-to-buffer": "^5.0.1",
+    "dotenv": "^16.3.1",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.13",
     "graphql": "^16.7.1",

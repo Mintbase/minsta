@@ -1,6 +1,5 @@
 "use client";
 
-import { constants } from "@/constants";
 import { MINSTA_TEXTS } from "@/data/fallback";
 import { useApp } from "@/providers/app";
 import { useWallet } from "@mintbase-js/react";
@@ -8,10 +7,15 @@ import React, { useEffect } from "react";
 
 const Modal = ({ children }: { children?: React.ReactNode }) => {
   const { isMainModalOpen, closeModal } = useApp();
-  const { connect, isConnected, activeAccountId } = useWallet();
+  const { connect, isConnected } = useWallet();
 
-  const texts = JSON.parse((process.env.NEXT_PUBLIC_MINSTA_TEXTS as string))  || MINSTA_TEXTS;
-
+  const texts = {
+    about: {
+      first: process.env.NEXT_PUBLIC_TEXT_ABOUT_1ST || MINSTA_TEXTS.about.first,
+      sec: process.env.NEXT_PUBLIC_TEXT_ABOUT_2ND || MINSTA_TEXTS.about.sec,
+      third: process.env.NEXT_PUBLIC_TEXT_ABOUT_3RD || MINSTA_TEXTS.about.third,
+    },
+  };
 
   useEffect(() => {
     if (!isMainModalOpen) return;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FETCH_FEED, FETCH_FIRST_TOKEN } from "../data/queries/feed.graphl";
 import { constants } from "@/constants";
 import { getBlockedNfts } from "@/data/getBlockedNfts";
@@ -11,14 +11,14 @@ const useBlockedNfts = () => {
     () => getBlockedNfts(),
     {
       initialData: null, // Set initial data as null
-      refetchInterval: 10000, // Automatically refetch every 1000ms (1 second)
+      refetchInterval: 120000, // Automatically refetch every 120000 (2mins)
     }
   );
 
   return { blockedNfts, fetchBlockedNfts: refetch };
 };
 
-const useFirstToken = (skip: boolean) => {
+const useFirstToken = () => {
   const { blockedNfts, fetchBlockedNfts } = useBlockedNfts();
 
   const queryObj = {
@@ -28,20 +28,41 @@ const useFirstToken = (skip: boolean) => {
       accountId: constants.proxyContractAddress,
       contractAddress: constants.tokenContractAddress,
     },
-    queryOpts: { staleTime: Infinity , refetchInterval: 1000,},
+    queryOpts: { staleTime: Infinity, refetchInterval: 1000 },
   };
 
   const { data, isLoading, refetch: refetchToken } = useGraphQlQuery(queryObj);
 
-  console.log(data, isLoading, 'data')
+  const prevTokenRef = useRef(data?.data?.token[0]);
+  const {refetchNfts} = useFeed({
+    accountId: constants.proxyContractAddress,
+    contractAddress: constants.tokenContractAddress,
+  });
 
-  return { newToken: !isLoading?  data?.data?.token[0] :  null, refetchToken, blockedNfts };
+  useEffect(() => {
+    // Compare the new token with the previous token
+    const newToken = data?.data?.token[0];
+    const prevToken = prevTokenRef.current;
+
+    if (newToken !== prevToken) {
+      // Call your other function here
+      // For example: yourOtherFunction(newToken);
+
+      // Update the previous token with the new token
+      prevTokenRef.current = newToken;
+      refetchNfts();
+    }
+  }, [data]);
+
+  return {
+    newToken: !isLoading ? data?.data?.token[0] : null,
+    refetchToken,
+    blockedNfts,
+  };
 };
 
 const useFeed = (props: any) => {
   const { accountId, contractAddress } = props;
-
-  const [finalData, setDataState] = useState<any>(null);
 
   const queryObj = {
     queryName: "q_FETCH_FEED",
@@ -54,16 +75,14 @@ const useFeed = (props: any) => {
     data,
     isLoading,
     isFetching,
-    refetch: refetchImages,
+    refetch: refetchNfts,
   } = useGraphQlQuery(queryObj);
-
-  console.log(data, 'data tokens')
 
   return {
     data: data?.data?.token,
     isLoading,
     isFetching,
-    refetchImages,
+    refetchNfts,
   };
 };
 

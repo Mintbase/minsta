@@ -2,16 +2,15 @@ import { HomePage } from "@/components/HomePage";
 import { MINSTA_META } from "@/data/fallback";
 import { Metadata } from "next";
 
-const envMeta = JSON.parse(process.env.NEXT_PUBLIC_MINSTA_META as string) || MINSTA_META
-
 export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
-    title: envMeta.title,
-    description: envMeta.description,
+    title: process.env.NEXT_PUBLIC_META_TITLE ?? MINSTA_META.title,
+    description:
+      process.env.NEXT_PUBLIC_META_DESCRIPTION ?? MINSTA_META.description,
     siteId: "1467726470533754880",
     creator: "Mintbase",
-    images: envMeta.images,
+    images: process.env.NEXT_PUBLIC_META_IMAGE ?? MINSTA_META.image,
   },
 };
 
