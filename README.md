@@ -6,7 +6,7 @@ All new Minsta instances should be derived from this repository.
 
 ## Demo
 
-Check out the live demo here: [minsta-main demo](https://minsta-main.vercel.app/).
+Check out the live demo here: [minsta demo](https://minsta-app.vercel.app/).
 
 ## One-Click Deploy
 
