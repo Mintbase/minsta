@@ -6,13 +6,13 @@ this is the main project for minsta (https://minsta.me) app.
 all new minsta instances should come from this repository.
 
 ## Demo
-https://minsta-main.vercel.app/
+https://minsta-app.vercel.app/
 
 ## One-Click Deploy
 
 Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme):
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMintbase%2Fminsta-main)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMintbase%2Fminsta)
 
 
 ### What we do here (why this repo exists):
