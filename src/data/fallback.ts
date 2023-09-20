@@ -17,7 +17,7 @@ export const MINSTA_TEXTS = {
     title_three: "Most liked tweet with the hashtag MINSTA",
   },
   about: {
-    first: "Take a picture with Mintbase",
+    first: "Take a picture with Minsta",
     sec: "Upload and it will mint as an NFT",
     third: "Climb up the Leaderboard by minting",
   },
