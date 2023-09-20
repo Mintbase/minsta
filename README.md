@@ -1,6 +1,8 @@
 # Minsta
 
-This repository hosts the primary codebase for the [Minsta App](https://minsta.me), originally created and developed by [@microchipgnu](https://github.com/microchipgnu). All new Minsta instances should be derived from this repository.
+This repository hosts the primary codebase for the [Minsta App](https://minsta.me), originally created and developed by [@microchipgnu](https://github.com/microchipgnu). 
+
+All new Minsta instances should be derived from this repository.
 
 ## Demo
 
@@ -25,19 +27,21 @@ To start with this project:
    
 3. Then, install the required dependencies:
 
-  ```bash
-  pnpm install
-  ```
+     ```bash
+     pnpm install
+     ```
 
 ## Environment Variables
 
-Refer to the **.env.example** file for the environment variables used in this project. If you don't set up a `.env` file or environment variables with your provider, the project will retrieve values from the following files:
+Refer to the **.env.example** file for the environment variables used in this project. 
 
-For CSS generation during build: `generate-css.js`
-For configuration variables: `src/constants.ts`
-For fallback metadata and text values: `src/fallback.ts`
+If you don't set up a `.env` file or environment variables with your provider, the project will retrieve values from the following files:
 
-## Environment Variables
+1. For CSS generation during build: `generate-css.js`
+2. For configuration variables: `src/constants.ts`
+3. For fallback metadata and text values: `src/fallback.ts`
+
+## Local Development
 
 To run the project locally, use:
 
