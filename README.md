@@ -10,7 +10,7 @@ Check out the live demo here: [minsta-main demo](https://minsta-main.vercel.app/
 
 Deploy this project using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme):
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMintbase%2Fminsta-main)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMintbase%2Fminsta)
 
 ## Getting Started
 
@@ -44,6 +44,3 @@ To run the project locally, use:
   ```bash
   pnpm dev
   ```
-
-
-
