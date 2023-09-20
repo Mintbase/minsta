@@ -1,77 +1,49 @@
+# Minsta
 
-# minsta-main
-
-this is the main project for minsta (https://minsta.me) app.
-
-all new minsta instances should come from this repository.
+This repository hosts the primary codebase for the [Minsta App](https://minsta.me), originally created and developed by [@microchipgnu](https://github.com/microchipgnu). All new Minsta instances should be derived from this repository.
 
 ## Demo
-https://minsta-main.vercel.app/
+
+Check out the live demo here: [minsta-main demo](https://minsta-main.vercel.app/).
 
 ## One-Click Deploy
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme):
+Deploy this project using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme):
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMintbase%2Fminsta-main)
 
-
-### What we do here (why this repo exists):
-
-- New features
-
-- bug fixes
-
-- debugs
-
-- manual testing and QA
-
-- stress tests
-
-- MINTS :)
-
-
 ## Getting Started
 
-  
+To start with this project:
 
-clone the repo and:
+1. Clone the repository.
+2. If you don't have `pnpm` installed, run:
 
-if no pnpm do:
+   ```bash
+   npm install -g pnpm
+   ```
+   
+3. Then, install the required dependencies:
 
-```bash
+  ```bash
+  pnpm install
+  ```
 
-npm  install  -g  pnpm
+## Environment Variables
 
-```
+Refer to the **.env.example** file for the environment variables used in this project. If you don't set up a `.env` file or environment variables with your provider, the project will retrieve values from the following files:
 
-```bash
+For CSS generation during build: `generate-css.js`
+For configuration variables: `src/constants.ts`
+For fallback metadata and text values: `src/fallback.ts`
 
-pnpm  install
+## Environment Variables
 
-```
+To run the project locally, use:
 
- 
-### env vars
-
-check **.env.example** file with the env variables we use it.
-if you dont setup a .env file or env variables at your provider, our project will get the values from 3 files:
-
-to generate css at build:
-```generate-css.js``` 
-
-to setup config vars:
-```src/constants.ts```
-
-to fallback metadata and texts values:
-```src/fallback.ts```
+  ```bash
+  pnpm dev
+  ```
 
 
-## running locally
 
-now run
-
-```bash
-
-pnpm  dev
-
-```
