@@ -45,8 +45,7 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
         <div className="overflow-y-auto flex-1 bg-white h-auto w-full rounded-lg text-black p-5 max-w-md mx-auto overflow-y-auto flex flex-col">
           <div className="mb-8 flex flex-col gap-2 items-center mt-4">
             <h1 className="text-3xl font-bold">
-              {" "}
-              <img src="near-apac-logo.svg" width="170" />
+              Minsta
             </h1>
           </div>
 
