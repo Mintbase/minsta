@@ -1,5 +1,5 @@
 
-# minsta-main
+# minsta
 
 this is the main project for minsta (https://minsta.me) app.
 
