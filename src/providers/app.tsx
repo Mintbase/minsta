@@ -1,9 +1,12 @@
 import React, { useContext, useState, createContext } from "react";
 import { useRouter } from "next/navigation";
 import { useWallet } from "@mintbase-js/react";
+import { uploadReference } from "@mintbase-js/storage";
 import { constants } from "@/constants";
 import { Heebo } from "next/font/google";
-import '../style/global.css'
+import "../style/global.css";
+import { generateRandomId } from "@/utils/generateRandomId";
+import { convertBase64ToFile } from "@/utils/base64ToFile";
 
 const heebo = Heebo({ subsets: ["latin"] });
 
@@ -44,10 +47,6 @@ interface IAppConsumer {
   isLoading: false;
 }
 
-
-
-
-
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [cameraRef, _setCameraRef] = useState<
     React.MutableRefObject<any> | undefined
@@ -87,17 +86,13 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     const wallet = await selector.wallet();
     setLoading(true);
 
-    const response = await fetch("/api/upload", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        dataUri: photo,
-      }),
-    });
+    const refObject = {
+      title: generateRandomId(10),
+      description: generateRandomId(10),
+      media: convertBase64ToFile(photo),
+    };
 
-    const uploadedDataResult = await response.json();
+    const uploadedData = await uploadReference(refObject);
 
     const currentUrl = new URL(window.location.href);
 
@@ -115,7 +110,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
             methodName: "mint",
             args: {
               metadata: JSON.stringify({
-                reference: uploadedDataResult?.id,
+                reference: uploadedData?.id,
                 extra: null,
               }),
               nft_contract_id: constants.tokenContractAddress,
@@ -129,8 +124,6 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
       successUrl: `${protocol}//${domain}${!port ? "" : ":" + port}`,
     });
   };
-
-
 
   return (
     <>
