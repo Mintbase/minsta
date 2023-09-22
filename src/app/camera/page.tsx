@@ -8,7 +8,7 @@ import React from "react";
 const CameraComponent = () => {
   const { isClosed } = constants;
 
-  if (isClosed) return null;
+  if (!isClosed) return null;
 
   return <CameraPage />;
 };
