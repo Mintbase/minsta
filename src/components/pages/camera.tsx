@@ -16,7 +16,6 @@ export default function CameraPage() {
     capture,
   } = useCamera();
 
-
   if (picture) {
     return <Mint currentPhoto={picture} backStep={tryAgain} />;
   }

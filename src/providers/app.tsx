@@ -6,6 +6,7 @@ import { constants } from "@/constants";
 import { Heebo } from "next/font/google";
 import "../style/global.css";
 import { generateRandomId } from "@/utils/generateRandomId";
+import { convertBase64ToFile } from "@/utils/base64ToFile";
 
 const heebo = Heebo({ subsets: ["latin"] });
 
@@ -88,10 +89,16 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     const refObject = {
       title: generateRandomId(10),
       description: generateRandomId(10),
-      media: `https://arweave.net/${photo}`,
+      media: convertBase64ToFile(photo),
     };
 
     const uploadedData = await uploadReference(refObject);
+
+    const currentUrl = new URL(window.location.href);
+
+    const protocol = currentUrl.protocol;
+    const domain = currentUrl.hostname;
+    const port = currentUrl.port;
 
     const result = await wallet?.signAndSendTransaction({
       signerId: activeAccountId,
