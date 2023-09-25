@@ -54,7 +54,7 @@ To run the project locally, use:
 If you make changes to your environment variables within the `.env` file, please follow these steps to ensure your project runs correctly:
 
 1. Save your changes in the `.env` file.
-2. Restart the project to apply the updated environment variables.
+2. Run `pnpm dev` again to apply the updated environment variables.
 3. Reload the page to reflect the changes.
 
 By following these steps, you can ensure that your project operates with the latest configuration settings.
