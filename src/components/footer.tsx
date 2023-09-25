@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 
 export const FooterButton = ({ onClick }: { onClick: any }) => (
   <button
-    className="rounded-full h-24 w-24 bg-[#F3F4F8] absolute -top-12 flex items-center justify-center"
+    className="rounded-full h-24 w-24 bg-primary absolute -top-12 flex items-center justify-center"
     onClick={onClick}
   >
     <div
@@ -28,23 +28,22 @@ const Footer = () => {
   const { takePicture, openModal } = useApp();
 
   const renderFooterButtons = () => {
-    const { isClosed } = constants
-
+    const { isClosed } = constants;
 
     switch (pathname) {
       case "/":
         return !isClosed ? (
-          <footer className="fixed bottom-0 left-0 flex w-full items-end justify-center bg-[#F3F4F8] h-16">
+          <footer className="fixed bottom-0 left-0 flex w-full items-end justify-center bg-primary h-16">
             <FooterButton
               onClick={
                 isConnected ? () => push("/camera") : () => openModal("default")
               }
             />
           </footer>
-        ): null;
+        ) : null;
       case "/leaderboard":
-        return  !isClosed ?(
-          <footer className="fixed bottom-0 left-0 flex w-full items-end justify-center bg-[#F3F4F8] h-16">
+        return !isClosed ? (
+          <footer className="fixed bottom-0 left-0 flex w-full items-end justify-center bg-primary h-16">
             <FooterButton
               onClick={
                 isConnected ? () => push("/camera") : () => openModal("default")

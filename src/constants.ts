@@ -8,8 +8,7 @@ const tokenContractAddress =
   process.env.NEXT_PUBLIC_TOKEN || "minsta.mintspace2.testnet";
 
 const mintbaseBaseUrl =
-  process.env.NEXT_PUBLIC_BASE_URL ||
-  "https://testnet.mintbase.xyz";
+  process.env.NEXT_PUBLIC_BASE_URL || "https://testnet.mintbase.xyz";
 
 const mintbaseWalletUrl =
   process.env.NEXT_PUBLIC_WALLET_ADDRESS ||
@@ -22,5 +21,5 @@ export const constants = {
   network,
   mintbaseBaseUrl,
   mintbaseWalletUrl,
-  isClosed: process.env.NEXT_PUBLIC_MINTING_CLOSED || false,
+  isClosed: process.env.NEXT_PUBLIC_MINTING_CLOSED === "true" || false,
 };
