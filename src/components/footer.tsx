@@ -32,7 +32,7 @@ const Footer = () => {
 
     switch (pathname) {
       case "/":
-        return !!isClosed ? (
+        return !isClosed ? (
           <footer className="fixed bottom-0 left-0 flex w-full items-end justify-center bg-primary h-16">
             <FooterButton
               onClick={
@@ -42,7 +42,7 @@ const Footer = () => {
           </footer>
         ) : null;
       case "/leaderboard":
-        return !!isClosed ? (
+        return !isClosed ? (
           <footer className="fixed bottom-0 left-0 flex w-full items-end justify-center bg-primary h-16">
             <FooterButton
               onClick={
