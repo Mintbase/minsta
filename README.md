@@ -56,8 +56,6 @@ To run the project locally, use:
 If you're running your project locally, follow these steps to update your environment variables:
 
 1. Save your changes in the `.env` file.
-2. Run `pnpm dev` again to apply the updated environment variables.
-3. Reload the page to reflect the changes.
 
 ### Deployed on Vercel
 
