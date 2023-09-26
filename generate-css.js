@@ -13,10 +13,11 @@ const colors = {
   cardTwo: process.env.COLOR_CARDTWO || "049BE8",
   linkColor: process.env.COLOR_LINKCOLOR || "4f58a3",
   icon: process.env.COLOR_ICON || "4B9CE3",
-  modalText: process.env.COLOR_MODAL_TEXT || '000000',
-  leaderboardText: process.env.COLOR_LEADERBOARD_TEXT || '000000',
-  headerText: process.env.COLOR_HEADER_TEXT || '000000',
-  mainText: process.env.COLOR_MAIN_TEXT || '000000'
+  camera: process.env.COLOR_CAMERA || "FFFFFF",
+  modalText: process.env.COLOR_MODAL_TEXT || "000000",
+  leaderboardText: process.env.COLOR_LEADERBOARD_TEXT || "000000",
+  headerText: process.env.COLOR_HEADER_TEXT || "000000",
+  mainText: process.env.COLOR_MAIN_TEXT || "000000",
 };
 
 const css = `:root {
@@ -29,6 +30,7 @@ const css = `:root {
           --cardTwo: #${colors.cardTwo};
           --linkColor: #${colors.linkColor};
           --icon: #${colors.icon};
+          --camera: #${colors.camera};
           --modalText: #${colors.modalText};
           --leaderboardText: #${colors.leaderboardText};
           --headerText: #${colors.headerText};

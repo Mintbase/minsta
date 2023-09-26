@@ -23,6 +23,7 @@ const config: Config = {
         cardTwo: "var(--cardTwo)",
         linkColor: "var(--linkColor)",
         icon: "var(--icon)",
+        camera: "var(--camera)",
         modalText: "var(--modalText)",
         leaderboardText: "var(--leaderboardText)",
         headerText: "var(--headerText)",
