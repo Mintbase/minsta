@@ -5,7 +5,7 @@ const network = process.env.NEXT_PUBLIC_NETWORK || "testnet";
 const proxyContractAddress =
   process.env.NEXT_PUBLIC_CONTRACT || "1.minsta.mintbus.testnet";
 const tokenContractAddress =
-  process.env.NEXT_PUBLIC_TOKEN || "minsta.mintspace2.testnet";
+  process.env.NEXT_PUBLIC_NFT_CONTRACT_ADDRESS || "minsta.mintspace2.testnet";
 
 const mintbaseBaseUrl =
   process.env.NEXT_PUBLIC_BASE_URL || "https://testnet.mintbase.xyz";
