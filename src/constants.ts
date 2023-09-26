@@ -11,7 +11,7 @@ const mintbaseBaseUrl =
   process.env.NEXT_PUBLIC_BASE_URL || "https://testnet.mintbase.xyz";
 
 const mintbaseWalletUrl =
-  process.env.NEXT_PUBLIC_WALLET_ADDRESS ||
+  process.env.NEXT_PUBLIC_MINTBASE_WALLET_URL ||
   "https://testnet.wallet.mintbase.xyz";
 
 export const constants = {
