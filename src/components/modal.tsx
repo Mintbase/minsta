@@ -88,8 +88,14 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
           <div>
             <p className="uppercase text-xs mb-1.5 text-center">POWERED BY</p>
             <div className="flex justify-center gap-5">
-              <img src="/images/MB_logo.svg"></img>
-              <img src="/images/near_logo.svg"></img>
+              <InlineSVG
+                src="/images/MB_logo.svg"
+                className="fill-current text-modal"
+              />
+              <InlineSVG
+                src="/images/near_logo.svg"
+                className="fill-current text-modal"
+              />
             </div>
           </div>
         </div>

@@ -4,9 +4,15 @@ import { constants } from "@/constants";
 import { useApp } from "@/providers/app";
 import { useWallet } from "@mintbase-js/react";
 import React, { useEffect } from "react";
+import InlineSVG from "react-inlinesvg";
 
-const RewardsModal = ({ children, texts }: { children?: React.ReactNode, texts: any }) => {
-
+const RewardsModal = ({
+  children,
+  texts,
+}: {
+  children?: React.ReactNode;
+  texts: any;
+}) => {
   const { isRewardsModalOpen, closeModal } = useApp();
   const { connect, isConnected, activeAccountId } = useWallet();
 
@@ -51,9 +57,7 @@ const RewardsModal = ({ children, texts }: { children?: React.ReactNode, texts: 
             </div>
             <div className="gap-3 items-center ml-1">
               <span className="font-bold">{texts.prizes.three}</span>
-              <p className="text-sm">
-             {texts.prizes.title_three}
-              </p>
+              <p className="text-sm">{texts.prizes.title_three}</p>
             </div>
           </div>
 
@@ -69,8 +73,14 @@ const RewardsModal = ({ children, texts }: { children?: React.ReactNode, texts: 
           <div>
             <p className="uppercase text-xs mb-1.5 text-center">POWERED BY</p>
             <div className="flex justify-center gap-5">
-              <img src="/images/MB_logo.svg"></img>
-              <img src="/images/near_logo.svg"></img>
+              <InlineSVG
+                src="/images/MB_logo.svg"
+                className="fill-current text-modal"
+              />
+              <InlineSVG
+                src="/images/near_logo.svg"
+                className="fill-current text-modal"
+              />
             </div>
           </div>
         </div>
