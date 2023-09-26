@@ -11,7 +11,7 @@ const Header = () => {
 
   const headerButtonsNotHome = (onClick: any) => (
     <div className="flex w-full justify-between px-4 items-center">
-      <button className="h-8 w-8" onClick={onClick}>
+      <button className="h-8 w-8 text-headerText" onClick={onClick}>
         <img src="/images/arrow_back.svg" />
       </button>
       <div className="flex gap-4">
@@ -31,7 +31,6 @@ const Header = () => {
             <div>
               <button className="font-bold pt-2 lg:pl-10 text-xl" onClick={() => push("/")}>
                 {process.env.NEXT_PUBLIC_APP_TITLE || "Minsta"}
-  
                 </button>
             </div>
             <div className="flex gap-4">

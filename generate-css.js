@@ -6,7 +6,7 @@ require("dotenv").config(); // Load environment variables from .env file
 const colors = {
   primary: process.env.COLOR_PRIMARY || "F3F4F8",
   secondary: process.env.COLOR_SECONDARY || "000",
-  mainBg: proccess.env.COLOR_MAIN_BACKGROUND || "FFFFFF",
+  mainBg: process.env.COLOR_MAIN_BACKGROUND || "FFFFFF",
   gradOne: process.env.COLOR_GRADONE || "4472ad",
   gradTwo: process.env.COLOR_GRADTWO || "009dea",
   cardOne: process.env.COLOR_CARDONE || "E8EAF0",
