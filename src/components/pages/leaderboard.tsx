@@ -12,7 +12,7 @@ export const LeaderboardPage = () => {
 
   return (
     <>
-      <main className="pt-20 flex flex-col gap-6 items-center justify-center text-black">
+      <main className="pt-20 flex flex-col gap-6 items-center justify-center text-leaderboardText">
         <div>Leaderboard</div>
         <div className="flex text-center gap-10">
           <ViewYourNfts />

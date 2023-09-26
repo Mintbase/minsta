@@ -23,6 +23,10 @@ const config: Config = {
         cardTwo: "var(--cardTwo)",
         linkColor: "var(--linkColor)",
         icon: "var(--icon)",
+        modalText: "var(--modalText)",
+        leaderboardText: "var(--leaderboardText)",
+        headerText: "var(--headerText)",
+        mainText: "var(--mainText)",
       },
       gradientColorStopPositions: {
         33: "33%",

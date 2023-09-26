@@ -54,7 +54,7 @@ const Header = () => {
 
   return (
     <>
-    <header className="fixed left-0 top-0 flex w-full justify-center h-12 bg-primary text-black">
+    <header className="fixed left-0 top-0 flex w-full justify-center h-12 bg-primary text-headerText">
       {renderHeaderButtons()}
     </header>
 </>

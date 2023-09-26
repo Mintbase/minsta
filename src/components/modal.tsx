@@ -42,14 +42,14 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
         className="bg-white rounded-xl shadow-lg max-w-md mx-auto flex flex-col h-auto"
         onClick={stopPropagation}
       >
-        <div className="overflow-y-auto flex-1 bg-white h-auto w-full rounded-lg text-black p-5 max-w-md mx-auto overflow-y-auto flex flex-col">
+        <div className="overflow-y-auto flex-1 bg-mainBg h-auto w-full rounded-lg text-modalText p-5 max-w-md mx-auto overflow-y-auto flex flex-col">
           <div className="mb-8 flex flex-col gap-2 items-center mt-4">
             <h1 className="text-3xl font-bold">
               Minsta
             </h1>
           </div>
 
-          <div className="text-black flex flex-col gap-8 items-start mb-12">
+          <div className="text-modalText flex flex-col gap-8 items-start mb-12">
             <div className="flex gap-3 items-center">
               <img src="/images/photo_camera-2.svg"></img>
               <p className="text-sm">{texts.about.first}</p>

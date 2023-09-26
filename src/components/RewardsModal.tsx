@@ -35,12 +35,12 @@ const RewardsModal = ({ children, texts }: { children?: React.ReactNode, texts: 
         className="bg-white rounded-xl shadow-lg max-w-md mx-auto flex flex-col h-auto"
         onClick={stopPropagation}
       >
-        <div className="overflow-y-auto flex-1 bg-white h-full w-full rounded-lg text-black p-5 max-w-md mx-auto overflow-y-auto flex flex-col">
+        <div className="overflow-y-auto flex-1 bg-white h-full w-full rounded-lg text-modalText p-5 max-w-md mx-auto overflow-y-auto flex flex-col">
           <div className="mb-8 flex flex-col gap-2 items-center mt-4">
             <h1 className="text-3xl font-bold">{"Rewards"}</h1>
           </div>
 
-          <div className="text-black flex flex-col gap-6 items-start mb-20">
+          <div className="text-modalText flex flex-col gap-6 items-start mb-20">
             <div className="gap-3 items-center">
               <span className="font-bold">{texts.prizes.one}</span>
               <p className="text-sm">{texts.prizes.title_one}</p>
