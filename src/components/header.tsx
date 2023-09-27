@@ -34,10 +34,10 @@ const Header = () => {
     switch (pathname) {
       case "/":
         return (
-          <div className="flex w-full justify-between px-4 items-center">
+          <div className="flex w-full justify-between px-4 lg:px-12  items-center">
             <div>
               <button
-                className="font-bold lg:pl-10 text-xl"
+                className="font-bold text-xl"
                 onClick={() => push("/")}
               >
                 {process.env.NEXT_PUBLIC_APP_TITLE || "Minsta"}
