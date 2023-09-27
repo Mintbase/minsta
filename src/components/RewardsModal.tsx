@@ -41,7 +41,7 @@ const RewardsModal = ({
         className="bg-white rounded-xl shadow-lg max-w-md mx-auto flex flex-col h-auto"
         onClick={stopPropagation}
       >
-        <div className="overflow-y-auto flex-1 bg-white h-full w-full rounded-lg text-modalText p-5 max-w-md mx-auto overflow-y-auto flex flex-col">
+        <div className="overflow-y-auto flex-1 bg-mainBg h-auto w-full rounded-t-lg text-modalText p-5 max-w-md mx-auto overflow-y-auto flex flex-col">
           <div className="mb-8 flex flex-col gap-2 items-center mt-4">
             <h1 className="text-3xl font-bold">{"Rewards"}</h1>
           </div>
@@ -63,10 +63,10 @@ const RewardsModal = ({
 
           <div className="mb-14 text-center">
             <button
-              className="gradientButton text-white rounded px-14 py-3 text-sm font-light"
+              className="gradientButton text-primaryBtnText rounded px-14 py-3 text-sm font-light"
               onClick={() => closeModal()}
             >
-              {"Ok"}
+              OK
             </button>
           </div>
 

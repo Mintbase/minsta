@@ -19,6 +19,8 @@ const colors = {
   headerText: process.env.COLOR_HEADER_TEXT || "000000",
   mainText: process.env.COLOR_MAIN_TEXT || "000000",
   freeUseText: process.env.COLOR_FREE_USE_TEXT || "0A7D6C",
+  primaryBtnText: process.env.COLOR_PRIMARY_BTN_TEXT || 'FFFFFF',
+  secondaryBtnText: process.env.COLOR_SECONDARY_BTN_TEXT || '000000'
 };
 
 const css = `:root {
@@ -38,6 +40,8 @@ const css = `:root {
           --mainText: #${colors.mainText};
           --freeUseText: #${colors.freeUseText};
           --bgFreeUse: #${colors.freeUseText}1A;
+          --primaryBtnText: #${colors.primaryBtnText};
+          --secondaryBtnText: #${colors.secondaryBtnText};
         }`;
 
 const outputPath = path.resolve(__dirname, "src/style/global.css");

@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { constants } from "@/constants";
 import { useWallet } from "@mintbase-js/react";
+import InlineSVG from "react-inlinesvg";
 
 const ViewYourNfts = () => {
   const { activeAccountId, isConnected } = useWallet();
@@ -18,7 +19,10 @@ const ViewYourNfts = () => {
       >
         View your NFTs
       </Link>
-      <img src="/images/link_arrow.svg" width={18}></img>
+      <InlineSVG
+        src="/images/link_arrow.svg"
+        className="fill-current text-linkColor"
+      />
     </div>
   ) : null;
 };

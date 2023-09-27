@@ -30,6 +30,8 @@ const config: Config = {
         mainText: "var(--mainText)",
         freeUseText: "var(--freeUseText)",
         bgFreeUse: "var(--bgFreeUse)",
+        primaryBtnText: "var(--primaryBtnText)",
+        secondaryBtnText: "var(--secondaryBtnText)",
       },
       gradientColorStopPositions: {
         33: "33%",

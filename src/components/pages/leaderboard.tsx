@@ -51,7 +51,7 @@ export const LeaderboardPage = () => {
                   )}
                   <p>{account}</p>
                 </div>
-                <div className="rounded-full bg-white h-10 w-10 flex items-center justify-center">
+                <div className="rounded-full bg-mainBg text-leaderboardText h-10 w-10 flex items-center justify-center">
                   {count}
                 </div>
               </Link>
