@@ -16,16 +16,22 @@ const config: Config = {
       colors: {
         primary: "var(--primary)",
         secondary: "var(--secondary)",
+        mainBg: "var(--mainBg)",
         gradOne: "var(--gradOne)",
         gradTwo: "var(--gradTwo)",
         cardOne: "var(--cardOne)",
         cardTwo: "var(--cardTwo)",
-        linkColor:"var(--linkColor)",
-        icon:"var(--icon)"
+        linkColor: "var(--linkColor)",
+        icon: "var(--icon)",
+        camera: "var(--camera)",
+        modalText: "var(--modalText)",
+        leaderboardText: "var(--leaderboardText)",
+        headerText: "var(--headerText)",
+        mainText: "var(--mainText)",
       },
-         gradientColorStopPositions: {
-        33: '33%',
-      }
+      gradientColorStopPositions: {
+        33: "33%",
+      },
     },
   },
   plugins: [],

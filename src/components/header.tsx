@@ -2,6 +2,7 @@
 import { useApp } from "@/providers/app";
 import { useWallet } from "@mintbase-js/react";
 import { usePathname, useRouter } from "next/navigation";
+import InlineSVG from "react-inlinesvg";
 
 const Header = () => {
   const pathname = usePathname();
@@ -11,8 +12,11 @@ const Header = () => {
 
   const headerButtonsNotHome = (onClick: any) => (
     <div className="flex w-full justify-between px-4 items-center">
-      <button className="h-8 w-8" onClick={onClick}>
-        <img src="/images/arrow_back.svg" />
+      <button className="h-8 w-8 text-headerText" onClick={onClick}>
+        <InlineSVG
+          src="/images/arrow_back.svg"
+          className="fill-current text-headerText"
+        />
       </button>
       <div className="flex gap-4">
         <button onClick={() => openModal("default")}>
@@ -29,10 +33,12 @@ const Header = () => {
         return (
           <div className="flex w-full justify-between px-4 items-center">
             <div>
-              <button className="font-bold pt-2 lg:pl-10 text-xl" onClick={() => push("/")}>
+              <button
+                className="font-bold pt-2 lg:pl-10 text-xl"
+                onClick={() => push("/")}
+              >
                 {process.env.NEXT_PUBLIC_APP_TITLE || "Minsta"}
-  
-                </button>
+              </button>
             </div>
             <div className="flex gap-4">
               <button onClick={() => openModal("default")}>
@@ -54,10 +60,10 @@ const Header = () => {
 
   return (
     <>
-    <header className="fixed left-0 top-0 flex w-full justify-center h-12 bg-primary text-black">
-      {renderHeaderButtons()}
-    </header>
-</>
+      <header className="fixed left-0 top-0 flex w-full justify-center h-12 bg-primary text-headerText">
+        {renderHeaderButtons()}
+      </header>
+    </>
   );
 };
 
