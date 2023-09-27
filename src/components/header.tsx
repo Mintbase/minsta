@@ -36,11 +36,9 @@ const Header = () => {
         return (
           <div className="flex w-full justify-between px-4 lg:px-12  items-center">
             <div>
-              <button
-                className="font-bold text-xl"
-                onClick={() => push("/")}
-              >
-                {process.env.NEXT_PUBLIC_APP_TITLE || "Minsta"}
+              <button className="font-bold text-xl" onClick={() => push("/")}>
+                {/* {process.env.NEXT_PUBLIC_APP_TITLE || "Minsta"} */}
+                <InlineSVG src="/images/creatives_dao.svg" />
               </button>
             </div>
             <div className="flex gap-4">
