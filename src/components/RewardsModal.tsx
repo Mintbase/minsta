@@ -85,7 +85,7 @@ const RewardsModal = ({
           </div>
         </div>
 
-        <div className="w-full text-[#0A7D6C] bg-[#0A7D6C]/10 text-center py-2 text-sm px-5">
+        <div className="w-full text-freeUseText bg-bgFreeUse text-center py-2 text-sm px-5 rounded-b-lg">
           100% free to use: no creditcard or crypto required!
         </div>
       </div>

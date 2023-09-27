@@ -2,6 +2,7 @@ import { Mint } from "@/components/Mint";
 import { FooterButton } from "@/components/footer";
 import Webcam from "react-webcam";
 import { useCamera } from "@/hooks/useCamera";
+import InlineSVG from "react-inlinesvg";
 
 export default function CameraPage() {
   const {
@@ -28,7 +29,10 @@ export default function CameraPage() {
             <h2 className="align-center flex font-semibold mb-4 text-mainText text-center">
               <span className="w-full">Let&apos;s Take a Picture </span>
               <div className="h-8 w-8 right-0 absolute" onClick={toggleCamera}>
-                <img src="/images/cameraswitch.svg" />
+                <InlineSVG
+                  src="/images/cameraswitch.svg"
+                  className="fill-current text-mainText"
+                />
               </div>
             </h2>
           )}
@@ -58,7 +62,7 @@ export default function CameraPage() {
         </div>
       </main>
       {!picture && (
-        <footer className="fixed bottom-0 left-0 flex w-full items-end justify-center bg-[#F3F4F8] h-16">
+        <footer className="fixed bottom-0 left-0 flex w-full items-end justify-center bg-primary h-16">
           <FooterButton onClick={capture} />
         </footer>
       )}
