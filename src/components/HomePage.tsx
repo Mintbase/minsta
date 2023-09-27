@@ -20,7 +20,7 @@ const ImageThumb = ({ token, index }: any) => {
       rel="noopener noreferrer"
       passHref
     >
-      <div className="w-80 h-80 relative">
+      <div className="w-72 h-72 xl:w-80 xl:h-80 relative">
         <div className="absolute inset-0 flex items-center justify-center flex items-center justify-center">
           <Image
             src={cachedImage}
