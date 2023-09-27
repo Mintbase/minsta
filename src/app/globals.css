@@ -7,12 +7,16 @@
   height: 320px;
 }
 
-.h-camera{height:calc(100vh - 120px)}
-.m-camera { 
-    margin: 30px;
+.h-camera {
+  height: calc(100vh - 120px);
+}
+.m-camera {
+  margin: 30px;
 }
 
-.margin-mint{ margin-top: 120px;}
+.margin-mint {
+  margin-top: 120px;
+}
 
 .lds-ellipsis {
   display: inline-block;
@@ -83,17 +87,16 @@
 .link-styles {
   color: #4f58a3;
 }
-header{
-  z-index:999;
+header {
+  z-index: 999;
 }
 
-.notify{
-  top:63px;
-  width:100vw;
-  font-size:14px;
-  font-family: 'AuthenticSans-90';
+.notify {
+  top: 63px;
+  width: 100vw;
+  font-size: 14px;
 }
 
-.gradientButton{
-      background: linear-gradient(to right, var(--gradOne), var(--gradTwo));
+.gradientButton {
+  background: linear-gradient(to right, var(--gradOne), var(--gradTwo));
 }

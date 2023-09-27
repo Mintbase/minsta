@@ -35,7 +35,7 @@ const ImageThumb = ({ token, index }: any) => {
           />
         </div>
         <button
-          className="absolute top-3 right-3 bg-[#000000] text-white rounded p-1 text-xs px-2 py-1.5"
+          className="absolute top-3 right-3 bg-black text-white rounded p-1 text-xs px-2 py-1.5"
           onClick={(e) => {
             e.preventDefault();
             window.open(
@@ -99,7 +99,7 @@ export const HomePage = () => {
   return (
     <>
     
-      <main className="container mx-auto flex flex-col items-center justify-center space-y-4">
+      <main className="px-4 lg:px-12 mx-auto flex flex-col items-center justify-center space-y-4">
         <DynamicGrid mdCols={2} nColsXl={4} nColsXXl={6}>
           {!newToken?.media ? (
             <div

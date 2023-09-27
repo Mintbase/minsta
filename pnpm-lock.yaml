@@ -65,6 +65,9 @@ dependencies:
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
+  react-inlinesvg:
+    specifier: ^4.0.4
+    version: 4.0.4(react@18.2.0)
   react-webcam:
     specifier: ^7.1.1
     version: 7.1.1(react-dom@18.2.0)(react@18.2.0)
@@ -4693,6 +4696,23 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-from-dom@0.6.2(react@18.2.0):
+    resolution: {integrity: sha512-qvWWTL/4xw4k/Dywd41RBpLQUSq97csuv15qrxN+izNeLYlD9wn5W8LspbfYe5CWbaSdkZ72BsaYBPQf2x4VbQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /react-inlinesvg@4.0.4(react@18.2.0):
+    resolution: {integrity: sha512-OnXi+IHoY2zj6rt+kLmXQth9HZ3rS1TDtDwjFbELcCZngAJC32nXp2ZzLp4FpijzISDe7YfHI3SFs9qALWv+xw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-from-dom: 0.6.2(react@18.2.0)
     dev: false
 
   /react-is@16.13.1:

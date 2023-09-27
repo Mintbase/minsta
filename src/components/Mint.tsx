@@ -16,7 +16,7 @@ export function Mint({
         <>
           {" "}
           <Spinner />
-          <h1 className="text-xl sm:text-2xl font-semibold mb-4 text-black text-center">
+          <h1 className="text-xl sm:text-2xl font-semibold mb-4 text-mainText text-center">
             Uploading your image...
           </h1>
         </>
@@ -26,16 +26,16 @@ export function Mint({
 
           <div className="flex gap-4 w-full">
             <button
-              className="text-black w-full border border-black rounded px-4 py-2"
+              className="text-secondaryBtnText w-full border border-secondaryBtnText rounded px-4 py-2"
               onClick={backStep}
             >
-              {"Try again"}
+              Try again
             </button>
             <button
-              className="gradientButton w-full text-white rounded px-4 py-2"
+              className="gradientButton w-full text-primaryBtnText rounded px-4 py-2"
               onClick={() => mintImage(currentPhoto)}
             >
-              {"Upload"}
+              Upload
             </button>
           </div>
         </div>

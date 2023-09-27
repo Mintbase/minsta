@@ -5,6 +5,7 @@ import { useApp } from "@/providers/app";
 import { useWallet } from "@mintbase-js/react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import InlineSVG from "react-inlinesvg";
 
 export const FooterButton = ({ onClick }: { onClick: any }) => (
   <button
@@ -15,7 +16,10 @@ export const FooterButton = ({ onClick }: { onClick: any }) => (
       className="rounded-full h-20 w-20 gradientButton
   flex items-center justify-center"
     >
-      <img src="/images/photo_camera.svg" className="h-12" alt="Camera" />
+      <InlineSVG
+        src="/images/photo_camera.svg"
+        className="fill-current text-camera h-12"
+      />
     </div>
   </button>
 );

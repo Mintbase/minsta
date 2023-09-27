@@ -12,7 +12,7 @@ export const LeaderboardPage = () => {
 
   return (
     <>
-      <main className="pt-20 flex flex-col gap-6 items-center justify-center text-black">
+      <main className="pt-20 flex flex-col gap-6 items-center justify-center text-mainText">
         <div>Leaderboard</div>
         <div className="flex text-center gap-10">
           <ViewYourNfts />
@@ -23,7 +23,7 @@ export const LeaderboardPage = () => {
             View Rewards
           </button>
         </div>
-        <div className="flex flex-col gap-4 w-full px-4 pb-24 max-w-3xl">
+        <div className="flex flex-col gap-4 w-full px-4 pb-24 max-w-3xl text-leaderboardText">
           {leaderboard?.map(({ account, count }, index) => {
             const isCurrentUser = account === activeAccountId;
             const isFirst = index === 0;
@@ -51,7 +51,7 @@ export const LeaderboardPage = () => {
                   )}
                   <p>{account}</p>
                 </div>
-                <div className="rounded-full bg-white h-10 w-10 flex items-center justify-center">
+                <div className="rounded-full bg-mainBg text-leaderboardText h-10 w-10 flex items-center justify-center">
                   {count}
                 </div>
               </Link>
