@@ -43,7 +43,7 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
         className="bg-white rounded-xl shadow-lg max-w-md mx-auto flex flex-col h-auto"
         onClick={stopPropagation}
       >
-        <div className="overflow-y-auto flex-1 bg-mainBg h-auto w-full rounded-lg text-modalText p-5 max-w-md mx-auto overflow-y-auto flex flex-col">
+        <div className="overflow-y-auto flex-1 bg-mainBg h-auto w-full rounded-t-lg text-modalText p-5 max-w-md mx-auto overflow-y-auto flex flex-col">
           <div className="mb-8 flex flex-col gap-2 items-center mt-4">
             <h1 className="text-3xl font-bold">Minsta</h1>
           </div>
@@ -78,10 +78,10 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
             }`}
           >
             <button
-              className="gradientButton text-white rounded px-14 py-3 text-sm font-light"
+              className="gradientButton text-primaryBtnText rounded px-14 py-3 text-sm font-light"
               onClick={!isConnected ? () => connect() : () => closeModal()}
             >
-              {"OK"}
+              OK
             </button>
           </div>
 
