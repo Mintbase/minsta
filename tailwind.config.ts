@@ -28,6 +28,8 @@ const config: Config = {
         leaderboardText: "var(--leaderboardText)",
         headerText: "var(--headerText)",
         mainText: "var(--mainText)",
+        freeUseText: "var(--freeUseText)",
+        bgFreeUse: "var(--bgFreeUse)",
       },
       gradientColorStopPositions: {
         33: "33%",
