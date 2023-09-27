@@ -14,7 +14,7 @@ const Header = () => {
   const { isClosed } = constants;
 
   const headerButtonsNotHome = (onClick: any) => (
-    <div className="flex w-full justify-between px-4 items-center">
+    <div className="flex w-full justify-between px-4 lg:px-12 items-center">
       <button className="h-8 w-8 text-headerText" onClick={onClick}>
         <InlineSVG
           src="/images/arrow_back.svg"
