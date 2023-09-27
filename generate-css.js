@@ -18,6 +18,7 @@ const colors = {
   leaderboardText: process.env.COLOR_LEADERBOARD_TEXT || "000000",
   headerText: process.env.COLOR_HEADER_TEXT || "000000",
   mainText: process.env.COLOR_MAIN_TEXT || "000000",
+  freeUseText: process.env.COLOR_FREE_USE_TEXT || "0A7D6C",
 };
 
 const css = `:root {
@@ -35,7 +36,8 @@ const css = `:root {
           --leaderboardText: #${colors.leaderboardText};
           --headerText: #${colors.headerText};
           --mainText: #${colors.mainText};
-
+          --freeUseText: #${colors.freeUseText};
+          --bgFreeUse: #${colors.freeUseText}1A;
         }`;
 
 const outputPath = path.resolve(__dirname, "src/style/global.css");
