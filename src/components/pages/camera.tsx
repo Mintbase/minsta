@@ -25,7 +25,7 @@ export default function CameraPage() {
       <main className="h-camera overflow-hidden	 w-screen flex items-center justify-center">
         <div className="h-1/2 relative m-camera">
           {!!cameraLoaded && (
-            <h2 className="align-center flex font-semibold mb-4 text-black text-center">
+            <h2 className="align-center flex font-semibold mb-4 text-mainText text-center">
               <span className="w-full">Let&apos;s Take a Picture </span>
               <div className="h-8 w-8 right-0 absolute" onClick={toggleCamera}>
                 <img src="/images/cameraswitch.svg" />

@@ -4,6 +4,7 @@ import { MINSTA_TEXTS } from "@/data/fallback";
 import { useApp } from "@/providers/app";
 import { useWallet } from "@mintbase-js/react";
 import React, { useEffect } from "react";
+import InlineSVG from "react-inlinesvg";
 
 const Modal = ({ children }: { children?: React.ReactNode }) => {
   const { isMainModalOpen, closeModal } = useApp();
@@ -42,24 +43,31 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
         className="bg-white rounded-xl shadow-lg max-w-md mx-auto flex flex-col h-auto"
         onClick={stopPropagation}
       >
-        <div className="overflow-y-auto flex-1 bg-white h-auto w-full rounded-lg text-black p-5 max-w-md mx-auto overflow-y-auto flex flex-col">
+        <div className="overflow-y-auto flex-1 bg-mainBg h-auto w-full rounded-lg text-modalText p-5 max-w-md mx-auto overflow-y-auto flex flex-col">
           <div className="mb-8 flex flex-col gap-2 items-center mt-4">
-            <h1 className="text-3xl font-bold">
-              Minsta
-            </h1>
+            <h1 className="text-3xl font-bold">Minsta</h1>
           </div>
 
-          <div className="text-black flex flex-col gap-8 items-start mb-12">
+          <div className="text-modalText flex flex-col gap-8 items-start mb-12">
             <div className="flex gap-3 items-center">
-              <img src="/images/photo_camera-2.svg"></img>
+              <InlineSVG
+                src="/images/photo_camera-2.svg"
+                className="fill-current text-icon"
+              />
               <p className="text-sm">{texts.about.first}</p>
             </div>
             <div className="flex gap-3 items-center">
-              <img src="/images/file_arrow_up.svg"></img>
+              <InlineSVG
+                src="/images/file_arrow_up.svg"
+                className="fill-current text-icon"
+              />
               <p className="text-sm">{texts.about.sec}</p>
             </div>
             <div className="flex gap-3 items-center ml-1">
-              <img src="/images/trophy.svg"></img>
+              <InlineSVG
+                src="/images/trophy.svg"
+                className="fill-current text-icon"
+              />
               <p className="text-sm">{texts.about.third}</p>
             </div>
           </div>
@@ -80,8 +88,14 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
           <div>
             <p className="uppercase text-xs mb-1.5 text-center">POWERED BY</p>
             <div className="flex justify-center gap-5">
-              <img src="/images/MB_logo.svg"></img>
-              <img src="/images/near_logo.svg"></img>
+              <InlineSVG
+                src="/images/MB_logo.svg"
+                className="fill-current text-modal"
+              />
+              <InlineSVG
+                src="/images/near_logo.svg"
+                className="fill-current text-modal"
+              />
             </div>
           </div>
         </div>

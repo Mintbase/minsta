@@ -21,7 +21,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} flex min-h-screen flex-col items-center justify-between`}
       >
-        <div className="flex flex-col min-h-screen relative bg-[#FFFFFF] w-screen">
+        <div className="flex flex-col min-h-screen relative bg-mainBg w-screen">
           <Providers>
             <Navigation>
               <Header />
