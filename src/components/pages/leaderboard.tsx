@@ -38,7 +38,7 @@ export const LeaderboardPage = () => {
                 passHref
                 href={`${constants.mintbaseBaseUrl}/human/${account}/owned/0`}
               >
-                <div className="flex">
+                <div className="flex w-5/6 md:w-full">
                   {isCurrentUser && (
                     <span role="img" aria-label="silhouette" className="mr-2">
                       👤
@@ -49,10 +49,12 @@ export const LeaderboardPage = () => {
                       🔥
                     </span>
                   )}
-                  <p>{account}</p>
+                  <p className="w-full truncate">{account}</p>
                 </div>
-                <div className="rounded-full bg-mainBg text-leaderboardText h-10 w-10 flex items-center justify-center">
-                  {count}
+                <div>
+                  <div className="rounded-full bg-mainBg text-leaderboardText h-10 w-10 flex items-center justify-center">
+                    {count}
+                  </div>
                 </div>
               </Link>
             );
