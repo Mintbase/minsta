@@ -40,7 +40,7 @@ const ImageThumb = ({ token, index }: any) => {
           onClick={(e) => {
             e.preventDefault();
             window.open(
-              `https://twitter.com/intent/tweet?url=${constants.mintbaseBaseUrl}/meta/${token?.metadata_id}%2F&via=mintbase&text=`,
+              `https://twitter.com/intent/tweet?url=%0aCheck%20out%20mine%3A%20${constants.mintbaseBaseUrl}/meta/${token?.metadata_id}%2F&via=mintbase&text=${constants.twitterText}`,
               "_blank"
             );
           }}
@@ -49,7 +49,7 @@ const ImageThumb = ({ token, index }: any) => {
         </button>
       </div>
     </Link>
-  ): null;
+  ) : null;
 };
 
 export const HomePage = () => {
@@ -95,11 +95,10 @@ export const HomePage = () => {
   const firstTokenisBlocked =
     newToken?.metadata_id && blockedNfts?.includes(newToken?.metadata_id);
 
-    // return null
+  // return null
 
   return (
     <>
-    
       <main className="px-4 lg:px-12 mx-auto flex flex-col items-center justify-center space-y-4">
         <DynamicGrid mdCols={2} nColsXl={4} nColsXXl={6}>
           {!newToken?.media ? (
