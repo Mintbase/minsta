@@ -45,7 +45,11 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
       >
         <div className="overflow-y-auto flex-1 h-auto w-full rounded-t-lg text-modalText p-5 max-w-md mx-auto overflow-y-auto flex flex-col">
           <div className="mb-8 flex flex-col gap-2 items-center mt-4">
-            <h1 className="text-3xl font-bold">{process.env.NEXT_PUBLIC_APP_TITLE || "Minsta"}</h1>
+            {/* <h1 className="text-3xl font-bold">{process.env.NEXT_PUBLIC_APP_TITLE || "Minsta"}</h1> */}
+            <InlineSVG
+              src="/images/creatives_dao.svg"
+              className="w-[116px] h-auto"
+            />
           </div>
 
           <div className="text-modalText flex flex-col gap-8 items-start mb-12">
