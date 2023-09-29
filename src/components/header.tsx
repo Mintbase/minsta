@@ -40,7 +40,8 @@ const Header = () => {
                 className="font-bold text-xl"
                 onClick={() => push("/")}
               >
-                {process.env.NEXT_PUBLIC_APP_TITLE || "Minsta"}
+                {/* {process.env.NEXT_PUBLIC_APP_TITLE || "Minsta"} */}
+                <InlineSVG src="/images/zebu_live.svg"/>
               </button>
             </div>
             <div className="flex gap-4">
