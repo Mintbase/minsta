@@ -16,12 +16,14 @@ export const LeaderboardPage = () => {
         <div>Leaderboard</div>
         <div className="flex text-center gap-10">
           <ViewYourNfts />
-          {/* <button
-            className="text-linkColor text-sm"
-            onClick={() => openModal("rewards")}
-          >
-            View Rewards
-          </button> */}
+          {constants.showRewards ? (
+            <button
+              className="text-linkColor text-sm"
+              onClick={() => openModal("rewards")}
+            >
+              View Rewards
+            </button>
+          ) : null}
         </div>
         <div className="flex flex-col gap-4 w-full px-4 pb-24 max-w-3xl text-leaderboardText">
           {leaderboard?.map(({ account, count }, index) => {
