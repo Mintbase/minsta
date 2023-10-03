@@ -2,54 +2,78 @@
 import { useSearchParams, useRouter } from "next/navigation";
 import { useFeed, useFirstToken } from "@/hooks/useFeed";
 import { DynamicGrid } from "@/components/DynamicGrid";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { constants } from "@/constants";
 import Link from "next/link";
 
 import { getCachedImage } from "@/utils/cachedImage";
 import Image from "next/image";
+import { ImageCacheProvider, useImageCache } from "@/data/ImageCacheContext";
 
-const ImageThumb = ({ token, index }: any) => {
-  const cachedImage = getCachedImage(token?.media) as string;
 
-  return !!token?.media ? (
-    <Link
-      key={`${token?.metadata_id}-${index}`}
-      href={`${constants.mintbaseBaseUrl}/meta/${token?.metadata_id}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      passHref
-    >
+function transformArweaveToNextJsImage(arweaveUrl: string) {
+  // Get the dynamic base URL of your Next.js application
+  const nextJsBaseUrl = window.location.origin;
+
+  // Encode the Arweave URL for the 'url' query parameter
+  const encodedArweaveUrl = encodeURIComponent(arweaveUrl);
+
+  // Build the Next.js image URL with query parameters
+  const nextJsImageUrl = `${nextJsBaseUrl}/_next/image?url=${encodedArweaveUrl}&w=640&q=90`;
+
+  return nextJsImageUrl;
+}
+
+const ImageThumb = ({ token, index }:any) => {
+  const { cacheImage } = useImageCache();
+  const imageUrl = token?.media;
+
+  if (imageUrl) {
+    cacheImage(transformArweaveToNextJsImage(imageUrl)); // Cache the image
+
+    return (
       <div className="w-72 h-72 xl:w-80 xl:h-80 relative">
-        <div className="absolute inset-0 flex items-center justify-center flex items-center justify-center">
-          <Image
-            src={cachedImage}
-            alt={`Token ${index}`}
-            className="object-cover h-full w-full"
-            width="320"
-            height="320"
-            quality={90}
-            priority={index < 5}
-            placeholder="blur"
-            blurDataURL={cachedImage}
-            unoptimized
-          />
-        </div>
+        {/* Render the image */}
+        <Image
+          src={imageUrl}
+          alt={`Token ${index}`}
+          className="object-cover h-full w-full"
+          width="320"
+          height="320"
+          quality={90}
+          priority={index < 5}
+          placeholder="blur"
+          blurDataURL={imageUrl}
+          
+        />
         <button
           className="absolute top-3 right-3 bg-black text-white rounded p-1 text-xs px-2 py-1.5"
           onClick={(e) => {
             e.preventDefault();
             window.open(
               `https://twitter.com/intent/tweet?url=%0aCheck%20out%20mine%3A%20${constants.mintbaseBaseUrl}/meta/${token?.metadata_id}%2F&via=mintbase&text=${constants.twitterText}`,
-              "_blank"
+              '_blank'
             );
           }}
         >
           Share
         </button>
       </div>
-    </Link>
-  ) : null;
+    );
+  } else {
+    return null;
+  }
+};
+
+const MemoizedImageThumb = React.memo(ImageThumb)
+
+
+export const HomeComponent = () => {
+  return (
+    <ImageCacheProvider>
+      <HomePage />
+    </ImageCacheProvider>
+  );
 };
 
 export const HomePage = () => {
@@ -79,16 +103,18 @@ export const HomePage = () => {
   const prevNewToken = useRef(newToken);
   const prevData = useRef(data);
 
-  useEffect(() => {
-    // Check if both newToken and data are different from their previous values
-    if (newToken !== prevNewToken.current && data !== prevData.current) {
-      // Both newToken and data have changed, update the UI or take action here
+  console.log("loading", isLoading, data, newToken);
 
-      // Update the refs to store the current values
-      prevNewToken.current = newToken;
-      prevData.current = data;
-    }
-  }, [newToken, data]);
+  // useEffect(() => {
+  //   // Check if both newToken and data are different from their previous values
+  //   if (newToken !== prevNewToken.current && data !== prevData.current) {
+  //     // Both newToken and data have changed, update the UI or take action here
+
+  //     // Update the refs to store the current values
+  //     prevNewToken.current = newToken;
+  //     prevData.current = data;
+  //   }
+  // }, [newToken, data, isLoading]);
 
   const blockedMedia = blockedNfts as string[];
 
@@ -110,7 +136,7 @@ export const HomePage = () => {
             </div>
           ) : !firstTokenisBlocked ||
             typeof firstTokenisBlocked == "undefined" ? (
-            <ImageThumb key={1} token={newToken} index={1} />
+            <ImageThumb key={newToken?.media} token={newToken} index={1} />
           ) : null}
 
           {!items && isLoading
@@ -118,7 +144,7 @@ export const HomePage = () => {
                 return (
                   <div
                     className="aspect-square rounded overflow-x-hidden cursor-pointer storeImg"
-                    key={listItem} // Use a unique key here, like listItem
+                    key={listItem}
                   >
                     <div className="rounded animate-pulse w-full h-full bg-gray-600 dark:bg-gray-800" />
                   </div>
@@ -132,11 +158,16 @@ export const HomePage = () => {
                   return null;
                 }
 
-                return <ImageThumb key={index} token={token} index={index} />;
+                return (
+                  <MemoizedImageThumb
+                    key={token?.metadata_id}
+                    token={token}
+                    index={index}
+                  />
+                );
               })}
         </DynamicGrid>
       </main>
     </>
   );
 };
-

@@ -18,7 +18,7 @@ const useBlockedNfts = () => {
   return { blockedNfts, fetchBlockedNfts: refetch };
 };
 
-const useFirstToken = () => {
+const useFirstToken: any = () => {
   const { blockedNfts, fetchBlockedNfts } = useBlockedNfts();
 
   const queryObj = {
@@ -39,6 +39,8 @@ const useFirstToken = () => {
     contractAddress: constants.tokenContractAddress,
   });
 
+ 
+
   useEffect(() => {
     // Compare the new token with the previous token
     const newToken = data?.data?.token[0];
@@ -52,7 +54,7 @@ const useFirstToken = () => {
       prevTokenRef.current = newToken;
       refetchNfts();
     }
-  }, [data]);
+  }, [data, refetchNfts]);
 
   return {
     newToken: !isLoading ? data?.data?.token[0] : null,
@@ -67,7 +69,7 @@ const useFeed = (props: any) => {
   const queryObj = {
     queryName: "q_FETCH_FEED",
     query: FETCH_FEED,
-    variables: { accountId, contractAddress },
+    variables: { accountId, contractAddress, limit:11  },
     queryOpts: { staleTime: Infinity },
   };
 

@@ -1,20 +1,20 @@
 :root {
-          --primary: #1A1B20;
+          --primary: #F3F4F8;
           --secondary: #000;
-          --mainBg: #1A1B20;
-          --gradOne: #CFFC71;
-          --gradTwo: #CFFC71;
-          --cardOne: #33343A;
-          --cardTwo: #CFFC71;
-          --linkColor: #C5D0FF;
-          --icon: #CFFC71;
-          --camera: #1A1B20;
-          --modalText: #FFFFFF;
-          --leaderboardText: #FFFFFF;
-          --headerText: #FFFFFF;
-          --mainText: #FFFFFF;
+          --mainBg: #FFFFFF;
+          --gradOne: #4472ad;
+          --gradTwo: #009dea;
+          --cardOne: #E8EAF0;
+          --cardTwo: #049BE8;
+          --linkColor: #4f58a3;
+          --icon: #4B9CE3;
+          --camera: #FFFFFF;
+          --modalText: #000000;
+          --leaderboardText: #000000;
+          --headerText: #000000;
+          --mainText: #000000;
           --freeUseText: #0A7D6C;
           --bgFreeUse: #0A7D6C1A;
-          --primaryBtnText: #000000;
-          --secondaryBtnText: #FFFFFF;
+          --primaryBtnText: #FFFFFF;
+          --secondaryBtnText: #000000;
         }
