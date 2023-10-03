@@ -46,13 +46,17 @@ const useFirstToken: any = () => {
     const newToken = data?.data?.token[0];
     const prevToken = prevTokenRef.current;
 
+    console.log(newToken !== prevToken, 'token')
+
     if (newToken !== prevToken) {
       // Call your other function here
       // For example: yourOtherFunction(newToken);
 
       // Update the previous token with the new token
+      console.log('call')
+
       prevTokenRef.current = newToken;
-      refetchNfts();
+      // refetchNfts();
     }
   }, [data, refetchNfts]);
 
@@ -70,7 +74,7 @@ const useFeed = (props: any) => {
     queryName: "q_FETCH_FEED",
     query: FETCH_FEED,
     variables: { accountId, contractAddress},
-    queryOpts: { staleTime: Infinity },
+    queryOpts: { staleTime: 600000 },
   };
 
   const {

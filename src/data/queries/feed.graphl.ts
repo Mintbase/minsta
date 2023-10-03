@@ -21,6 +21,7 @@ export const FETCH_FEED = `
       title
       description
       metadata_id
+      owner
     }
   }
 `;
@@ -35,6 +36,7 @@ query minsta_fetch_firstToken($accountId: String!, $contractAddress: String) {
     title
     description
     metadata_id
+    owner
   }
 }
 `

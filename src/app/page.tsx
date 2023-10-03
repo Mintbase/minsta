@@ -1,4 +1,4 @@
-import { HomeComponent } from "@/components/HomePage";
+import { MemoizedFeed } from "@/components/feed/feed";
 import { MINSTA_META } from "@/data/fallback";
 import { Metadata } from "next";
 
@@ -15,5 +15,5 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <HomeComponent />;
+  return <MemoizedFeed />;
 }
