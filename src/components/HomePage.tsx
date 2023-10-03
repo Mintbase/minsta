@@ -2,14 +2,11 @@
 import { useSearchParams, useRouter } from "next/navigation";
 import { useFeed, useFirstToken } from "@/hooks/useFeed";
 import { DynamicGrid } from "@/components/DynamicGrid";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { constants } from "@/constants";
-import Link from "next/link";
 
-import { getCachedImage } from "@/utils/cachedImage";
 import Image from "next/image";
 import { ImageCacheProvider, useImageCache } from "@/data/ImageCacheContext";
-
 
 function transformArweaveToNextJsImage(arweaveUrl: string) {
   // Get the dynamic base URL of your Next.js application
@@ -24,9 +21,26 @@ function transformArweaveToNextJsImage(arweaveUrl: string) {
   return nextJsImageUrl;
 }
 
-const ImageThumb = ({ token, index }:any) => {
+const ImageThumb = ({ token, index }: any) => {
   const { cacheImage } = useImageCache();
   const imageUrl = token?.media;
+  const [error, setError] = useState(false);
+
+  const handleError = () => {
+    setError(true);
+  };
+
+  if (error)
+    return (
+      <div className=" flex flex-wrap	 p-10 w-72 h-72 xl:w-80 xl:h-80 relative justify-center items-center text-center bg-gray-200">
+        <div>
+        <h1 className="w-full"> No Image Metadata</h1>
+        <p className="text-xs text-gray-600 w-full">
+          There was an Error with the image.
+        </p>
+       </div>
+      </div>
+    );
 
   if (imageUrl) {
     cacheImage(transformArweaveToNextJsImage(imageUrl)); // Cache the image
@@ -40,11 +54,11 @@ const ImageThumb = ({ token, index }:any) => {
           className="object-cover h-full w-full"
           width="320"
           height="320"
-          quality={90}
+          quality={70}
           priority={index < 5}
-          placeholder="blur"
+          onError={handleError}
+          placeholder="empty"
           blurDataURL={imageUrl}
-          
         />
         <button
           className="absolute top-3 right-3 bg-black text-white rounded p-1 text-xs px-2 py-1.5"
@@ -52,7 +66,7 @@ const ImageThumb = ({ token, index }:any) => {
             e.preventDefault();
             window.open(
               `https://twitter.com/intent/tweet?url=%0aCheck%20out%20mine%3A%20${constants.mintbaseBaseUrl}/meta/${token?.metadata_id}%2F&via=mintbase&text=${constants.twitterText}`,
-              '_blank'
+              "_blank"
             );
           }}
         >
@@ -65,8 +79,7 @@ const ImageThumb = ({ token, index }:any) => {
   }
 };
 
-const MemoizedImageThumb = React.memo(ImageThumb)
-
+const MemoizedImageThumb = React.memo(ImageThumb);
 
 export const HomeComponent = () => {
   return (
@@ -84,37 +97,14 @@ export const HomePage = () => {
   const hasAccountID = searchParams.get("account_id");
   const { push } = useRouter();
 
-  // if(hasAccountID) push('/camera')
-
   const { isLoading, isFetching, data } = useFeed({
     accountId: constants.proxyContractAddress,
     contractAddress: constants.tokenContractAddress,
   });
 
-  const isReady = !isFetching;
-  // if (isReady && data[0]?.media && !items) {
-  //   setItems(data);
-  // }
-
   const lists = Array.from(Array(23).keys());
 
-  const { newToken, refetchToken, blockedNfts } = useFirstToken();
-  // Create refs to keep track of previous values
-  const prevNewToken = useRef(newToken);
-  const prevData = useRef(data);
-
-  console.log("loading", isLoading, data, newToken);
-
-  // useEffect(() => {
-  //   // Check if both newToken and data are different from their previous values
-  //   if (newToken !== prevNewToken.current && data !== prevData.current) {
-  //     // Both newToken and data have changed, update the UI or take action here
-
-  //     // Update the refs to store the current values
-  //     prevNewToken.current = newToken;
-  //     prevData.current = data;
-  //   }
-  // }, [newToken, data, isLoading]);
+  const { newToken, blockedNfts } = useFirstToken();
 
   const blockedMedia = blockedNfts as string[];
 
@@ -160,7 +150,7 @@ export const HomePage = () => {
 
                 return (
                   <MemoizedImageThumb
-                    key={token?.metadata_id}
+                    key={`${token?.metadata_id}-${index}`}
                     token={token}
                     index={index}
                   />

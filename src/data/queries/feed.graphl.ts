@@ -3,7 +3,6 @@ export const FETCH_FEED = `
   query minsta_fetch_feed_minted_tokens(
     $accountId: String!
     $contractAddress: String
-    $limit: Int
   ) {
     token: mb_views_nft_tokens(
       where: {
@@ -15,7 +14,6 @@ export const FETCH_FEED = `
       }
       order_by: { minted_timestamp: desc },
        offset: 1,
-       limit: $limit
     ) {
       id: token_id
       createdAt: minted_timestamp
