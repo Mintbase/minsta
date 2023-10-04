@@ -60,7 +60,7 @@ const useInfiniteScrollGQL = (
       limit: fetchNum,
       accountId: constants.proxyContractAddress,
       contractAddress: constants.tokenContractAddress,
-      offset: state.offset === 1 ? 0 : (Number(state.offset) - 1) * fetchNum,
+      offset: state.offset === 1 ? 1 : (Number(state.offset) - 1) * fetchNum,
     };
 
     const { data } = await graphQLService({

@@ -1,7 +1,7 @@
 "use client";
 
 import { DynamicGrid } from "@/components/DynamicGrid";
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useFirstToken } from "@/hooks/useFirstToken";
 import { FeedScroll } from "./feed/feedscroll";
@@ -9,18 +9,34 @@ import { MemoizedImageThumb } from "./feed/ImageThumb";
 import { useBlockedNfts } from "@/hooks/useBlockedNfts";
 
 export const HomePage = () => {
-  const { newToken, tokensFetched } = useFirstToken();
+  const { newToken, tokensFetched, isLoading } = useFirstToken();
 
   const { blockedNfts } = useBlockedNfts();
 
   const firstTokenisBlocked =
     newToken?.metadata_id && blockedNfts?.includes(newToken?.metadata_id);
 
+  useEffect(() => {
+    let reloadTimeout: any;
+
+    if (!newToken?.media) {
+      reloadTimeout = setTimeout(() => {
+        // Reload the page after 2 minutes (120,000 milliseconds)
+        window.location.reload();
+      }, 10000); // 2 minutes in milliseconds
+    }
+
+    return () => {
+      // Clear the timeout if the component unmounts
+      clearTimeout(reloadTimeout);
+    };
+  }, [newToken]);
+
   return (
     <>
       <main className="md:px-4 lg:px-12 mx-auto flex flex-col items-center justify-center space-y-4 w-10/12 ">
         <DynamicGrid mdCols={2} nColsXl={4} nColsXXl={6}>
-          {!newToken?.media ? (
+          {!newToken?.media || isLoading ? (
             <div
               className="md:aspect-square rounded overflow-x-hidden cursor-pointer sm:w-full md:w-72 h-72 xl:w-80 xl:h-80 relative"
               key={1}
