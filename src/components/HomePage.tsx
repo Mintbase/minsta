@@ -10,6 +10,7 @@ import { getCachedImage } from "@/utils/cachedImage";
 import Image from "next/image";
 import { ImageCacheProvider, useImageCache } from "@/data/ImageCacheContext";
 import { useFirstToken } from "@/hooks/useFirstToken";
+import { FeedScroll } from "./feed/feedscroll";
 
 function transformArweaveToNextJsImage(arweaveUrl: string) {
   // Get the dynamic base URL of your Next.js application
@@ -120,11 +121,11 @@ export const HomeComponent = () => {
 
 export const HomePage = () => {
 
-  const { newToken, refetchToken, blockedNfts, tokensFetched } =
-    useFirstToken();
+  // const { newToken, refetchToken, blockedNfts, tokensFetched } =
+  //   useFirstToken();
 
-  const firstTokenisBlocked =
-    newToken?.metadata_id && blockedNfts?.includes(newToken?.metadata_id);
+  // const firstTokenisBlocked =
+  //   newToken?.metadata_id && blockedNfts?.includes(newToken?.metadata_id);
 
   // return null
 
@@ -132,7 +133,7 @@ export const HomePage = () => {
     <>
       <main className="px-4 lg:px-12 mx-auto flex flex-col items-center justify-center space-y-4">
         <DynamicGrid mdCols={2} nColsXl={4} nColsXXl={6}>
-          {!newToken?.media ? (
+          {/* {!newToken?.media ? (
             <div
               className="aspect-square rounded overflow-x-hidden cursor-pointer storeImg"
               key={1}
@@ -155,9 +156,9 @@ export const HomePage = () => {
                   index={index}
                 />
               );
-            })} 
+            })}  */}
 
-          <MemoizedTokensFeed />
+          <FeedScroll />
         </DynamicGrid>
       </main>
     </>

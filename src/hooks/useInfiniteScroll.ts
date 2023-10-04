@@ -1,7 +1,6 @@
 import { constants } from '@/constants'
 import { graphQLService } from '@/data/graphqlService'
 import { useInfiniteQuery } from '@tanstack/react-query'
-import { useRouter } from 'next/router'
 import { useEffect, useReducer } from 'react'
 
 const initialState = {
@@ -64,36 +63,36 @@ const useInfiniteScrollGQL = (queryKey: any, isVisible: any, graphQLObj?: any) =
       variables: variables,
     })
 
+    console.log(data, 'datafinal')
+    console.log(isVisible, 'isvisible')
+
     dispatch({ type: 'SET_LOADING', payload: false })
     dispatch({ type: 'SET_OFFSET', payload: state.offset + 1 })
     dispatch({ type: 'SET_CALLED_OFFSETS', payload: state.offset + 1 })
     dispatch({
       type: 'SET_TOTAL',
-      payload: data?.minters_aggregate?.aggregate?.count,
+      payload: data?.mb_views_nft_tokens_aggregate?.aggregate?.count,
     })
 
     dispatch({
       type: 'FETCH_SUCCESS',
-      payload: data?.minter,
+      payload: data?.token,
     })
 
-    return data?.minter
+    return data?.token
   }
-
-  // this will be refactored soon see line 109 comment
-  const router = useRouter()
 
   // useInfiniteQuery
 
   const { data, fetchNextPage, isFetchingNextPage, error } = useInfiniteQuery(
-    [queryKey, state.offset, router.query.text],
+    [queryKey, state.offset],
     fetchItems,
     {
       getNextPageParam: () => state.offset >= 0,
       cacheTime: Infinity,
       refetchOnWindowFocus: false,
       enabled:
-        !state.calledOffsets.includes(state.offset) || state.offset === 0,
+        !state.calledOffsets.includes(state.offset) || state.offset === 1,
     }
   )
 
@@ -108,10 +107,15 @@ const useInfiniteScrollGQL = (queryKey: any, isVisible: any, graphQLObj?: any) =
 
   const handleScroll = () => {
     const hasNewPage = state.items.length < state.total
+    console.log('handleScroll 1',state.items.length, state.total,  hasNewPage )
+        console.log('handleScroll 2',!state.isLoading)
+
+    console.log('handleScroll 3',isVisible, !state.isLoading, !state.isLoading && isVisible && hasNewPage && !isFetchingNextPage)
 
     if (!state.isLoading && isVisible && hasNewPage && !isFetchingNextPage) {
       const newOffset = state.offset + 1
       if (!state.calledOffsets.includes(newOffset)) {
+        console.log('nextpage')
         fetchNextPage()
       }
     }
@@ -133,7 +137,7 @@ const useInfiniteScrollGQL = (queryKey: any, isVisible: any, graphQLObj?: any) =
     resetItemList,
     loadingItems:
       state.items.length < state.total
-        ? Array.from({ length: 3 }, (_) => ({ id: '' }))
+        ? Array.from({ length: 1 }, (_) => ({ id: '' }))
         : null,
     total: state.total,
     error: state.error,

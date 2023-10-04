@@ -25,6 +25,11 @@ export const FETCH_FEED = `
       description
       metadata_id
     }
+    mb_views_nft_tokens_aggregate(where: {minter: {_eq: $accountId}, nft_contract_id: {_eq: $contractAddress}, burned_timestamp: {_is_null: true}}) {
+      aggregate {
+      count
+      }
+    }
   }
 `;
 
