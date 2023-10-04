@@ -1,7 +1,8 @@
-import { constants } from '@/constants'
-import { graphQLService } from '@/data/graphqlService'
-import { useInfiniteQuery } from '@tanstack/react-query'
-import { useEffect, useReducer } from 'react'
+import { constants } from "@/constants";
+import { graphQLService } from "@/data/graphqlService";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { useEffect, useReducer } from "react";
+import { useMediaQuery } from "usehooks-ts";
 
 const initialState = {
   items: [],
@@ -9,78 +10,79 @@ const initialState = {
   isLoading: false,
   calledOffsets: [0],
   total: null,
-}
+};
 
 const reducer = (state: any, action: any) => {
   switch (action.type) {
-    case 'FETCH_START':
-      return { ...state, isLoading: true }
-    case 'FETCH_SUCCESS':
+    case "FETCH_START":
+      return { ...state, isLoading: true };
+    case "FETCH_SUCCESS":
       return {
         ...state,
         items: [...state.items, ...action.payload],
-      }
-    case 'FETCH_RESET':
-      return initialState
+      };
+    case "FETCH_RESET":
+      return initialState;
 
-    case 'SET_TOTAL':
-      return { ...state, total: action.payload }
-    case 'SET_CALLED_OFFSETS':
+    case "SET_TOTAL":
+      return { ...state, total: action.payload };
+    case "SET_CALLED_OFFSETS":
       return {
         ...state,
         calledOffsets: [...state.calledOffsets, action.payload],
-      }
+      };
 
-    case 'SET_OFFSET':
-      return { ...state, offset: action.payload }
-    case 'SET_LOADING':
-      return { ...state, isLoading: action.payload }
-    case 'SET_ERROR':
-      return { ...state, error: action.payload }
+    case "SET_OFFSET":
+      return { ...state, offset: action.payload };
+    case "SET_LOADING":
+      return { ...state, isLoading: action.payload };
+    case "SET_ERROR":
+      return { ...state, error: action.payload };
     default:
-      return state
+      return state;
   }
-}
+};
 
-const useInfiniteScrollGQL = (queryKey: any, isVisible: any, graphQLObj?: any) => {
-  const [state, dispatch] = useReducer(reducer, initialState)
+const useInfiniteScrollGQL = (
+  queryKey: any,
+  isVisible: any,
+  graphQLObj?: any
+) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const fetchNum = isDesktop ? 11 : 3;
 
   const fetchItems = async () => {
-    dispatch({ type: 'FETCH_START' })
+    dispatch({ type: "FETCH_START" });
 
     const variables = {
-      limit: 11,
-         accountId: constants.proxyContractAddress,
-    contractAddress: constants.tokenContractAddress,
-      offset:
-        state.offset === 1
-          ? 0
-          : (Number(state.offset) - 1) * 11,
-    }
+      limit: fetchNum,
+      accountId: constants.proxyContractAddress,
+      contractAddress: constants.tokenContractAddress,
+      offset: state.offset === 1 ? 0 : (Number(state.offset) - 1) * fetchNum,
+    };
 
     const { data } = await graphQLService({
       query: graphQLObj.query,
       variables: variables,
-    })
+    });
 
-    console.log(data, 'datafinal')
-    console.log(isVisible, 'isvisible')
-
-    dispatch({ type: 'SET_LOADING', payload: false })
-    dispatch({ type: 'SET_OFFSET', payload: state.offset + 1 })
-    dispatch({ type: 'SET_CALLED_OFFSETS', payload: state.offset + 1 })
+    dispatch({ type: "SET_LOADING", payload: false });
+    dispatch({ type: "SET_OFFSET", payload: state.offset + 1 });
+    dispatch({ type: "SET_CALLED_OFFSETS", payload: state.offset + 1 });
     dispatch({
-      type: 'SET_TOTAL',
+      type: "SET_TOTAL",
       payload: data?.mb_views_nft_tokens_aggregate?.aggregate?.count,
-    })
+    });
 
     dispatch({
-      type: 'FETCH_SUCCESS',
+      type: "FETCH_SUCCESS",
       payload: data?.token,
-    })
+    });
 
-    return data?.token
-  }
+    return data?.token;
+  };
 
   // useInfiniteQuery
 
@@ -94,54 +96,49 @@ const useInfiniteScrollGQL = (queryKey: any, isVisible: any, graphQLObj?: any) =
       enabled:
         !state.calledOffsets.includes(state.offset) || state.offset === 1,
     }
-  )
+  );
 
   // need to do error treatment, for now will render an error message on screen
 
   useEffect(() => {
     if (error) {
-      console.error(error)
-      dispatch({ type: 'SET_ERROR', payload: error })
+      console.error(error);
+      dispatch({ type: "SET_ERROR", payload: error });
     }
-  }, [error])
+  }, [error]);
 
   const handleScroll = () => {
-    const hasNewPage = state.items.length < state.total
-    console.log('handleScroll 1',state.items.length, state.total,  hasNewPage )
-        console.log('handleScroll 2',!state.isLoading)
-
-    console.log('handleScroll 3',isVisible, !state.isLoading, !state.isLoading && isVisible && hasNewPage && !isFetchingNextPage)
+    const hasNewPage = state.items.length < state.total;
 
     if (!state.isLoading && isVisible && hasNewPage && !isFetchingNextPage) {
-      const newOffset = state.offset + 1
+      const newOffset = state.offset + 1;
       if (!state.calledOffsets.includes(newOffset)) {
-        console.log('nextpage')
-        fetchNextPage()
+        fetchNextPage();
       }
     }
-  }
+  };
 
   // scroll mechanism, detects if users reached bottom
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [state.offset, isVisible])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [state.offset, isVisible]);
 
   const resetItemList = () => {
-    dispatch({ type: 'FETCH_RESET' })
-  }
+    dispatch({ type: "FETCH_RESET" });
+  };
 
   return {
     items: state.items,
     resetItemList,
     loadingItems:
       state.items.length < state.total
-        ? Array.from({ length: 1 }, (_) => ({ id: '' }))
+        ? Array.from({ length: 1 }, (_) => ({ id: "" }))
         : null,
     total: state.total,
     error: state.error,
-  }
-}
+  };
+};
 
-export default useInfiniteScrollGQL
+export default useInfiniteScrollGQL;

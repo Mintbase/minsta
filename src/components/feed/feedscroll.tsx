@@ -16,10 +16,6 @@ export const FeedScroll = () => {
     { query: FETCH_FEED }
   );
 
-  console.log(items, "datafinal");
-  console.log(loadingItems, "loadingItems");
-
-  console.log(isVisible, 'ISVISIBLE')
 
   if (error) {
     return <> Error.</>;
@@ -43,16 +39,15 @@ export const FeedScroll = () => {
           />
         );
       })}
-  <div      ref={ref} >
-      {loadingItems?.map((item, i) => (
-        <div
-          className="aspect-square rounded overflow-x-hidden cursor-pointer storeImg"
-          key={`${item}-${i}`}
-      
-        >
-          <div className="rounded animate-pulse w-full h-full bg-gray-600 dark:bg-gray-800"/>
-        </div>
-      ))}
+      <div ref={ref}>
+        {loadingItems?.map((item, i) => (
+          <div
+            className="aspect-square rounded overflow-x-hidden cursor-pointer storeImg"
+            key={`${item}-${i}`}
+          >
+            <div className="rounded animate-pulse w-full h-full bg-gray-600 dark:bg-gray-800" />
+          </div>
+        ))}
       </div>
     </>
   );
