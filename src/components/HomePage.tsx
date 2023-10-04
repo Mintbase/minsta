@@ -120,20 +120,18 @@ export const HomeComponent = () => {
 };
 
 export const HomePage = () => {
+  const { newToken, refetchToken, blockedNfts, tokensFetched } =
+    useFirstToken();
 
-  // const { newToken, refetchToken, blockedNfts, tokensFetched } =
-  //   useFirstToken();
+  const firstTokenisBlocked =
+    newToken?.metadata_id && blockedNfts?.includes(newToken?.metadata_id);
 
-  // const firstTokenisBlocked =
-  //   newToken?.metadata_id && blockedNfts?.includes(newToken?.metadata_id);
-
-  // return null
-
+ console.log(firstTokenisBlocked,newToken?.media, 'firstTokenisBlocked')
   return (
     <>
       <main className="px-4 lg:px-12 mx-auto flex flex-col items-center justify-center space-y-4">
         <DynamicGrid mdCols={2} nColsXl={4} nColsXXl={6}>
-          {/* {!newToken?.media ? (
+          {!newToken?.media ? (
             <div
               className="aspect-square rounded overflow-x-hidden cursor-pointer storeImg"
               key={1}
@@ -147,8 +145,6 @@ export const HomePage = () => {
 
           {tokensFetched?.length > 0 &&
             tokensFetched.map((token: any, index: number) => {
-           
-
               return (
                 <MemoizedImageThumb
                   key={token?.metadata_id}
@@ -156,7 +152,7 @@ export const HomePage = () => {
                   index={index}
                 />
               );
-            })}  */}
+            })}
 
           <FeedScroll />
         </DynamicGrid>
