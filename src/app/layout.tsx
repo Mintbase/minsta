@@ -7,8 +7,6 @@ import Footer from "@/components/footer";
 import Providers from "@/providers/providers";
 import Navigation from "@/components/navigation";
 import Modal from "@/components/modal";
-;
-
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
@@ -19,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} flex min-h-screen flex-col items-center justify-between`}
+        className={`${inter.className} flex min-h-screen flex-col items-center justify-between overflow-x-hidden`}
       >
         <div className="flex flex-col min-h-screen relative bg-mainBg w-screen">
           <Providers>

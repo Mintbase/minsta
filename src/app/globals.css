@@ -3,8 +3,15 @@
 @tailwind utilities;
 
 .storeImg {
-  width: 320px;
   height: 320px;
+  width:100%;
+  min-width: 320px;
+}
+
+@media (min-width: 768px) {
+  .storeImg{
+    width: 18rem!important;  
+  }
 }
 
 .h-camera {
