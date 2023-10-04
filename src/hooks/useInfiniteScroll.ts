@@ -129,11 +129,13 @@ const useInfiniteScrollGQL = (
     dispatch({ type: "FETCH_RESET" });
   };
 
+  const isMinthenInfiniteScrollNum = state.items.length < fetchNum;
+
   return {
     items: state.items,
     resetItemList,
     loadingItems:
-      state.items.length < state.total
+      state.items.length < state.total && !isMinthenInfiniteScrollNum
         ? Array.from({ length: 1 }, (_) => ({ id: "" }))
         : null,
     total: state.total,
