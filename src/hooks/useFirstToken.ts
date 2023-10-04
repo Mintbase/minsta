@@ -26,7 +26,7 @@ export const useFirstToken: any = () => {
       window.location.reload();
     }
     // new media aint null
-    if (data?.data?.token[0].media !== null) {
+    if (data?.data?.token[0]?.media !== null) {
       // but the newToken previous stored is somehow an async bug so it re-state the new media
       if (newToken?.media == null) {
         setNewToken(data?.data?.token[0]);
@@ -34,7 +34,7 @@ export const useFirstToken: any = () => {
 
       // previous newToken is outdated like new coming media is id 301 and previous token 298
       if (newToken?.id) {
-        if (data?.data?.token[0].id !== newToken?.id) {
+        if (data?.data?.token[0]?.id !== newToken?.id) {
 
           // if isnt in direct order reload the page to organize the order.
           if (
@@ -60,8 +60,8 @@ export const useFirstToken: any = () => {
 
     if (
       newToken !== null &&
-      Number(data?.data?.token[0].id) === Number(newToken?.id) + 1 &&
-      data?.data?.token[0].media
+      Number(data?.data?.token[0]?.id) === Number(newToken?.id) + 1 &&
+      data?.data?.token[0]?.media
     ) {
       let newTokensFetched = null;
 
