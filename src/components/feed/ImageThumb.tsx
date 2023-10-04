@@ -16,7 +16,7 @@ const ImageThumb = ({ token, index }: any) => {
 
   if (error)
     return (
-      <div className="flex flex-wrap	 p-10 w-72 h-72 xl:w-80 xl:h-80 relative justify-center items-center text-center bg-gray-200 w-full">
+      <div className=" aspect-square flex flex-wrap	 p-10 w-72 h-72 xl:w-80 xl:h-80 relative justify-center items-center text-center bg-gray-200 w-full">
         <div>
           <h1 className="w-full"> No Image Metadata</h1>
           <p className="text-xs text-gray-600 w-full">
@@ -28,7 +28,7 @@ const ImageThumb = ({ token, index }: any) => {
 
   if (imageUrl) {
     return (
-      <div className="sm:w-full md:w-72 h-72 xl:w-80 xl:h-80 relative">
+      <div className=" aspect-square  sm:w-full md:w-72 h-72 xl:w-80 xl:h-80 relative">
         <Link
           key={`${token?.metadata_id}-${index}`}
           href={`${constants.mintbaseBaseUrl}/meta/${token?.metadata_id}`}
