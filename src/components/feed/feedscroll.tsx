@@ -4,7 +4,7 @@ import { useMemo, useRef } from "react";
 import { useIntersectionObserver } from "usehooks-ts";
 import { MemoizedImageThumb } from "./ImageThumb";
 
-export const FeedScroll = ({blockedNfts}: any) => {
+export const FeedScroll = ({ blockedNfts }: any) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const entry = useIntersectionObserver(ref, {});
   const isVisible = !!entry?.isIntersecting;
@@ -15,25 +15,23 @@ export const FeedScroll = ({blockedNfts}: any) => {
     { query: FETCH_FEED }
   );
 
+  const memoizedData = useMemo(() => {
+    const uniqueMetadataIds = new Set<string>();
 
-const memoizedData = useMemo(() => {
-  const uniqueMetadataIds = new Set<string>();
+    const filteredData = items?.filter((token: any) => {
+      if (uniqueMetadataIds.has(token.metadata_id)) {
+        return false;
+      }
 
-  const filteredData = items?.filter((token: any) => {
-    if (uniqueMetadataIds.has(token.metadata_id)) {
-      return false;
-    }
+      uniqueMetadataIds.add(token.metadata_id);
 
-    uniqueMetadataIds.add(token.metadata_id);
+      // Move the filtering logic here
+      if (!!blockedNfts && blockedNfts.includes(token?.metadata_id)) {
+        return false;
+      }
 
-    // Move the filtering logic here
-    if (!!blockedNfts && blockedNfts.includes(token?.metadata_id)) {
-      return false;
-    }
-
-    return true;
-  });
-
+      return true;
+    });
 
     return filteredData;
   }, [blockedNfts, items]);
@@ -45,8 +43,6 @@ const memoizedData = useMemo(() => {
   return (
     <>
       {memoizedData?.map((token: any, index: number) => {
-    
-
         return (
           <MemoizedImageThumb
             key={token?.metadata_id}
