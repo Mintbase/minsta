@@ -38,10 +38,10 @@ const RewardsModal = ({
       onClick={closeModal}
     >
       <div
-        className="bg-white rounded-xl shadow-lg max-w-md mx-auto flex flex-col h-auto"
+        className="bg-mainBg rounded-xl shadow-lg max-w-md mx-auto flex flex-col h-auto"
         onClick={stopPropagation}
       >
-        <div className="overflow-y-auto flex-1 bg-mainBg h-auto w-full rounded-t-lg text-modalText p-5 max-w-md mx-auto overflow-y-auto flex flex-col">
+        <div className="overflow-y-auto flex-1 h-auto w-full rounded-t-lg text-modalText p-5 max-w-md mx-auto overflow-y-auto flex flex-col">
           <div className="mb-8 flex flex-col gap-2 items-center mt-4">
             <h1 className="text-3xl font-bold">{"Rewards"}</h1>
           </div>
