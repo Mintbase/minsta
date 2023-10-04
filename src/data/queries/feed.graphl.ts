@@ -4,6 +4,7 @@ export const FETCH_FEED = `
     $accountId: String!
     $contractAddress: String
     $limit: Int
+    $offset: Int
   ) {
     token: mb_views_nft_tokens(
       where: {
@@ -14,7 +15,7 @@ export const FETCH_FEED = `
         nft_contract_content_flag: { _is_null: true }
       }
       order_by: { minted_timestamp: desc },
-       offset: 1,
+       offset: $offset,
        limit: $limit
     ) {
       id: token_id
