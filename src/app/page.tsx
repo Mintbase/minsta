@@ -2,10 +2,6 @@ import { HomePage } from "@/components/HomePage";
 import { MINSTA_META } from "@/data/fallback";
 import { Metadata } from "next";
 
-import { HomeComponent } from "@/components/HomePage";
-import { MINSTA_META } from "@/data/fallback";
-import { Metadata } from "next";
-
 export const metadata: Metadata = {
   openGraph: {
     title: process.env.NEXT_PUBLIC_META_TITLE ?? MINSTA_META.title,
