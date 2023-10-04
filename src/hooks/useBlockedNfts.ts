@@ -2,7 +2,7 @@ import { getBlockedNfts } from "@/data/getBlockedNfts";
 import { useQuery } from "@tanstack/react-query";
 
 export const useBlockedNfts = () => {
-  const { data: blockedNfts, refetch } = useQuery(
+  const { data: blockedNfts } = useQuery(
     ["q_getBlockedNfts"],
     () => getBlockedNfts(),
     {
@@ -11,5 +11,5 @@ export const useBlockedNfts = () => {
     }
   );
 
-  return { blockedNfts, fetchBlockedNfts: refetch };
+  return { blockedNfts };
 };

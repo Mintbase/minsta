@@ -1,11 +1,9 @@
 import { FETCH_FIRST_TOKEN } from "@/data/queries/feed.graphl";
-import { useBlockedNfts } from "./useBlockedNfts";
 import { useGraphQlQuery } from "@/data/useGraphQlQuery";
 import { constants } from "@/constants";
 import { useState } from "react";
 
 export const useFirstToken: any = () => {
-  const { blockedNfts, fetchBlockedNfts } = useBlockedNfts();
 
   const [newToken, setNewToken] = useState<any>(null);
   const [tokensFetched, setTokensFetched] = useState<any>(null);
@@ -52,20 +50,9 @@ export const useFirstToken: any = () => {
     setNewToken(data?.data?.token[0]);
   }
 
-  console.log(
-    data?.data?.token[0].id,
-    newToken?.id,
-    Number(newToken?.id) + 1,
-    newToken !== null &&
-      Number(data?.data?.token[0].id) === Number(newToken?.id) + 1,
-    "NEWtoken"
-  );
-  console.log(tokensFetched, newToken, "NEWtoken");
-
   return {
     newToken: !isLoading ? newToken : null,
     refetchToken,
     tokensFetched,
-    blockedNfts,
   };
 };

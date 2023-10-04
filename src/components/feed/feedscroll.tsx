@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { useIntersectionObserver } from "usehooks-ts";
 import { MemoizedImageThumb } from "./ImageThumb";
 
-export const FeedScroll = () => {
+export const FeedScroll = ({blockedNfts}: any) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const entry = useIntersectionObserver(ref, {});
   const isVisible = !!entry?.isIntersecting;
@@ -24,12 +24,12 @@ export const FeedScroll = () => {
   return (
     <>
       {items?.map((token: any, index: number) => {
-        // if (
-        //   !!blockedMedia &&
-        //   blockedMedia.includes(token?.metadata_id)
-        // ) {
-        //   return null;
-        // }
+        if (
+          !!blockedNfts &&
+          blockedNfts.includes(token?.metadata_id)
+        ) {
+          return null;
+        }
 
         return (
           <MemoizedImageThumb

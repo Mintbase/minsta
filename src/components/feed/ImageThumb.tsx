@@ -6,9 +6,6 @@ import { constants } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 
-
-
-
 const ImageThumb = ({ token, index }: any) => {
   const imageUrl = token?.media;
   const [error, setError] = useState(false);

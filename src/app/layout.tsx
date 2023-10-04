@@ -7,8 +7,6 @@ import Footer from "@/components/footer";
 import Providers from "@/providers/providers";
 import Navigation from "@/components/navigation";
 import Modal from "@/components/modal";
-;
-
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
