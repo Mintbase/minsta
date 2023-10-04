@@ -16,22 +16,27 @@ export const FeedScroll = ({blockedNfts}: any) => {
   );
 
 
+const memoizedData = useMemo(() => {
+  const uniqueMetadataIds = new Set<string>();
 
-  const memoizedData = useMemo(() => {
-    const uniqueMetadataIds = new Set<string>();
+  const filteredData = items?.filter((token: any) => {
+    if (uniqueMetadataIds.has(token.metadata_id)) {
+      return false;
+    }
 
-    const filteredData = items?.filter((token: any) => {
-      if (uniqueMetadataIds.has(token.metadata_id)) {
-        return false;
-      }
+    uniqueMetadataIds.add(token.metadata_id);
 
-      uniqueMetadataIds.add(token.metadata_id);
+    // Move the filtering logic here
+    if (!!blockedNfts && blockedNfts.includes(token?.metadata_id)) {
+      return false;
+    }
 
-      return true;
-    });
+    return true;
+  });
+
 
     return filteredData;
-  }, [items]);
+  }, [blockedNfts, items]);
 
   if (error) {
     return <> Error.</>;
@@ -40,12 +45,7 @@ export const FeedScroll = ({blockedNfts}: any) => {
   return (
     <>
       {memoizedData?.map((token: any, index: number) => {
-        if (
-          !!blockedNfts &&
-          blockedNfts.includes(token?.metadata_id)
-        ) {
-          return null;
-        }
+    
 
         return (
           <MemoizedImageThumb
