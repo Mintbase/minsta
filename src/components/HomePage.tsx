@@ -34,7 +34,7 @@ export const HomePage = () => {
 
   return (
     <>
-      <main className="md:px-4 lg:px-12 mx-auto flex flex-col items-center justify-center space-y-4 w-10/12 ">
+      <main className="px-4 lg:px-12 mx-auto flex flex-col items-center justify-center space-y-4 ">
         <DynamicGrid mdCols={2} nColsXl={4} nColsXXl={6}>
           {!newToken?.media || isLoading ? (
             <div

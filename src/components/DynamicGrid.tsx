@@ -40,7 +40,7 @@ export const DynamicGrid = ({
 
   return (
     <ul
-      className={`grid ${cols} ${colsMd} ${colsLg} ${colsXl} ${colsXXl} ${colsXXXL} ${gapSizeMobile} md:${gapSize} ${margin} w-full`}
+      className={`grid ${cols} ${colsMd} ${colsLg} ${colsXl} ${colsXXl} ${colsXXXL} ${gapSizeMobile} md:${gapSize} ${margin} `}
     >
       {children}
     </ul>
