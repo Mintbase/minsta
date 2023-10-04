@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import { constants } from "@/constants";
 
 import Image from "next/image";
+import Link from "next/link";
+
+
 
 
 const ImageThumb = ({ token, index }: any) => {
@@ -29,6 +32,13 @@ const ImageThumb = ({ token, index }: any) => {
   if (imageUrl) {
     return (
       <div className="w-72 h-72 xl:w-80 xl:h-80 relative">
+            <Link
+        key={`${token?.metadata_id}-${index}`}
+        href={`${constants.mintbaseBaseUrl}/meta/${token?.metadata_id}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        passHref
+      >
         <Image
           key={token?.metadata_id}
           src={imageUrl}
@@ -53,6 +63,7 @@ const ImageThumb = ({ token, index }: any) => {
         >
           Share
         </button>
+        </Link>
       </div>
     );
   } else {

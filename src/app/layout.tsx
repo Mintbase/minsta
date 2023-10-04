@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} flex min-h-screen flex-col items-center justify-between`}
+        className={`${inter.className} flex min-h-screen flex-col items-center justify-between overflow-x-hidden`}
       >
         <div className="flex flex-col min-h-screen relative bg-mainBg w-screen">
           <Providers>

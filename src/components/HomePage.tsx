@@ -6,11 +6,11 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { constants } from "@/constants";
 import Link from "next/link";
 
-import { getCachedImage } from "@/utils/cachedImage";
 import Image from "next/image";
 import { ImageCacheProvider, useImageCache } from "@/data/ImageCacheContext";
 import { useFirstToken } from "@/hooks/useFirstToken";
 import { FeedScroll } from "./feed/feedscroll";
+import { MemoizedImageThumb } from "./feed/ImageThumb";
 
 function transformArweaveToNextJsImage(arweaveUrl: string) {
   // Get the dynamic base URL of your Next.js application
@@ -25,51 +25,6 @@ function transformArweaveToNextJsImage(arweaveUrl: string) {
   return nextJsImageUrl;
 }
 
-const ImageThumb = ({ token, index }: any) => {
-  const { cacheImage } = useImageCache();
-  const imageUrl = token?.media;
-
-  if (imageUrl) {
-    cacheImage(transformArweaveToNextJsImage(imageUrl)); // Cache the image
-
-    return (
-      <Link
-        key={`${token?.metadata_id}-${index}`}
-        href={`${constants.mintbaseBaseUrl}/meta/${token?.metadata_id}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        passHref
-      >
-        <div className="w-72 h-72 xl:w-80 xl:h-80 relative">
-          <Image
-            src={imageUrl}
-            alt={`Token ${index}`}
-            className="object-cover h-full w-full"
-            width="320"
-            height="320"
-            quality={70}
-          />
-          <button
-            className="absolute top-3 right-3 bg-black text-white rounded p-1 text-xs px-2 py-1.5"
-            onClick={(e) => {
-              e.preventDefault();
-              window.open(
-                `https://twitter.com/intent/tweet?url=%0aCheck%20out%20mine%3A%20${constants.mintbaseBaseUrl}/meta/${token?.metadata_id}%2F&via=mintbase&text=${constants.twitterText}`,
-                "_blank"
-              );
-            }}
-          >
-            Share
-          </button>
-        </div>
-      </Link>
-    );
-  } else {
-    return null;
-  }
-};
-
-const MemoizedImageThumb = React.memo(ImageThumb);
 
 const TokensFeed = () => {
   const lists = Array.from(Array(23).keys());
@@ -109,7 +64,6 @@ const TokensFeed = () => {
   });
 };
 
-const MemoizedTokensFeed = React.memo(TokensFeed);
 
 export const HomeComponent = () => {
   return (
@@ -126,7 +80,6 @@ export const HomePage = () => {
   const firstTokenisBlocked =
     newToken?.metadata_id && blockedNfts?.includes(newToken?.metadata_id);
 
- console.log(firstTokenisBlocked,newToken?.media, 'firstTokenisBlocked')
   return (
     <>
       <main className="px-4 lg:px-12 mx-auto flex flex-col items-center justify-center space-y-4">
@@ -140,7 +93,7 @@ export const HomePage = () => {
             </div>
           ) : !firstTokenisBlocked ||
             typeof firstTokenisBlocked == "undefined" ? (
-            <ImageThumb key={newToken?.media} token={newToken} index={1} />
+            <MemoizedImageThumb key={newToken?.media} token={newToken} index={1} />
           ) : null}
 
           {tokensFetched?.length > 0 &&
