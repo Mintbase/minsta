@@ -21,8 +21,6 @@ const useFeed = (props: any) => {
     refetch: refetchNfts,
   } = useGraphQlQuery(queryObj);
 
-  console.log(data,'data')
-
   const memoizedData = useMemo(() => {
     const uniqueMetadataIds = new Set<string>();
 
