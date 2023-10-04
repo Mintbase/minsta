@@ -18,11 +18,11 @@ export const HomePage = () => {
 
   return (
     <>
-      <main className="px-4 lg:px-12 mx-auto flex flex-col items-center justify-center space-y-4">
+      <main className="md:px-4 lg:px-12 mx-auto flex flex-col items-center justify-center space-y-4 w-10/12 ">
         <DynamicGrid mdCols={2} nColsXl={4} nColsXXl={6}>
           {!newToken?.media ? (
             <div
-              className="aspect-square rounded overflow-x-hidden cursor-pointer storeImg"
+              className="md:aspect-square rounded overflow-x-hidden cursor-pointer sm:w-full md:w-72 h-72 xl:w-80 xl:h-80 relative"
               key={1}
             >
               <div className="rounded animate-pulse w-full h-full bg-gray-600 dark:bg-gray-800" />

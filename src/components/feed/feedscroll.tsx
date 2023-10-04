@@ -42,7 +42,7 @@ export const FeedScroll = ({blockedNfts}: any) => {
       <div ref={ref}>
         {loadingItems?.map((item, i) => (
           <div
-            className="aspect-square rounded overflow-x-hidden cursor-pointer storeImg"
+            className="md:aspect-square rounded overflow-x-hidden cursor-pointer sm:w-full md:w-72 h-72 xl:w-80 xl:h-80 relative"
             key={`${item}-${i}`}
           >
             <div className="rounded animate-pulse w-full h-full bg-gray-600 dark:bg-gray-800" />
