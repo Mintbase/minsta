@@ -1,7 +1,6 @@
 import { FETCH_FEED } from "@/data/queries/feed.graphl";
 import useInfiniteScrollGQL from "@/hooks/useInfiniteScroll";
-import { useRouter } from "next/navigation";
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import { useIntersectionObserver } from "usehooks-ts";
 import { MemoizedImageThumb } from "./ImageThumb";
 
@@ -17,13 +16,30 @@ export const FeedScroll = ({blockedNfts}: any) => {
   );
 
 
+
+  const memoizedData = useMemo(() => {
+    const uniqueMetadataIds = new Set<string>();
+
+    const filteredData = items?.filter((token: any) => {
+      if (uniqueMetadataIds.has(token.metadata_id)) {
+        return false;
+      }
+
+      uniqueMetadataIds.add(token.metadata_id);
+
+      return true;
+    });
+
+    return filteredData;
+  }, [items]);
+
   if (error) {
     return <> Error.</>;
   }
 
   return (
     <>
-      {items?.map((token: any, index: number) => {
+      {memoizedData?.map((token: any, index: number) => {
         if (
           !!blockedNfts &&
           blockedNfts.includes(token?.metadata_id)
