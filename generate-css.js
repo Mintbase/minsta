@@ -23,7 +23,45 @@ const colors = {
   secondaryBtnText: process.env.COLOR_SECONDARY_BTN_TEXT || '000000'
 };
 
-const css = `:root {
+const css = `
+.nws-modal-wrapper .nws-modal .modal-right {
+   display:none!important
+}
+
+.nws-modal-wrapper .nws-modal .modal-left {
+    width: 100%;
+    border-right: 1px solid var(--wallet-selector-sidebar-border-color, var(--sidebar-border-color));
+    padding: 32px 24px;
+    height: 100%;
+    overflow: auto;
+    text-align: center;
+}
+.nws-modal-wrapper .nws-modal{
+  height:215px;
+}
+.wallet-options-wrapper {
+    width: 100%;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+}
+.nws-modal-wrapper .nws-modal > .modal-left > div:nth-child(2) {
+    display: flex;
+    justify-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+@media (max-width: 576px) {
+  .nws-modal-wrapper .nws-modal {
+    height: 224px!important;
+  }
+}
+
+
+
+:root {
           --primary: #${colors.primary};
           --secondary: #${colors.secondary};
           --mainBg: #${colors.mainBg};
