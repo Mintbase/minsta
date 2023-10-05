@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@bundlr-network/client": "^0.7.7",
-    "@mintbase-js/react": "0.4.1-beta.3",
+    "@mintbase-js/react": "0.4.1-bump-near-wallet-selector-8.5.3-c8a0e91.0",
     "@mintbase-js/storage": "0.4.1-beta.3",
     "@mintbase-js/wallet": "0.4.1-feat-add-wallet-package-dfbfadb.0",
     "@near-wallet-selector/modal-ui": "^8.2.1",
