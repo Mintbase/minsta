@@ -21,9 +21,9 @@ export const HomePage = () => {
 
     if (!newToken?.media) {
       reloadTimeout = setTimeout(() => {
-        // Reload the page after 2 minutes (120,000 milliseconds)
+        // Reload the page after 4 minutes (120,000 milliseconds)
         window.location.reload();
-      }, 10000); // 2 minutes in milliseconds
+      }, 360000); //4 minutes in milliseconds
     }
 
     return () => {
