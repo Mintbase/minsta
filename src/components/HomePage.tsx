@@ -23,7 +23,7 @@ export const HomePage = () => {
       reloadTimeout = setTimeout(() => {
         // Reload the page after 4 minutes (120,000 milliseconds)
         window.location.reload();
-      }, 240000); //4 minutes in milliseconds
+      }, 360000); //4 minutes in milliseconds
     }
 
     return () => {
