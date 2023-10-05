@@ -23,7 +23,7 @@ export const useFirstToken: any = () => {
     // media delay
 
     if (tokensFetched && tokensFetched?.length > 1) {
-      window.location.reload();
+      // window.location.reload();
     }
     // new media aint null
     if (data?.data?.token[0]?.media !== null) {
@@ -41,7 +41,7 @@ export const useFirstToken: any = () => {
             Number(data?.data?.token[0].id) !== Number(newToken?.id) + 1 &&
             !isLoading
           ) {
-            window.location.reload();
+            // window.location.reload();
           }
         }
       }
