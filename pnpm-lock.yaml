@@ -9,8 +9,8 @@ dependencies:
     specifier: ^0.7.7
     version: 0.7.7
   '@mintbase-js/react':
-    specifier: 0.4.1-beta.3
-    version: 0.4.1-beta.3(borsh@0.7.0)(graphql@16.7.1)(typescript@5.1.6)
+    specifier: 0.4.1-bump-near-wallet-selector-8.5.3-c8a0e91.0
+    version: 0.4.1-bump-near-wallet-selector-8.5.3-c8a0e91.0(borsh@0.7.0)(graphql@16.7.1)(typescript@5.1.6)
   '@mintbase-js/storage':
     specifier: 0.4.1-beta.3
     version: 0.4.1-beta.3
@@ -617,12 +617,12 @@ packages:
     resolution: {integrity: sha512-NZ6DP1JrVobMJcaSPPlC5mCSPK0Zgsh79G57a1NlndNw7GG/agNkLa36FM9ZCHFZGRdDE9TUS4qWOX0Dt/QsmA==}
     dependencies:
       '@mintbase-js/sdk': 0.4.1-v0.4.1-beta.2-55a7862.0
-      '@near-wallet-selector/core': 8.5.2(near-api-js@2.1.4)
+      '@near-wallet-selector/core': 8.5.3(near-api-js@2.1.4)
       '@near-wallet-selector/default-wallets': 8.1.4(near-api-js@2.1.4)
       '@near-wallet-selector/here-wallet': 8.5.2(borsh@0.7.0)(near-api-js@2.1.4)
       '@near-wallet-selector/ledger': 8.5.2(near-api-js@2.1.4)(typescript@5.1.6)
       '@near-wallet-selector/meteor-wallet': 8.5.2(near-api-js@2.1.4)
-      '@near-wallet-selector/modal-ui': 8.2.1(near-api-js@2.1.4)
+      '@near-wallet-selector/modal-ui': 8.5.3(near-api-js@2.1.4)
       '@near-wallet-selector/my-near-wallet': 8.5.2(near-api-js@2.1.4)
       '@near-wallet-selector/near-wallet': 8.5.2(near-api-js@2.1.4)
       '@near-wallet-selector/sender': 8.5.2(near-api-js@2.1.4)
@@ -653,14 +653,14 @@ packages:
       - graphql
     dev: false
 
-  /@mintbase-js/react@0.4.1-beta.3(borsh@0.7.0)(graphql@16.7.1)(typescript@5.1.6):
-    resolution: {integrity: sha512-3EgNdbEDyPlyHb5duUYeQANxT2nquso96crQ7j+ZglyXYbLj+fMbYqs945R1CVzGOcc57qqzn4QXV6vzclqWYg==}
+  /@mintbase-js/react@0.4.1-bump-near-wallet-selector-8.5.3-c8a0e91.0(borsh@0.7.0)(graphql@16.7.1)(typescript@5.1.6):
+    resolution: {integrity: sha512-gZzp+aEkU5A+VVzPXG0eWgNXx998xMw93c2TyMCBUEEf8OTvYfkUaMEke9Hdy3TSyi+86M0OQupBzK7/8y7ryA==}
     dependencies:
       '@mintbase-js/auth': 0.4.1-feat-add-wallet-package-2-68af967.0(borsh@0.7.0)(near-api-js@2.1.4)(react@18.2.0)(typescript@5.1.6)
       '@mintbase-js/data': 0.4.1-v0.4.1-beta.2-55a7862.0(graphql@16.7.1)
       '@mintbase-js/sdk': 0.4.1-v0.4.1-beta.2-55a7862.0
-      '@near-wallet-selector/core': 8.5.2(near-api-js@2.1.4)
-      '@near-wallet-selector/modal-ui': 8.2.1(near-api-js@2.1.4)
+      '@near-wallet-selector/core': 8.5.3(near-api-js@2.1.4)
+      '@near-wallet-selector/modal-ui': 8.5.3(near-api-js@2.1.4)
       near-api-js: 2.1.4
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -912,6 +912,18 @@ packages:
       rxjs: 7.8.1
     dev: false
 
+  /@near-wallet-selector/core@8.5.3(near-api-js@2.1.4):
+    resolution: {integrity: sha512-KN0fgrkUz9jpbSImPI4RDYM/S9ARSIcjEP49SVEJp5AQlULrpazJoMRnAWgXRjzvAncSeDOVjb8fAkqxKl3YRQ==}
+    peerDependencies:
+      near-api-js: ^1.0.0 || ^2.0.0
+    dependencies:
+      borsh: 0.7.0
+      events: 3.3.0
+      js-sha256: 0.9.0
+      near-api-js: 2.1.4
+      rxjs: 7.8.1
+    dev: false
+
   /@near-wallet-selector/default-wallets@8.1.4(near-api-js@2.1.4):
     resolution: {integrity: sha512-rdMHGLl+AiMQjPbydHh+tp8CHb+aMqYycOvdtZJPSc3x1VJ7AHUutgM5xWPbNnpUUN8ozhMnidI+1NaMO7+IRQ==}
     deprecated: Package no longer supported. The package no longer holds a list of default wallets please install specific wallet packages from https://www.npmjs.com/org/near-wallet-selector
@@ -966,6 +978,18 @@ packages:
     resolution: {integrity: sha512-g3rhnaLiIwiR0DkCpjM/l0KdH3pQx523mp7jJgkIX9/4UtdnvV3zgGuwPm25gE0XWq3pqP8qAQaSSHAt5A1kMQ==}
     dependencies:
       '@near-wallet-selector/core': 8.2.1(near-api-js@2.1.4)
+      copy-to-clipboard: 3.3.3
+      qrcode: 1.5.3
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - near-api-js
+    dev: false
+
+  /@near-wallet-selector/modal-ui@8.5.3(near-api-js@2.1.4):
+    resolution: {integrity: sha512-GkPgjnjU1+JcYQ1uFnQVYkMGhWvf0XZF9ZSYYa6dakm3J6ZEdH3RmPqKnPAx5Q6dJCQHC/WrqCfAZzZ/LclS5Q==}
+    dependencies:
+      '@near-wallet-selector/core': 8.5.3(near-api-js@2.1.4)
       copy-to-clipboard: 3.3.3
       qrcode: 1.5.3
       react: 18.2.0
@@ -1868,7 +1892,7 @@ packages:
       algosdk: 1.24.1
       arweave: 1.14.4
       arweave-stream-tx: 1.2.2(arweave@1.14.4)
-      avsc: github.com/Bundlr-Network/avsc/a730cc8018b79e114b6a3381bbb57760a24c6cef
+      avsc: git@github.com+Bundlr-Network/avsc/a730cc8018b79e114b6a3381bbb57760a24c6cef
       axios: 0.21.4
       base64url: 3.0.1
       bs58: 4.0.1
@@ -5695,8 +5719,8 @@ packages:
     resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
     dev: false
 
-  github.com/Bundlr-Network/avsc/a730cc8018b79e114b6a3381bbb57760a24c6cef:
-    resolution: {tarball: https://codeload.github.com/Bundlr-Network/avsc/tar.gz/a730cc8018b79e114b6a3381bbb57760a24c6cef}
+  git@github.com+Bundlr-Network/avsc/a730cc8018b79e114b6a3381bbb57760a24c6cef:
+    resolution: {commit: a730cc8018b79e114b6a3381bbb57760a24c6cef, repo: git@github.com:Bundlr-Network/avsc.git, type: git}
     name: avsc
     version: 5.4.7
     engines: {node: '>=0.11'}
