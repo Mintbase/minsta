@@ -22,9 +22,9 @@ export const useFirstToken: any = () => {
   useEffect(() => {
     // media delay
 
-    if (tokensFetched && tokensFetched?.length > 1) {
-      window.location.reload();
-    }
+    // if (tokensFetched && tokensFetched?.length > 1) {
+    //   window.location.reload();
+    // }
     // new media aint null
     if (data?.data?.token[0]?.media !== null) {
       // but the newToken previous stored is somehow an async bug so it re-state the new media
@@ -41,7 +41,7 @@ export const useFirstToken: any = () => {
             Number(data?.data?.token[0].id) !== Number(newToken?.id) + 1 &&
             !isLoading
           ) {
-            window.location.reload();
+            // window.location.reload();
           }
         }
       }
