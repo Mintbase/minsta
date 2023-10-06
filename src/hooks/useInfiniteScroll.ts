@@ -1,5 +1,6 @@
 import { constants } from "@/constants";
 import { graphqlQLServiceNew } from "@/data/graphqlService";
+import { useGraphQL } from "@/data/useGraphQl";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useReducer } from "react";
 import { useMediaQuery } from "usehooks-ts";
@@ -53,36 +54,43 @@ const useInfiniteScrollGQL = (
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const fetchNum = isDesktop ? 11 : 3;
 
+  const variables = {
+    limit: fetchNum,
+    accountId: constants.proxyContractAddress,
+    contractAddress: constants.tokenContractAddress,
+    offset: state.offset === 1 ? 1 : (Number(state.offset) - 1) * fetchNum,
+  };
+
+  const dataTokens = useGraphQL(graphQLObj.query, { staleTime: Infinity }, variables);
+
+  const tokens = dataTokens?.data
+
+  console.log(dataTokens, 'dataTokens')
+
   const fetchItems = async () => {
     dispatch({ type: "FETCH_START" });
 
-    const variables = {
-      limit: fetchNum,
-      accountId: constants.proxyContractAddress,
-      contractAddress: constants.tokenContractAddress,
-      offset: state.offset === 1 ? 1 : (Number(state.offset) - 1) * fetchNum,
-    };
+    console.log(tokens,'tokens')
 
-    const data = await graphqlQLServiceNew({
-      query: graphQLObj.query,
-      variables: variables,
-    }) as any
+    // const data = await graphqlQLServiceNew({
+    //   query: graphQLObj.query,
+    //   variables: variables,
+    // }) as any
 
+    // dispatch({ type: "SET_LOADING", payload: false });
+    // dispatch({ type: "SET_OFFSET", payload: state.offset + 1 });
+    // dispatch({ type: "SET_CALLED_OFFSETS", payload: state.offset + 1 });
+    // dispatch({
+    //   type: "SET_TOTAL",
+    //   payload: tokens?.mb_views_nft_tokens_aggregate?.aggregate?.count,
+    // });
 
-    dispatch({ type: "SET_LOADING", payload: false });
-    dispatch({ type: "SET_OFFSET", payload: state.offset + 1 });
-    dispatch({ type: "SET_CALLED_OFFSETS", payload: state.offset + 1 });
-    dispatch({
-      type: "SET_TOTAL",
-      payload: data?.mb_views_nft_tokens_aggregate?.aggregate?.count,
-    });
+    // dispatch({
+    //   type: "FETCH_SUCCESS",
+    //   payload: tokens?.token,
+    // });
 
-    dispatch({
-      type: "FETCH_SUCCESS",
-      payload: data?.token,
-    });
-
-    return data?.token;
+    return tokens?.token;
   };
 
   // useInfiniteQuery

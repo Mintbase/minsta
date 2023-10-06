@@ -2,6 +2,7 @@ import { FETCH_FIRST_TOKEN } from "@/data/queries/feed.graphl";
 import { useGraphQlQuery } from "@/data/useGraphQlQuery";
 import { constants } from "@/constants";
 import { useEffect, useState } from "react";
+import { useGraphQL } from "@/data/useGraphQl";
 
 export const useFirstToken: any = () => {
   const [newToken, setNewToken] = useState<any>(null);
@@ -14,10 +15,15 @@ export const useFirstToken: any = () => {
       accountId: constants.proxyContractAddress,
       contractAddress: constants.tokenContractAddress,
     },
-    queryOpts: { staleTime: Infinity, refetchInterval: 1000 },
+    queryOpts: { staleTime: Infinity, refetchInterval: 20000 },
   };
 
-  const { data, isLoading, refetch: refetchToken } = useGraphQlQuery(queryObj);
+  const { data, isLoading } = useGraphQL(FETCH_FIRST_TOKEN, 
+    { staleTime: Infinity, refetchInterval: 20000 },
+    {
+      accountId: constants.proxyContractAddress,
+      contractAddress: constants.tokenContractAddress,
+    });
 
   useEffect(() => {
     // media delay
@@ -29,7 +35,7 @@ export const useFirstToken: any = () => {
     if (data?.token[0]?.media !== null) {
       // but the newToken previous stored is somehow an async bug so it re-state the new media
       if (newToken?.media == null) {
-        setNewToken(data?.data?.token[0]);
+        setNewToken(data?.token[0]);
       }
 
       // previous newToken is outdated like new coming media is id 301 and previous token 298

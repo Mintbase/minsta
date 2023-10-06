@@ -1,7 +1,7 @@
-import { gql } from 'graphql-request';
+import { graphql } from "@/gql";
 
 
-export const FETCH_FEED = gql`
+export const FETCH_FEED =  graphql(/* GraphQL */ `
   query minsta_fetch_feed_minted_tokens(
     $accountId: String!
     $contractAddress: String
@@ -33,9 +33,9 @@ export const FETCH_FEED = gql`
       }
     }
   }
-`;
+`);
 
-export const FETCH_FIRST_TOKEN = gql`
+export const FETCH_FIRST_TOKEN = graphql(/* GraphQL */ `
 query minsta_fetch_firstToken($accountId: String!, $contractAddress: String) {
   token: mb_views_nft_tokens(where: {minter: {_eq: $accountId}, nft_contract_id: {_eq: $contractAddress}, 
     burned_timestamp: {_is_null: true}, metadata_content_flag: {_is_null: true}, nft_contract_content_flag: {_is_null: true}}, order_by: {minted_timestamp: desc}, limit: 1, offset: 0) {
@@ -47,4 +47,4 @@ query minsta_fetch_firstToken($accountId: String!, $contractAddress: String) {
     metadata_id
   }
 }
-`
+`)

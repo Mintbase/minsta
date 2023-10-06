@@ -26,6 +26,7 @@ export const graphqlQLServiceNew = async ({
   const headers = {
     "content-type": "application/json",
     "mb-api-key": "omni-site",
+    "Access-Control-Allow-Origin": "*"
   };
 
   const queryLoad = () => request(baseUrl, query, variables, headers);
