@@ -47,7 +47,7 @@ export const useLeaderBoardData = () => {
     if (loading) return [];
 
 
-    const accounts = data?.data.token;
+    const accounts = data?.token;
 
     const leaderboardResult = accounts?.reduce(
       (acc: Record<string, number>, token: any) => {

@@ -21,11 +21,12 @@ export const graphqlQLServiceNew = async ({
 
   const baseUrl = isTestnet
     ? nearEndpoints.testnet.graph
-    : nearEndpoints.mainnet.graph
+    : nearEndpoints.mainnet.graph;
 
   const headers = {
     "content-type": "application/json",
-    "mb-api-key": "omni-site",
+    "mb-api-key": "anon",
+    "Access-Control-Allow-Origin": "*"
   };
 
   const queryLoad = () => request(baseUrl, query, variables, headers);
