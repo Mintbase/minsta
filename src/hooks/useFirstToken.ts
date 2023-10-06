@@ -14,7 +14,7 @@ export const useFirstToken: any = () => {
       accountId: constants.proxyContractAddress,
       contractAddress: constants.tokenContractAddress,
     },
-    queryOpts: { staleTime: Infinity, refetchInterval: 1000 },
+    queryOpts: { staleTime: Infinity, refetchInterval: 30000 },
   };
 
   const { data, isLoading, refetch: refetchToken } = useGraphQlQuery(queryObj);
@@ -29,7 +29,7 @@ export const useFirstToken: any = () => {
     if (data?.token[0]?.media !== null) {
       // but the newToken previous stored is somehow an async bug so it re-state the new media
       if (newToken?.media == null) {
-        setNewToken(data?.data?.token[0]);
+        setNewToken(data?.token[0]);
       }
 
       // previous newToken is outdated like new coming media is id 301 and previous token 298

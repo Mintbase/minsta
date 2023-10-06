@@ -23,6 +23,7 @@ export const graphqlQLServiceNew = async ({
     ? 'https://interop-testnet.hasura.app/v1/graphql'
     : 'https://interop-mainnet.hasura.app/v1/graphql';
 
+
   const headers = {
     "content-type": "application/json",
     "mb-api-key": "anon",
