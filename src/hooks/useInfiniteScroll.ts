@@ -1,5 +1,5 @@
 import { constants } from "@/constants";
-import { graphQLService } from "@/data/graphqlService";
+import { graphqlQLServiceNew } from "@/data/graphqlService";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useReducer } from "react";
 import { useMediaQuery } from "usehooks-ts";
@@ -63,10 +63,11 @@ const useInfiniteScrollGQL = (
       offset: state.offset === 1 ? 1 : (Number(state.offset) - 1) * fetchNum,
     };
 
-    const { data } = await graphQLService({
+    const data = await graphqlQLServiceNew({
       query: graphQLObj.query,
       variables: variables,
-    });
+    }) as any
+
 
     dispatch({ type: "SET_LOADING", payload: false });
     dispatch({ type: "SET_OFFSET", payload: state.offset + 1 });
