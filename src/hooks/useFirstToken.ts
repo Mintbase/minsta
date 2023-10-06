@@ -38,7 +38,7 @@ export const useFirstToken: any = () => {
 
           // if isnt in direct order reload the page to organize the order.
           if (
-            Number(data?.token[0].id) !== Number(newToken?.id) + 1 &&
+            Number(data?.token[0]?.id) !== Number(newToken?.id) + 1 &&
             !isLoading
           ) {
             // window.location.reload();
