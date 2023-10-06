@@ -14,7 +14,7 @@ export const useFirstToken: any = () => {
       accountId: constants.proxyContractAddress,
       contractAddress: constants.tokenContractAddress,
     },
-    queryOpts: { staleTime: Infinity, refetchInterval: 30000 },
+    queryOpts: { staleTime: Infinity },
   };
 
   const { data, isLoading, refetch: refetchToken } = useGraphQlQuery(queryObj);
