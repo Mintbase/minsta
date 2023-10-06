@@ -20,8 +20,8 @@ export const graphqlQLServiceNew = async ({
   const isTestnet = net === "testnet";
 
   const baseUrl = isTestnet
-    ? nearEndpoints.testnet.graph
-    : nearEndpoints.mainnet.graph;
+    ? 'https://interop-testnet.hasura.app/v1/graphql'
+    : 'https://interop-mainnet.hasura.app/v1/graphql';
 
   const headers = {
     "content-type": "application/json",
