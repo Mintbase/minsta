@@ -26,7 +26,7 @@ export const graphqlQLServiceNew = async ({
   const headers = {
     "content-type": "application/json",
     "mb-api-key": "anon",
-    "Access-Control-Allow-Origin:": "*",
+    "Access-Control-Allow-Origin": "*"
   };
 
   const queryLoad = () => request(baseUrl, query, variables, headers);

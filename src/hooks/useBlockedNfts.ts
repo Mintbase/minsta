@@ -7,7 +7,7 @@ export const useBlockedNfts = () => {
     () => getBlockedNfts(),
     {
       initialData: null, // Set initial data as null
-      refetchInterval: 2000, // Automatically refetch every 120000 (2mins)
+      refetchInterval: 30000, // Automatically refetch every 120000 (2mins)
     }
   );
 
