@@ -3,7 +3,7 @@ import type {
   UseQueryOptions,
 } from '@tanstack/react-query'
 import { useQuery } from '@tanstack/react-query'
-import { graphQLService } from './graphqlService'
+import { graphQLService, graphqlQLServiceNew } from './graphqlService'
 
 interface UseGraphQlQueryResult {
   data: any
@@ -34,7 +34,7 @@ export const useGraphQlQuery = ({
 
   const { data, error, isLoading, refetch, isFetching, status } = useQuery(
     queryObj,
-    () => graphQLService({ query, variables }),
+    () => graphqlQLServiceNew({ query, variables }),
     queryOpts
   )
 

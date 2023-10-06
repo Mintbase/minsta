@@ -26,7 +26,7 @@ export const useFirstToken: any = () => {
       // window.location.reload();
     }
     // new media aint null
-    if (data?.data?.token[0]?.media !== null) {
+    if (data?.token[0]?.media !== null) {
       // but the newToken previous stored is somehow an async bug so it re-state the new media
       if (newToken?.media == null) {
         setNewToken(data?.data?.token[0]);
@@ -34,11 +34,11 @@ export const useFirstToken: any = () => {
 
       // previous newToken is outdated like new coming media is id 301 and previous token 298
       if (newToken?.id) {
-        if (data?.data?.token[0]?.id !== newToken?.id) {
+        if (data?.token[0]?.id !== newToken?.id) {
 
           // if isnt in direct order reload the page to organize the order.
           if (
-            Number(data?.data?.token[0].id) !== Number(newToken?.id) + 1 &&
+            Number(data?.token[0]?.id) !== Number(newToken?.id) + 1 &&
             !isLoading
           ) {
             // window.location.reload();
@@ -50,18 +50,18 @@ export const useFirstToken: any = () => {
     // first load
 
     if (
-      (data?.data?.token[0] && !newToken) ||
-      (data?.data?.token[0] && tokensFetched?.length < 1)
+      (data?.token[0] && !newToken) ||
+      (data?.token[0] && tokensFetched?.length < 1)
     ) {
-      setNewToken(data?.data?.token[0]);
+      setNewToken(data?.token[0]);
     }
 
     // check if the newToken coming is the next id.
 
     if (
       newToken !== null &&
-      Number(data?.data?.token[0]?.id) === Number(newToken?.id) + 1 &&
-      data?.data?.token[0]?.media
+      Number(data?.token[0]?.id) === Number(newToken?.id) + 1 &&
+      data?.token[0]?.media
     ) {
       let newTokensFetched = null;
 
@@ -77,13 +77,12 @@ export const useFirstToken: any = () => {
       }
 
       setTokensFetched(newTokensFetched);
-      setNewToken(data?.data?.token[0]);
+      setNewToken(data?.token[0]);
     }
-  }, [data?.data?.token, newToken, tokensFetched]);
+  }, [data?.token, newToken, tokensFetched]);
 
   return {
     newToken: !isLoading ? newToken : null,
-    refetchToken,
     tokensFetched,
     isLoading,
   };
