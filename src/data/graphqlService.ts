@@ -21,11 +21,12 @@ export const graphqlQLServiceNew = async ({
 
   const baseUrl = isTestnet
     ? nearEndpoints.testnet.graph
-    : nearEndpoints.mainnet.graph
+    : nearEndpoints.mainnet.graph;
 
   const headers = {
     "content-type": "application/json",
-    "mb-api-key": "omni-site",
+    "mb-api-key": "anon",
+    "Access-Control-Allow-Origin": "*"
   };
 
   const queryLoad = () => request(baseUrl, query, variables, headers);
@@ -66,8 +67,8 @@ export const graphQlFetch = async (
   const isTestnet = net === "testnet";
 
   const baseUrl = isTestnet
-    ? nearEndpoints.testnet.graph
-    : nearEndpoints.mainnet.graph;
+    ? 'https://interop-testnet.hasura.app/v1/graphql'
+    : 'https://interop-mainnet.hasura.app/v1/graphql';
 
   const res = fetch(baseUrl, {
     method: "POST",
