@@ -26,6 +26,7 @@
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.13",
     "graphql": "^16.7.1",
+    "graphql-request": "^6.1.0",
     "lodash": "^4.17.21",
     "next": "13.4.13",
     "postcss": "8.4.27",
