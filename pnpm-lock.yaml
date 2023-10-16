@@ -12,8 +12,8 @@ dependencies:
     specifier: 0.4.1-beta.3
     version: 0.4.1-beta.3
   '@mintbase-js/wallet':
-    specifier: 0.4.1-feat-add-wallet-package-dfbfadb.0
-    version: 0.4.1-feat-add-wallet-package-dfbfadb.0
+    specifier: 0.4.1-mintbase-wallet-52de449.0
+    version: 0.4.1-mintbase-wallet-52de449.0
   '@near-wallet-selector/modal-ui':
     specifier: ^8.2.1
     version: 8.2.1(near-api-js@2.1.4)
@@ -350,12 +350,12 @@ packages:
       - supports-color
     dev: false
 
-  /@mintbase-js/wallet@0.4.1-feat-add-wallet-package-dfbfadb.0:
-    resolution: {integrity: sha512-Tt8WUvywNb1tMyyHIcP/O8Ydv/MDbgbnT+gb9P1wOIFQjp4IpsY0WQ2rLEbcT6yYJC59RG5ers2RcnHkcbO1KA==}
+  /@mintbase-js/wallet@0.4.1-mintbase-wallet-52de449.0:
+    resolution: {integrity: sha512-58zZRsQ3luuroBkp9fTjKUn1PSERqseF2Pn5TZlKnTQDqA1DQBeb6zu4CA3/AOg5cSguIbmJSGuvF2my91fMsA==}
     dependencies:
-      '@types/node': 16.18.53
+      '@near-wallet-selector/core': 8.5.4(near-api-js@2.1.4)
       bn.js: 5.2.1
-      isomorphic-unfetch: 3.1.0
+      near-api-js: 2.1.4
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -557,6 +557,18 @@ packages:
 
   /@near-wallet-selector/core@8.5.2(near-api-js@2.1.4):
     resolution: {integrity: sha512-7014bUdO7bUB+wZEI4ru4DLx8+kN1D2S7knTdSZuBCmarmi2ayvHO2YsYkJBebrk00Q+eI7JfqZaahKGLPEjwQ==}
+    peerDependencies:
+      near-api-js: ^1.0.0 || ^2.0.0
+    dependencies:
+      borsh: 0.7.0
+      events: 3.3.0
+      js-sha256: 0.9.0
+      near-api-js: 2.1.4
+      rxjs: 7.8.1
+    dev: false
+
+  /@near-wallet-selector/core@8.5.4(near-api-js@2.1.4):
+    resolution: {integrity: sha512-GxoRU7epI4/7JVzJzROgFxwLlbEN/snrc2qGQ2ROYBojvq6YoNq/KIyLXiM8WlAPw3gbKnuLJj4uHquyo/NOJw==}
     peerDependencies:
       near-api-js: ^1.0.0 || ^2.0.0
     dependencies:
@@ -959,10 +971,6 @@ packages:
   /@types/lodash@4.14.197:
     resolution: {integrity: sha512-BMVOiWs0uNxHVlHBgzTIqJYmj+PgCo4euloGF+5m4okL3rEYzM2EEv78mw8zWSMM57dM7kVIgJ2QDvwHSoCI5g==}
     dev: true
-
-  /@types/node@16.18.53:
-    resolution: {integrity: sha512-vVmHeo4tpF8zsknALU90Hh24VueYdu45ZlXzYWFbom61YR4avJqTFDC3QlWzjuTdAv6/3xHaxiO9NrtVZXrkmw==}
-    dev: false
 
   /@types/node@20.4.9:
     resolution: {integrity: sha512-8e2HYcg7ohnTUbHk8focoklEQYvemQmu9M/f43DZVx43kHn0tE3BY/6gSDxS7k0SprtS0NHvj+L80cGLnoOUcQ==}
@@ -2876,15 +2884,6 @@ packages:
       fast-text-encoding: 1.0.6
     dev: false
 
-  /isomorphic-unfetch@3.1.0:
-    resolution: {integrity: sha512-geDJjpoZ8N0kWexiwkX8F9NkTsXhetLPVbZFQ+JTW239QNOwvB0gniuR1Wc6f0AMTn7/mFGyXvHTifrCp/GH8Q==}
-    dependencies:
-      node-fetch: 2.7.0
-      unfetch: 4.2.0
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /iterator.prototype@1.1.2:
     resolution: {integrity: sha512-DR33HMMr8EzwuRL8Y9D3u2BMj8+RqSE850jfGu59kS7tbmPLzGkZmVSfyCFSDxuZiEY6Rzt3T2NA/qU+NwVj1w==}
     dependencies:
@@ -4243,10 +4242,6 @@ packages:
       has-bigints: 1.0.2
       has-symbols: 1.0.3
       which-boxed-primitive: 1.0.2
-    dev: false
-
-  /unfetch@4.2.0:
-    resolution: {integrity: sha512-F9p7yYCn6cIW9El1zi0HI6vqpeIvBsr3dSuRO6Xuppb1u5rXpCPmMvLSyECLhybr9isec8Ohl0hPekMVrEinDA==}
     dev: false
 
   /update-browserslist-db@1.0.11(browserslist@4.21.10):
