@@ -3,20 +3,27 @@ import DataProvider from "./data";
 import { AppProvider } from "./app";
 import { WalletContextProvider } from "@mintbase-js/react";
 
-import { setupAuthWallet } from "@mintbase-js/wallet";
+import { setupMintbaseWallet } from "@mintbase-js/wallet";
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
+
+  const network = constants.network as "testnet" | "mainnet"
+
+  const walletUrls = {
+    testnet: 'https://testnet.wallet.mintbase.xyz/',
+    mainnet: 'https://wallet.mintbase.xyz',
+  }
+
   return (
     <WalletContextProvider
       contractAddress={constants.tokenContractAddress}
-      network={constants.network as any}
+      network={network}
       additionalWallets={[
-        //@ts-ignore
-        setupAuthWallet({
-          networkId: constants.network as "testnet" | "mainnet",
-          relayerUrl: "/api/relay",
-          signInContractId: constants.tokenContractAddress,
-          walletUrl: constants.mintbaseWalletUrl,
+        setupMintbaseWallet({
+          networkId: network,
+          walletUrl: walletUrls[network],
+          deprecated: false,
+          // callbackUrl: getCallbackUrl(),
         }),
       ]}
     >
