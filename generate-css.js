@@ -24,7 +24,14 @@ const colors = {
 };
 
 const css = `
-.nws-modal-wrapper .nws-modal .modal-right {
+
+
+@media (max-width: 576px) {
+  .nws-modal-wrapper .nws-modal {
+    height: auto!important;
+  }
+
+  .nws-modal-wrapper .nws-modal .modal-right {
    display:none!important
 }
 
@@ -52,11 +59,6 @@ const css = `
     text-align: center;
     width: 100%;
 }
-
-@media (max-width: 576px) {
-  .nws-modal-wrapper .nws-modal {
-    height: 224px!important;
-  }
 }
 
 

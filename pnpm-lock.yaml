@@ -6,14 +6,14 @@ settings:
 
 dependencies:
   '@mintbase-js/react':
-    specifier: 0.4.1-beta.3
-    version: 0.4.1-beta.3(borsh@0.7.0)(graphql@16.7.1)(typescript@5.1.6)
+    specifier: 0.4.1-mintbase-wallet-5a4aa00.0
+    version: 0.4.1-mintbase-wallet-5a4aa00.0(borsh@0.7.0)(graphql@16.7.1)(typescript@5.1.6)
   '@mintbase-js/storage':
-    specifier: 0.4.1-beta.3
-    version: 0.4.1-beta.3
+    specifier: 0.4.1-mintbase-wallet-5a4aa00.0
+    version: 0.4.1-mintbase-wallet-5a4aa00.0
   '@mintbase-js/wallet':
-    specifier: 0.4.1-feat-add-wallet-package-dfbfadb.0
-    version: 0.4.1-feat-add-wallet-package-dfbfadb.0
+    specifier: 0.4.1-mintbase-wallet-5a4aa00.0
+    version: 0.4.1-mintbase-wallet-5a4aa00.0
   '@near-wallet-selector/modal-ui':
     specifier: ^8.2.1
     version: 8.2.1(near-api-js@2.1.4)
@@ -50,6 +50,9 @@ dependencies:
   graphql-request:
     specifier: ^6.1.0
     version: 6.1.0(graphql@16.7.1)
+  isomorphic-unfetch:
+    specifier: ^3.1.0
+    version: 3.1.0
   lodash:
     specifier: ^4.17.21
     version: 4.17.21
@@ -268,11 +271,11 @@ packages:
       query-string: 7.1.3
     dev: false
 
-  /@mintbase-js/auth@0.4.1-feat-add-wallet-package-2-68af967.0(borsh@0.7.0)(near-api-js@2.1.4)(react@18.2.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-NZ6DP1JrVobMJcaSPPlC5mCSPK0Zgsh79G57a1NlndNw7GG/agNkLa36FM9ZCHFZGRdDE9TUS4qWOX0Dt/QsmA==}
+  /@mintbase-js/auth@0.4.1-mintbase-wallet-c1580a3.0(borsh@0.7.0)(near-api-js@2.1.4)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-0F4jhyFClpMAUol29LAz5nwRDANVmzQy0QS9PPh4vLlC0btfKlFGPs6Lq1imxmQbMT71h3jV2I2q3G+OLpDBKw==}
     dependencies:
-      '@mintbase-js/sdk': 0.4.1-v0.4.1-beta.2-55a7862.0
-      '@near-wallet-selector/core': 8.5.2(near-api-js@2.1.4)
+      '@mintbase-js/sdk': 0.4.1-v0.4.1-beta.5-bd5df18.0
+      '@near-wallet-selector/core': 8.5.4(near-api-js@2.1.4)
       '@near-wallet-selector/default-wallets': 8.1.4(near-api-js@2.1.4)
       '@near-wallet-selector/here-wallet': 8.5.2(borsh@0.7.0)(near-api-js@2.1.4)
       '@near-wallet-selector/ledger': 8.5.2(near-api-js@2.1.4)(typescript@5.1.6)
@@ -308,13 +311,13 @@ packages:
       - graphql
     dev: false
 
-  /@mintbase-js/react@0.4.1-beta.3(borsh@0.7.0)(graphql@16.7.1)(typescript@5.1.6):
-    resolution: {integrity: sha512-3EgNdbEDyPlyHb5duUYeQANxT2nquso96crQ7j+ZglyXYbLj+fMbYqs945R1CVzGOcc57qqzn4QXV6vzclqWYg==}
+  /@mintbase-js/react@0.4.1-mintbase-wallet-5a4aa00.0(borsh@0.7.0)(graphql@16.7.1)(typescript@5.1.6):
+    resolution: {integrity: sha512-kOVbyLek9XXBJteX/2+gr45MmOIygU4WRFUi18oE9kHilEobCekecWWlsY+3xFUaml49KM70ZzOpSE5YFozG/A==}
     dependencies:
-      '@mintbase-js/auth': 0.4.1-feat-add-wallet-package-2-68af967.0(borsh@0.7.0)(near-api-js@2.1.4)(react@18.2.0)(typescript@5.1.6)
+      '@mintbase-js/auth': 0.4.1-mintbase-wallet-c1580a3.0(borsh@0.7.0)(near-api-js@2.1.4)(react@18.2.0)(typescript@5.1.6)
       '@mintbase-js/data': 0.4.1-v0.4.1-beta.2-55a7862.0(graphql@16.7.1)
-      '@mintbase-js/sdk': 0.4.1-v0.4.1-beta.2-55a7862.0
-      '@near-wallet-selector/core': 8.5.2(near-api-js@2.1.4)
+      '@mintbase-js/sdk': 0.4.1-mintbase-wallet-b7e8639.0
+      '@near-wallet-selector/core': 8.5.4(near-api-js@2.1.4)
       '@near-wallet-selector/modal-ui': 8.2.1(near-api-js@2.1.4)
       near-api-js: 2.1.4
       react: 18.2.0
@@ -330,8 +333,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@mintbase-js/sdk@0.4.1-v0.4.1-beta.2-55a7862.0:
-    resolution: {integrity: sha512-69LG5w1f+tvCx7L17it3yaPYn0mFQLsgwBxxxmVsHeRmSGxjf15yzmFSeldJis+jSu9uXoZzyHDp39Ac2ImY2w==}
+  /@mintbase-js/sdk@0.4.1-mintbase-wallet-b7e8639.0:
+    resolution: {integrity: sha512-XLECHX2DTXOctCjR2kQgYi/W91OemmnQoiWl0jyJTiGFpc/QUl0gH6vzeo+08MrRISIKs5uFJK4vYeF3CJFOug==}
     dependencies:
       bn.js: 5.2.1
       near-api-js: 2.1.4
@@ -339,10 +342,19 @@ packages:
       - encoding
     dev: false
 
-  /@mintbase-js/storage@0.4.1-beta.3:
-    resolution: {integrity: sha512-Qam7cSjVgjZR3uC/8St9j0rEyGKb1+7uJ9y13l+HU1roAoT2EBnH+vBopchR0Xt9ASDzWx+yLhDX0ijU61hAlA==}
+  /@mintbase-js/sdk@0.4.1-v0.4.1-beta.5-bd5df18.0:
+    resolution: {integrity: sha512-Q9z+hfSd7ly77Ene663K80UNXwZ1t/kxE4vn6T+XDB5cNw3isJ4c5JjdlZAOIaUnP12ka6C138BWrSyjr6bxBA==}
     dependencies:
-      '@mintbase-js/sdk': 0.4.1-v0.4.1-beta.2-55a7862.0
+      bn.js: 5.2.1
+      near-api-js: 2.1.4
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /@mintbase-js/storage@0.4.1-mintbase-wallet-5a4aa00.0:
+    resolution: {integrity: sha512-2RpsQ4oIHFpO2G/UsciMoIzOJnjlyCzYGa3paLZOM1hMAckAwrobB8lWIwh7Z6X68c/lU2F5wBi/dJMsJB3oXg==}
+    dependencies:
+      '@mintbase-js/sdk': 0.4.1-v0.4.1-beta.5-bd5df18.0
       near-api-js: 2.1.4
       superagent: 8.1.2
     transitivePeerDependencies:
@@ -350,12 +362,12 @@ packages:
       - supports-color
     dev: false
 
-  /@mintbase-js/wallet@0.4.1-feat-add-wallet-package-dfbfadb.0:
-    resolution: {integrity: sha512-Tt8WUvywNb1tMyyHIcP/O8Ydv/MDbgbnT+gb9P1wOIFQjp4IpsY0WQ2rLEbcT6yYJC59RG5ers2RcnHkcbO1KA==}
+  /@mintbase-js/wallet@0.4.1-mintbase-wallet-5a4aa00.0:
+    resolution: {integrity: sha512-sQJ+5Nb3DI01XX7ZWBaFmG61oIDSB6lV5YJE3m5LsZgUrJCsYhV7uXspm35U5VPV853DdboBB3JNwXZF1rMY0g==}
     dependencies:
-      '@types/node': 16.18.53
+      '@near-wallet-selector/core': 8.5.4(near-api-js@2.1.4)
       bn.js: 5.2.1
-      isomorphic-unfetch: 3.1.0
+      near-api-js: 2.1.4
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -557,6 +569,18 @@ packages:
 
   /@near-wallet-selector/core@8.5.2(near-api-js@2.1.4):
     resolution: {integrity: sha512-7014bUdO7bUB+wZEI4ru4DLx8+kN1D2S7knTdSZuBCmarmi2ayvHO2YsYkJBebrk00Q+eI7JfqZaahKGLPEjwQ==}
+    peerDependencies:
+      near-api-js: ^1.0.0 || ^2.0.0
+    dependencies:
+      borsh: 0.7.0
+      events: 3.3.0
+      js-sha256: 0.9.0
+      near-api-js: 2.1.4
+      rxjs: 7.8.1
+    dev: false
+
+  /@near-wallet-selector/core@8.5.4(near-api-js@2.1.4):
+    resolution: {integrity: sha512-GxoRU7epI4/7JVzJzROgFxwLlbEN/snrc2qGQ2ROYBojvq6YoNq/KIyLXiM8WlAPw3gbKnuLJj4uHquyo/NOJw==}
     peerDependencies:
       near-api-js: ^1.0.0 || ^2.0.0
     dependencies:
@@ -959,10 +983,6 @@ packages:
   /@types/lodash@4.14.197:
     resolution: {integrity: sha512-BMVOiWs0uNxHVlHBgzTIqJYmj+PgCo4euloGF+5m4okL3rEYzM2EEv78mw8zWSMM57dM7kVIgJ2QDvwHSoCI5g==}
     dev: true
-
-  /@types/node@16.18.53:
-    resolution: {integrity: sha512-vVmHeo4tpF8zsknALU90Hh24VueYdu45ZlXzYWFbom61YR4avJqTFDC3QlWzjuTdAv6/3xHaxiO9NrtVZXrkmw==}
-    dev: false
 
   /@types/node@20.4.9:
     resolution: {integrity: sha512-8e2HYcg7ohnTUbHk8focoklEQYvemQmu9M/f43DZVx43kHn0tE3BY/6gSDxS7k0SprtS0NHvj+L80cGLnoOUcQ==}

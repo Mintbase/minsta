@@ -7,11 +7,21 @@ import InlineSVG from "react-inlinesvg";
 
 const Header = () => {
   const pathname = usePathname();
-  const { isConnected } = useWallet();
+  const { isConnected, selector, connect } = useWallet();
   const { push } = useRouter();
   const { openModal } = useApp();
-
   const { isClosed } = constants;
+
+  const handleSignout = async  () => {
+
+        const wallet = await selector.wallet();
+        return wallet.signOut()
+  }
+
+    const handleSignIn = async  () => {
+
+        return connect()
+  }
 
   const headerButtonsNotHome = (onClick: any) => (
     <div className="flex w-full justify-between px-4 lg:px-12 items-center">
@@ -48,6 +58,11 @@ const Header = () => {
                 {" "}
                 {isConnected ? "Connected" : "About"}
               </button>
+              {isConnected ?  <button onClick={handleSignout}>
+                {" "} Logout
+              </button> : <button onClick={handleSignIn}>
+                {" "} Login
+              </button>}
               <button onClick={() => push("/leaderboard")}>Leaderboard</button>
             </div>
           </div>
