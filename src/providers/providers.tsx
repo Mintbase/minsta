@@ -30,7 +30,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
       additionalWallets={[
         setupMintbaseWallet({
           networkId: constants.network,
-          walletUrl: walletUrls[constants.network],
+          walletUrl: walletUrls[constants.network] as any,
           deprecated: false,
           callbackUrl: getCallbackUrl(),
         }),
