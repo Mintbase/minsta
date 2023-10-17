@@ -22,6 +22,8 @@ export const getCallbackUrl = () => {
   return callbackUrl;
 };
 
+const walletUrl = constants.network == 'testnet' ? walletUrls.testnet : walletUrls.mainnet
+
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <WalletContextProvider
@@ -30,7 +32,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
       additionalWallets={[
         setupMintbaseWallet({
           networkId: constants.network,
-          walletUrl: walletUrls[constants.network] as any,
+          walletUrl: walletUrl,
           deprecated: false,
           callbackUrl: getCallbackUrl(),
         }),
