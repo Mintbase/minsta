@@ -122,6 +122,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
       ],
       // @ts-ignore
       successUrl: `${protocol}//${domain}${!port ? "" : ":" + port}`,
+      callbackUrl: `${protocol}//${domain}${!port ? "" : ":" + port}`,
     });
   };
 

@@ -11,9 +11,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mintbase-js/react": "0.4.1-beta.3",
-    "@mintbase-js/storage": "0.4.1-beta.3",
-    "@mintbase-js/wallet": "0.4.1-feat-add-wallet-package-dfbfadb.0",
+    "@mintbase-js/react": "0.4.1-mintbase-wallet-02f6a84.0",
+    "@mintbase-js/storage": "0.4.1-mintbase-wallet-02f6a84.0",
+    "@mintbase-js/wallet": "0.4.1-mintbase-wallet-02f6a84.0",
     "@near-wallet-selector/modal-ui": "^8.2.1",
     "@tanstack/react-query": "^4.35.3",
     "@types/node": "20.4.9",
@@ -26,6 +26,7 @@
     "eslint-config-next": "13.4.13",
     "graphql": "^16.7.1",
     "graphql-request": "^6.1.0",
+    "isomorphic-unfetch": "^3.1.0",
     "lodash": "^4.17.21",
     "next": "13.4.13",
     "postcss": "8.4.27",

@@ -7,11 +7,19 @@ import InlineSVG from "react-inlinesvg";
 
 const Header = () => {
   const pathname = usePathname();
-  const { isConnected } = useWallet();
+  const { isConnected, selector, connect } = useWallet();
   const { push } = useRouter();
   const { openModal } = useApp();
-
   const { isClosed } = constants;
+
+  const handleSignout = async () => {
+    const wallet = await selector.wallet();
+    return wallet.signOut();
+  };
+
+  const handleSignIn = async () => {
+    return connect();
+  };
 
   const headerButtonsNotHome = (onClick: any) => (
     <div className="flex w-full justify-between px-4 lg:px-12 items-center">
@@ -36,18 +44,20 @@ const Header = () => {
         return (
           <div className="flex w-full justify-between px-4 lg:px-12  items-center">
             <div>
-              <button
-                className="font-bold text-xl"
-                onClick={() => push("/")}
-              >
+              <button className="font-bold text-xl" onClick={() => push("/")}>
                 {process.env.NEXT_PUBLIC_APP_TITLE || "Minsta"}
               </button>
             </div>
             <div className="flex gap-4">
-              <button onClick={() => openModal("default")}>
-                {" "}
-                {isConnected ? "Connected" : "About"}
-              </button>
+              {!isConnected ? (
+                <button onClick={() => openModal("default")}>About</button>
+              ) : null}
+
+              {isConnected ? (
+                <button onClick={handleSignout}> Logout</button>
+              ) : (
+                <button onClick={handleSignIn}> Login</button>
+              )}
               <button onClick={() => push("/leaderboard")}>Leaderboard</button>
             </div>
           </div>
