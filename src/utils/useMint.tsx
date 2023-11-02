@@ -63,7 +63,6 @@ const useMintImage = () => {
   const performTransaction = async (
     wallet: any,
     metadata: any,
-    baseUrl: string
   ) => {
     if (!wallet) {
       throw new Error("Wallet is not defined.");
@@ -87,7 +86,6 @@ const useMintImage = () => {
             },
           },
         ],
-        callbackUrl: baseUrl,
       });
     } catch (error) {
       console.error("Failed to sign and send transaction:", error);
@@ -174,9 +172,8 @@ const useMintImage = () => {
         media: photoFile,
       };
       const uploadedData = await uploadReferenceObject(refObject);
-      const baseUrl = `${window.location.origin}/`;
       const metadata = { reference: uploadedData?.id };
-      await performTransaction(wallet, metadata, baseUrl);
+      await performTransaction(wallet, metadata);
     } catch (error: any) {
       setError(
         error?.message || "An error occurred during the minting process."
