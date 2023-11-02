@@ -94,11 +94,6 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
 
     const uploadedData = await uploadReference(refObject);
 
-    const currentUrl = new URL(window?.location?.href);
-
-    const protocol = currentUrl.protocol;
-    const domain = currentUrl.hostname;
-    const port = currentUrl.port;
 
     const result = await wallet?.signAndSendTransaction({
       signerId: activeAccountId,
@@ -120,9 +115,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
           },
         },
       ],
-      // @ts-ignore
-      successUrl: `${protocol}//${domain}${!port ? "" : ":" + port}`,
-      callbackUrl: `${protocol}//${domain}${!port ? "" : ":" + port}`,
+
     });
   };
 

@@ -5,7 +5,7 @@ import { WalletContextProvider } from "@mintbase-js/react";
 
 import { MintbaseWalletContextProvider } from "@mintbase-js/react";
 
-export const isDev = process.env.NEXT_PUBLIC_ENV === "dev" || window?.location?.origin.includes('localhost');
+export const isDev = process.env.NEXT_PUBLIC_ENV === "dev" 
 
 export const getCallbackUrl = () => {
   let callbackUrl = "";
