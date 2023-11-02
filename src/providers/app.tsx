@@ -7,6 +7,7 @@ import { Heebo } from "next/font/google";
 import "../style/global.css";
 import { generateRandomId } from "@/utils/generateRandomId";
 import { convertBase64ToFile } from "@/utils/base64ToFile";
+import { useReplicate } from "./replicate";
 
 const heebo = Heebo({ subsets: ["latin"] });
 
@@ -54,8 +55,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [currentPhoto, setCurrentPhoto] = useState(false);
   const { selector, activeAccountId } = useWallet();
   const [isLoading, setLoading] = useState(false);
-
-  const { push } = useRouter();
+  const { addRequest } = useReplicate();
 
   const [isMainModalOpen, setMainModalOpen] = useState(false);
   const [isRewardsModalOpen, setRewardsModalOpen] = useState(false);
@@ -86,10 +86,29 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     const wallet = await selector.wallet();
     setLoading(true);
 
+    const photoFile = convertBase64ToFile(photo);
+
+    let titleAndDescription;
+    try {
+      const titleAndDescriptionRequest = await addRequest(
+        {
+          image: photo, // TODO: we have a limit here of 10MB I believe. Check docs later.
+          prompt: `Describe this image, be direct and include important details. 
+  
+          Respond in JSON {"title": <5 words>, "description": <15 words>}`,
+        },
+        "2facb4a474a0462c15041b78b1ad70952ea46b5ec6ad29583c0b29dbd4249591"
+      );
+
+      titleAndDescription = JSON.parse(
+        titleAndDescriptionRequest.output.join("")
+      );
+    } catch (error) {}
+
     const refObject = {
-      title: generateRandomId(10),
-      description: generateRandomId(10),
-      media: convertBase64ToFile(photo),
+      title: titleAndDescription?.title ?? generateRandomId(10),
+      description: titleAndDescription?.description ?? generateRandomId(10),
+      media: photoFile,
     };
 
     const uploadedData = await uploadReference(refObject);
