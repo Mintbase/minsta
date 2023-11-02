@@ -93,7 +93,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
       const titleAndDescriptionRequest = await addRequest(
         {
           image: photo, // TODO: we have a limit here of 10MB I believe. Check docs later.
-          prompt: `Describe this image, be direct and include important details. 
+          prompt: `Describe this image, be direct and include important details. The title should be succint and 5 words long. The description can be longer than 15 words and more descriptive.
   
           Respond in JSON {"title": <5 words>, "description": <15 words>}`,
         },

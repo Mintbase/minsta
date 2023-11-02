@@ -1,3 +1,5 @@
+import { NextResponse } from "next/server";
+
 const replicate = () => {
     return {
       handlers: {
@@ -20,16 +22,16 @@ const replicate = () => {
             let error = await response.json();
             console.log(error);
   
-            return Response.json({ error: error.detail }, { status: 500 });
+            return NextResponse.json({ error: error.detail }, { status: 500 });
           }
   
           try {
             const prediction = await response.json();
-            return Response.json(prediction, { status: 200 });
+            return NextResponse.json(prediction, { status: 200 });
           } catch (error) {
             console.error(error);
   
-            return Response.json({ error: error });
+            return NextResponse.json({ error: error });
           }
         },
         POST: async (request: Request) => {
@@ -54,15 +56,15 @@ const replicate = () => {
   
           if (response.status !== 201) {
             let error = await response.json();
-            return Response.json({ error: error.detail }, { status: 500 });
+            return NextResponse.json({ error: error.detail }, { status: 500 });
           }
   
           try {
             const prediction = await response.json();
-            return Response.json(prediction, { status: 201 });
+            return NextResponse.json(prediction, { status: 201 });
           } catch (error) {
             console.error("Error converting image to blob:", error);
-            return Response.json({ error: error });
+            return NextResponse.json({ error: error });
           }
         },
       },
