@@ -5,12 +5,7 @@ import { WalletContextProvider } from "@mintbase-js/react";
 
 import { MintbaseWalletContextProvider } from "@mintbase-js/react";
 
-const walletUrls = {
-  testnet: "https://testnet.wallet.mintbase.xyz/",
-  mainnet: "https://wallet.mintbase.xyz",
-};
-
-export const isDev = process.env.NEXT_PUBLIC_ENV === "dev";
+export const isDev = process.env.NEXT_PUBLIC_ENV === "dev" || window?.location?.origin.includes('localhost');
 
 export const getCallbackUrl = () => {
   let callbackUrl = "";
@@ -24,8 +19,7 @@ export const getCallbackUrl = () => {
   return callbackUrl;
 };
 
-const walletUrl =
-  constants.network == "testnet" ? walletUrls.testnet : walletUrls.mainnet;
+
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
