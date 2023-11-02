@@ -3,7 +3,7 @@ import DataProvider from "./data";
 import { AppProvider } from "./app";
 import { WalletContextProvider } from "@mintbase-js/react";
 
-import { setupMintbaseWallet } from "@mintbase-js/wallet";
+import { MintbaseWalletContextProvider } from "@mintbase-js/react";
 
 const walletUrls = {
   testnet: "https://testnet.wallet.mintbase.xyz/",
@@ -18,32 +18,26 @@ export const getCallbackUrl = () => {
   if (typeof window !== "undefined") {
     isDev
       ? `http://${window?.location.host}/`
-      : `http://${window?.location.host}/`
+      : `http://${window?.location.host}/`;
   }
 
   return callbackUrl;
 };
 
-const walletUrl = constants.network == 'testnet' ? walletUrls.testnet : walletUrls.mainnet
+const walletUrl =
+  constants.network == "testnet" ? walletUrls.testnet : walletUrls.mainnet;
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
-    <WalletContextProvider
+    <MintbaseWalletContextProvider
       contractAddress={constants.tokenContractAddress}
       network={constants.network as any}
-      additionalWallets={[
-        setupMintbaseWallet({
-          networkId: constants.network,
-          walletUrl: walletUrl,
-          deprecated: false,
-          callbackUrl: getCallbackUrl(),
-        }),
-      ]}
+      callbackUrl={getCallbackUrl()}
     >
       <AppProvider>
         <DataProvider>{children}</DataProvider>
       </AppProvider>
-    </WalletContextProvider>
+    </MintbaseWalletContextProvider>
   );
 };
 

@@ -6,14 +6,11 @@ settings:
 
 dependencies:
   '@mintbase-js/react':
-    specifier: 0.4.1-mintbase-wallet-02f6a84.0
-    version: 0.4.1-mintbase-wallet-02f6a84.0(borsh@0.7.0)(graphql@16.7.1)(typescript@5.1.6)
+    specifier: 0.5.0-beta.2
+    version: 0.5.0-beta.2(borsh@0.7.0)(graphql@16.7.1)(typescript@5.1.6)
   '@mintbase-js/storage':
-    specifier: 0.4.1-mintbase-wallet-02f6a84.0
-    version: 0.4.1-mintbase-wallet-02f6a84.0
-  '@mintbase-js/wallet':
-    specifier: 0.4.1-mintbase-wallet-02f6a84.0
-    version: 0.4.1-mintbase-wallet-02f6a84.0
+    specifier: 0.5.0-beta.2
+    version: 0.5.0-beta.2
   '@near-wallet-selector/modal-ui':
     specifier: ^8.2.1
     version: 8.2.1(near-api-js@2.1.4)
@@ -271,10 +268,11 @@ packages:
       query-string: 7.1.3
     dev: false
 
-  /@mintbase-js/auth@0.4.1-mintbase-wallet-ad7982e.0(borsh@0.7.0)(near-api-js@2.1.4)(react@18.2.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-BayQj6uOBsRVDKYU1rDfTS6H/1dVgeJLZiwjQdjeCbmRCyY/hnKBQTAztBfZup00jWYVMXWcVjttTwXs8B1P+Q==}
+  /@mintbase-js/auth@0.5.0-beta.1(borsh@0.7.0)(near-api-js@2.1.4)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-Z2pqT8XyKrPS6/PSRTOgF//HMPPJiPmiIBybJ3k/l9hz80RqkP6ZsuE7m+barMr2tkCYOCmFg6Y8J7Uy4lht2g==}
     dependencies:
-      '@mintbase-js/sdk': 0.4.1-v0.4.1-beta.5-bd5df18.0
+      '@mintbase-js/sdk': 0.5.0-beta.0
+      '@mintbase-js/wallet': 0.5.0-beta.0
       '@near-wallet-selector/core': 8.5.4(near-api-js@2.1.4)
       '@near-wallet-selector/default-wallets': 8.1.4(near-api-js@2.1.4)
       '@near-wallet-selector/here-wallet': 8.5.2(borsh@0.7.0)(near-api-js@2.1.4)
@@ -301,8 +299,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@mintbase-js/data@0.4.1-v0.4.1-beta.2-55a7862.0(graphql@16.7.1):
-    resolution: {integrity: sha512-l3JAc3E3dgMKEh9mO3Bvh/1UnpxLral+0k2foU50qB8J82ayVFzrEa3ADjf+cxE6ORhRFoXUxwtOCb3IqxpQXg==}
+  /@mintbase-js/data@0.5.0-beta.2(graphql@16.7.1):
+    resolution: {integrity: sha512-hh+5gbgTv1Ik93ixaHMBKeodEsf0vwP54OzDaj5WYIQvmBHLINoiOYLV7xv3WdCKyCv09pJN8A/8QKqcY5npHA==}
     dependencies:
       graphql-request: 5.2.0(graphql@16.7.1)
       isomorphic-fetch: 3.0.0
@@ -311,12 +309,12 @@ packages:
       - graphql
     dev: false
 
-  /@mintbase-js/react@0.4.1-mintbase-wallet-02f6a84.0(borsh@0.7.0)(graphql@16.7.1)(typescript@5.1.6):
-    resolution: {integrity: sha512-daYhSrocfSq+DdRDaeByuJ6qqCsMyqe+ZPQ6g7mRodpfk8uV2m6vC+XWdhGbBezbyFWnrArdjlx9W0/nxduL0w==}
+  /@mintbase-js/react@0.5.0-beta.2(borsh@0.7.0)(graphql@16.7.1)(typescript@5.1.6):
+    resolution: {integrity: sha512-sz7Mbo4527Yfi7j3wsMbx/T30nLFJC3YpcEdQKp+YN5t9vMq8nLhMPkYE2Ww11uUNFvOUuemcD0e5EWuUu6Dmg==}
     dependencies:
-      '@mintbase-js/auth': 0.4.1-mintbase-wallet-ad7982e.0(borsh@0.7.0)(near-api-js@2.1.4)(react@18.2.0)(typescript@5.1.6)
-      '@mintbase-js/data': 0.4.1-v0.4.1-beta.2-55a7862.0(graphql@16.7.1)
-      '@mintbase-js/sdk': 0.4.1-mintbase-wallet-b7e8639.0
+      '@mintbase-js/auth': 0.5.0-beta.1(borsh@0.7.0)(near-api-js@2.1.4)(react@18.2.0)(typescript@5.1.6)
+      '@mintbase-js/data': 0.5.0-beta.2(graphql@16.7.1)
+      '@mintbase-js/sdk': 0.4.1-fix-sign-transaction-0872c2d.0
       '@near-wallet-selector/core': 8.5.4(near-api-js@2.1.4)
       '@near-wallet-selector/modal-ui': 8.2.1(near-api-js@2.1.4)
       near-api-js: 2.1.4
@@ -333,8 +331,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@mintbase-js/sdk@0.4.1-mintbase-wallet-b7e8639.0:
-    resolution: {integrity: sha512-XLECHX2DTXOctCjR2kQgYi/W91OemmnQoiWl0jyJTiGFpc/QUl0gH6vzeo+08MrRISIKs5uFJK4vYeF3CJFOug==}
+  /@mintbase-js/sdk@0.4.1-fix-sign-transaction-0872c2d.0:
+    resolution: {integrity: sha512-SRIe75o3Ymc3zQ3Q5Ghu+ibilP0xgvDy9Pn1rFgni8B5V07pwNJSLBSDuPgkd4UbRy0jk+OlyvCCyfAQl1qsHA==}
     dependencies:
       bn.js: 5.2.1
       near-api-js: 2.1.4
@@ -342,8 +340,8 @@ packages:
       - encoding
     dev: false
 
-  /@mintbase-js/sdk@0.4.1-v0.4.1-beta.5-bd5df18.0:
-    resolution: {integrity: sha512-Q9z+hfSd7ly77Ene663K80UNXwZ1t/kxE4vn6T+XDB5cNw3isJ4c5JjdlZAOIaUnP12ka6C138BWrSyjr6bxBA==}
+  /@mintbase-js/sdk@0.5.0-beta.0:
+    resolution: {integrity: sha512-cT/8oOoFw1R3gk8A6TAfLhabT4pr0fwSu0lsUU1YYaKI0EWjhghkMMxCRtaWU8EDneVLxAK+SNa2B1zD0cXoTA==}
     dependencies:
       bn.js: 5.2.1
       near-api-js: 2.1.4
@@ -351,10 +349,19 @@ packages:
       - encoding
     dev: false
 
-  /@mintbase-js/storage@0.4.1-mintbase-wallet-02f6a84.0:
-    resolution: {integrity: sha512-DvA1G0+5PBZk+4008nPKb5amIUzuiTTfg/1AiJIxRbgrEGONLuVvx/QzOmPGVMXY3B7teQRwbJdL1GQjJsm7/g==}
+  /@mintbase-js/sdk@0.5.0-beta.2:
+    resolution: {integrity: sha512-W6eBAnSYkEojkH137rgMq1llAa3XEnQmxPTvz3gNqNkEcyTKtKOyrTmA7e52h5A9YjWt00qKfhLgMZJ5neEHsA==}
     dependencies:
-      '@mintbase-js/sdk': 0.4.1-v0.4.1-beta.5-bd5df18.0
+      bn.js: 5.2.1
+      near-api-js: 2.1.4
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /@mintbase-js/storage@0.5.0-beta.2:
+    resolution: {integrity: sha512-TdO2h81auWooDGo6OTrRdD/jMNSxEvUMVUvjoC5GIIjhARB7K2HC6OdemUJVKSolxMIDzRVAbNZvCD8ZBO7cEg==}
+    dependencies:
+      '@mintbase-js/sdk': 0.5.0-beta.2
       near-api-js: 2.1.4
       superagent: 8.1.2
     transitivePeerDependencies:
@@ -362,8 +369,8 @@ packages:
       - supports-color
     dev: false
 
-  /@mintbase-js/wallet@0.4.1-mintbase-wallet-02f6a84.0:
-    resolution: {integrity: sha512-QyeEmBtKxxUtlFSOGBeIvEjCksKvqTmJp2fv22vj0RtIKOftAGKR8nvYd2sGzdQIrqS6G0F4yn5PUdJ/+FrRQw==}
+  /@mintbase-js/wallet@0.5.0-beta.0:
+    resolution: {integrity: sha512-mhpUYX8yCFcSzkj5VAJn01pbXgXxK67Na8Y0x88EzuRRqnleHb60LZFXEw7wuwynFjaZseKeQY/yd2Pti7GgqQ==}
     dependencies:
       '@near-wallet-selector/core': 8.5.4(near-api-js@2.1.4)
       bn.js: 5.2.1
