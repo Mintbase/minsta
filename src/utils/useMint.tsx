@@ -12,13 +12,13 @@ interface ReferenceObject {
   media: File;
 }
 
-function useMintImage() {
+const useMintImage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { selector, activeAccountId } = useWallet();
   const { addRequest } = useReplicate();
 
-  async function getWallet() {
+  const getWallet = async () => {
     try {
       return await selector.wallet();
     } catch (error) {
@@ -26,9 +26,9 @@ function useMintImage() {
       setLoading(false);
       throw new Error("Failed to retrieve the wallet");
     }
-  }
+  };
 
-  async function getTitleAndDescription(photo: string) {
+  const getTitleAndDescription = async (photo: string) => {
     try {
       const requestPayload = {
         image: photo,
@@ -48,9 +48,9 @@ function useMintImage() {
         description: generateRandomId(10),
       };
     }
-  }
+  };
 
-  async function uploadReferenceObject(refObject: ReferenceObject) {
+  const uploadReferenceObject = async (refObject: ReferenceObject) => {
     try {
       return await uploadReference(refObject);
     } catch (error) {
@@ -58,13 +58,13 @@ function useMintImage() {
       setLoading(false);
       throw new Error("Failed to upload reference");
     }
-  }
+  };
 
-  async function performTransaction(
+  const performTransaction = async (
     wallet: any,
     metadata: any,
     baseUrl: string
-  ) {
+  ) => {
     if (!wallet) {
       throw new Error("Wallet is not defined.");
     }
@@ -93,7 +93,7 @@ function useMintImage() {
       console.error("Failed to sign and send transaction:", error);
       throw new Error("Failed to sign and send transaction");
     }
-  }
+  };
 
   const mintImage = async (photo: string) => {
     if (!activeAccountId) {
@@ -117,15 +117,13 @@ function useMintImage() {
       const metadata = { reference: uploadedData?.id };
       await performTransaction(wallet, metadata, baseUrl);
     } catch (error: any) {
-      setError(
-        error?.message || "An error occurred during the minting process."
-      );
+      setError(error?.message || "An error occurred during the minting process.");
     } finally {
       setLoading(false);
     }
   };
 
   return { mintImage, loading, error };
-}
+};
 
 export default useMintImage;
