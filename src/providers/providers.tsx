@@ -11,11 +11,9 @@ export const getCallbackUrl = () => {
   let callbackUrl = "";
 
   if (typeof window !== "undefined") {
-    isDev
-      ? `http://${window?.location.host}/`
-      : `http://${window?.location.host}/`;
+    callbackUrl = window?.location.origin
   }
-
+  
   return callbackUrl;
 };
 
