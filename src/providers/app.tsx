@@ -1,6 +1,6 @@
 import React, { useContext, useState, createContext } from "react";
 import { useRouter } from "next/navigation";
-import { useWallet } from "@mintbase-js/react";
+import { useMbWallet } from "@mintbase-js/react";
 import { uploadReference } from "@mintbase-js/storage";
 import { constants } from "@/constants";
 import { Heebo } from "next/font/google";
@@ -52,7 +52,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     React.MutableRefObject<any> | undefined
   >(undefined);
   const [currentPhoto, setCurrentPhoto] = useState(false);
-  const { selector, activeAccountId } = useWallet();
+  const { selector, activeAccountId } = useMbWallet();
   const [isLoading, setLoading] = useState(false);
 
   const { push } = useRouter();
@@ -94,7 +94,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
 
     const uploadedData = await uploadReference(refObject);
 
-    const currentUrl = new URL(window.location.href);
+    const currentUrl = new URL(window?.location?.href);
 
     const protocol = currentUrl.protocol;
     const domain = currentUrl.hostname;

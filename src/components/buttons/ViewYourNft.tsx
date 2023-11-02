@@ -2,11 +2,11 @@
 import React from "react";
 import Link from "next/link";
 import { constants } from "@/constants";
-import { useWallet } from "@mintbase-js/react";
+import { useMbWallet } from "@mintbase-js/react";
 import InlineSVG from "react-inlinesvg";
 
 const ViewYourNfts = () => {
-  const { activeAccountId, isConnected } = useWallet();
+  const { activeAccountId, isConnected } = useMbWallet();
 
   return isConnected ? (
     <div className="flex gap-2 items-center">

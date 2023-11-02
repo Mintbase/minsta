@@ -27,6 +27,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
       contractAddress={constants.tokenContractAddress}
       network={constants.network as any}
       callbackUrl={getCallbackUrl()}
+      onlyMbWallet
     >
       <AppProvider>
         <DataProvider>{children}</DataProvider>

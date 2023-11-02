@@ -2,7 +2,7 @@
 
 import { isUndefined } from "lodash";
 import { useMemo } from "react";
-import { useWallet } from "@mintbase-js/react";
+import { useMbWallet } from "@mintbase-js/react";
 import { constants } from "@/constants";
 import { useApp } from "@/providers/app";
 import { MINSTA_TEXTS } from "@/data/fallback";
@@ -39,7 +39,7 @@ export const useLeaderBoardData = () => {
     },
   };
 
-  const { activeAccountId } = useWallet();
+  const { activeAccountId } = useMbWallet();
 
   const { openModal } = useApp();
 
