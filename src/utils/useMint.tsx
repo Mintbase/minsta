@@ -12,7 +12,6 @@ interface ReferenceObject {
   media: File;
 }
 
-
 const useMintImage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -96,6 +95,66 @@ const useMintImage = () => {
     }
   };
 
+  const reduceImageSize = (
+    base64: string,
+    maxSizeMB: number
+  ): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      // Create an off-screen image element to load the base64 image
+      const img = new Image();
+      img.src = base64;
+
+      // Define the onload handler
+      img.onload = () => {
+        // Get original dimensions
+        const width = img.width;
+        const height = img.height;
+
+        // Calculate the size of the base64 string in bytes
+        const sizeInBytes =
+          base64.length * (3 / 4) -
+          (base64.endsWith("==") ? 2 : base64.endsWith("=") ? 1 : 0);
+        const maxSizeBytes = maxSizeMB * 1024 * 1024;
+
+        // If the image size is under the limit, resolve with the original base64
+        if (sizeInBytes <= maxSizeBytes) {
+          resolve(base64);
+          return;
+        }
+
+        // Calculate the scaling factor
+        const scalingFactor = Math.sqrt(maxSizeBytes / sizeInBytes);
+        const newWidth = Math.floor(width * scalingFactor);
+        const newHeight = Math.floor(height * scalingFactor);
+
+        // Create a canvas with the new dimensions
+        const canvas = document.createElement("canvas");
+        canvas.width = newWidth;
+        canvas.height = newHeight;
+
+        const ctx = canvas.getContext("2d");
+        if (!ctx) {
+          reject(new Error("Unable to get canvas context"));
+          return;
+        }
+
+        // Draw the scaled image on the canvas
+        ctx.drawImage(img, 0, 0, newWidth, newHeight);
+
+        // Convert the canvas to a base64 string
+        const resizedBase64 = canvas.toDataURL();
+
+        // Resolve with the resized base64 string
+        resolve(resizedBase64);
+      };
+
+      // Define the onerror handler
+      img.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
   const mintImage = async (photo: string) => {
     if (!activeAccountId) {
       setError("Active account ID is not set.");
@@ -107,7 +166,8 @@ const useMintImage = () => {
     try {
       const wallet = await getWallet();
       const photoFile = convertBase64ToFile(photo);
-      const titleAndDescription = await getTitleAndDescription(photo);
+      const replicatePhoto = await reduceImageSize(photo, 10); //10MB limit replicate
+      const titleAndDescription = await getTitleAndDescription(replicatePhoto);
       const refObject = {
         title: titleAndDescription.title,
         description: titleAndDescription.description,
@@ -118,7 +178,9 @@ const useMintImage = () => {
       const metadata = { reference: uploadedData?.id };
       await performTransaction(wallet, metadata, baseUrl);
     } catch (error: any) {
-      setError(error?.message || "An error occurred during the minting process.");
+      setError(
+        error?.message || "An error occurred during the minting process."
+      );
     } finally {
       setLoading(false);
     }
