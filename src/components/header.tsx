@@ -49,9 +49,16 @@ const Header = () => {
       case "/":
         return (
           <div className="flex w-full justify-between px-4 lg:px-12 items-center">
-            <div className="flex mt-4">
+            <div className="flex md:mt-4">
               <button className="font-bold text-xl" onClick={() => push("/")}>
-                <InlineSVG src="/images/nearcon_logo.svg" />
+                <InlineSVG
+                  src="/images/nearcon_logo.svg"
+                  className="hidden md:block"
+                />
+                <InlineSVG
+                  src="/images/small_nearcon_logo.svg"
+                  className="md:hidden"
+                />
               </button>
             </div>
             <div className="flex gap-4">
