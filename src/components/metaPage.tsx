@@ -49,7 +49,7 @@ export const MetaPage = ({ meta, slug }: any) => {
         Owner:{" "}
         <Link
           target="_blank"
-          href={`https://www.mintbase.xyz/contract/${meta?.data?.owners?.[0]?.owner}`}
+          href={`https://www.mintbase.xyz/human/${meta?.data?.owners?.[0]?.owner}`}
           className="text-linkColor"
         >
           {" "}
@@ -61,7 +61,7 @@ export const MetaPage = ({ meta, slug }: any) => {
         Contract:{" "}
         <Link
           target="_blank"
-          href={`https://www.mintbase.xyz/human/${meta?.data?.nft_metadata?.[0]?.nft_contract_id}`}
+          href={`https://www.mintbase.xyz/contract/${meta?.data?.nft_metadata?.[0]?.nft_contract_id}`}
           className="text-linkColor"
         >
           {" "}
