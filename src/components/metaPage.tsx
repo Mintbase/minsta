@@ -16,7 +16,7 @@ export const MetaPage = ({ meta, slug }: any) => {
       transition={{ type: "linear" }}
       className="flex wrap flex-col h-full w-5/6 mb-[30px] pt-20 md:w-[468px] m-auto"
     >
-      <div className=" aspect-square md:w-[468px] md:h-[468px] relative">
+      <div className="md:w-[468px] md:h-[468px] relative">
         <Image
           alt={meta?.data?.nft_metadata?.[0]?.title}
           src={meta?.data?.nft_metadata?.[0]?.media}
