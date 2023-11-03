@@ -5,18 +5,17 @@ import { AppProvider } from "./app";
 import { MintbaseWalletContextProvider } from "@mintbase-js/react";
 import { ReplicateProvider } from "./replicate";
 
-export const isDev = process.env.NEXT_PUBLIC_ENV === "dev" 
+export const isDev = process.env.NEXT_PUBLIC_ENV === "dev";
 
 export const getCallbackUrl = () => {
   let callbackUrl = "";
 
   if (typeof window !== "undefined") {
-    callbackUrl = window?.location.origin
+    callbackUrl = window?.location.origin;
   }
-  
+
   return callbackUrl;
 };
-
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -26,11 +25,11 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
       callbackUrl={getCallbackUrl()}
       onlyMbWallet
     >
-      <AppProvider>
-       <ReplicateProvider>
-        <DataProvider>{children}</DataProvider>
-        </ReplicateProvider>
-      </AppProvider>
+      <ReplicateProvider>
+        <AppProvider>
+          <DataProvider>{children}</DataProvider>
+        </AppProvider>
+      </ReplicateProvider>
     </MintbaseWalletContextProvider>
   );
 };
