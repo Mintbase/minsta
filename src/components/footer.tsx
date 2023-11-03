@@ -2,7 +2,7 @@
 
 import { constants } from "@/constants";
 import { useApp } from "@/providers/app";
-import { useWallet } from "@mintbase-js/react";
+import { useMbWallet } from "@mintbase-js/react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import InlineSVG from "react-inlinesvg";
@@ -27,7 +27,7 @@ export const FooterButton = ({ onClick }: { onClick: any }) => (
 const Footer = () => {
   const pathname = usePathname();
   const { push } = useRouter();
-  const { isConnected } = useWallet();
+  const { isConnected } = useMbWallet();
 
   const { takePicture, openModal } = useApp();
 

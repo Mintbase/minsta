@@ -2,13 +2,13 @@
 
 import { MINSTA_TEXTS } from "@/data/fallback";
 import { useApp } from "@/providers/app";
-import { useWallet } from "@mintbase-js/react";
+import { useMbWallet } from "@mintbase-js/react";
 import React, { useEffect } from "react";
 import InlineSVG from "react-inlinesvg";
 
 const Modal = ({ children }: { children?: React.ReactNode }) => {
   const { isMainModalOpen, closeModal } = useApp();
-  const { connect, isConnected } = useWallet();
+  const { connect, isConnected } = useMbWallet();
 
   const texts = {
     about: {
