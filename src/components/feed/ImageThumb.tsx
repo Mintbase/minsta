@@ -31,8 +31,7 @@ const ImageThumb = ({ token, index }: any) => {
       <div className=" aspect-square  sm:w-full md:w-72 h-72 xl:w-80 xl:h-80 relative">
         <Link
           key={`${token?.metadata_id}-${index}`}
-          href={`${constants.mintbaseBaseUrl}/meta/${token?.metadata_id}`}
-          target="_blank"
+          href={`meta/${token?.metadata_id}`}
           rel="noopener noreferrer"
           passHref
         >
@@ -55,9 +54,9 @@ const ImageThumb = ({ token, index }: any) => {
             onClick={(e) => {
               e.preventDefault();
               window.open(
-                `https://twitter.com/intent/tweet?url=%0aCheck%20out%20mine%3A%20${constants.mintbaseBaseUrl}/meta/${token?.metadata_id}%2F&via=mintbase&text=${constants.twitterText}`,
-                "_blank"
-              );
+              `https://twitter.com/intent/tweet?url=%0aCheck%20out%20mine%3A%20${window.location.origin}/meta/${decodeURIComponent(slug)}%2F&via=mintbase&text=${constants.twitterText}`,
+              "_blank"
+            );
             }}
           >
             Share
