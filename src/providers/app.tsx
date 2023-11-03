@@ -1,12 +1,7 @@
-import React, { useContext, useState, createContext } from "react";
-import { useRouter } from "next/navigation";
-import { useMbWallet } from "@mintbase-js/react";
-import { uploadReference } from "@mintbase-js/storage";
-import { constants } from "@/constants";
+import useMintImage from "@/utils/useMint";
 import { Heebo } from "next/font/google";
+import React, { createContext, useContext, useState } from "react";
 import "../style/global.css";
-import { generateRandomId } from "@/utils/generateRandomId";
-import { convertBase64ToFile } from "@/utils/base64ToFile";
 
 const heebo = Heebo({ subsets: ["latin"] });
 
@@ -52,13 +47,11 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     React.MutableRefObject<any> | undefined
   >(undefined);
   const [currentPhoto, setCurrentPhoto] = useState(false);
-  const { selector, activeAccountId } = useMbWallet();
-  const [isLoading, setLoading] = useState(false);
-
-  const { push } = useRouter();
 
   const [isMainModalOpen, setMainModalOpen] = useState(false);
   const [isRewardsModalOpen, setRewardsModalOpen] = useState(false);
+
+  const { mintImage, loading, error } = useMintImage();
 
   const handleOpenModal = (modalType: string) => {
     if (modalType === "default") {
@@ -81,44 +74,6 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     setCurrentPhoto(true);
   };
 
-  const _mintImage = async (photo: string) => {
-    if (!activeAccountId) return null;
-    const wallet = await selector.wallet();
-    setLoading(true);
-
-    const refObject = {
-      title: generateRandomId(10),
-      description: generateRandomId(10),
-      media: convertBase64ToFile(photo),
-    };
-
-    const uploadedData = await uploadReference(refObject);
-
-
-    const result = await wallet?.signAndSendTransaction({
-      signerId: activeAccountId,
-      receiverId: constants.proxyContractAddress,
-      actions: [
-        {
-          type: "FunctionCall",
-          params: {
-            methodName: "mint",
-            args: {
-              metadata: JSON.stringify({
-                reference: uploadedData?.id,
-                extra: null,
-              }),
-              nft_contract_id: constants.tokenContractAddress,
-            },
-            gas: "200000000000000",
-            deposit: "10000000000000000000000",
-          },
-        },
-      ],
-
-    });
-  };
-
   return (
     <>
       {" "}
@@ -137,8 +92,8 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
           closeModal: handleCloseModal,
           isMainModalOpen,
           isRewardsModalOpen,
-          mintImage: _mintImage,
-          isLoading: isLoading,
+          mintImage: mintImage,
+          isLoading: loading,
         }}
       >
         {children}

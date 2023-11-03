@@ -1,9 +1,9 @@
 import { constants } from "@/constants";
 import DataProvider from "./data";
 import { AppProvider } from "./app";
-import { WalletContextProvider } from "@mintbase-js/react";
 
 import { MintbaseWalletContextProvider } from "@mintbase-js/react";
+import { ReplicateProvider } from "./replicate";
 
 export const isDev = process.env.NEXT_PUBLIC_ENV === "dev" 
 
@@ -18,7 +18,6 @@ export const getCallbackUrl = () => {
 };
 
 
-
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <MintbaseWalletContextProvider
@@ -28,7 +27,9 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
       onlyMbWallet
     >
       <AppProvider>
+       <ReplicateProvider>
         <DataProvider>{children}</DataProvider>
+        </ReplicateProvider>
       </AppProvider>
     </MintbaseWalletContextProvider>
   );
