@@ -41,35 +41,29 @@ export const MetaPage = ({ meta, slug }: any) => {
         </button>
       </div>
       <h2 className="font-semibold	py-5 leading-7 text-mainText text-[24px]">
-        {" "}
         {meta?.data?.nft_metadata?.[0]?.title}
       </h2>
       <h3 className="text-[14px] mb-4 text-mainText">
-        {" "}
         {meta?.data?.nft_metadata?.[0]?.description}
       </h3>
       <p className="text-[14px] text-mainText">
-        {" "}
         Owner:{" "}
         <Link
           target="_blank"
-          href={`https://www.mintbase.xyz/contract/${meta?.data?.owners?.[0]?.owner}`}
+          href={`https://www.mintbase.xyz/human/${meta?.data?.owners?.[0]?.owner}`}
           className="text-linkColor"
         >
-          {" "}
-          {meta?.data?.owners?.[0]?.owner}{" "}
+          {meta?.data?.owners?.[0]?.owner}
         </Link>
       </p>
       <p className="text-[14px] text-mainText mb-4">
-        {" "}
         Contract:{" "}
         <Link
           target="_blank"
-          href={`https://www.mintbase.xyz/human/${meta?.data?.nft_metadata?.[0]?.nft_contract_id}`}
+          href={`https://www.mintbase.xyz/contract/${meta?.data?.nft_metadata?.[0]?.nft_contract_id}`}
           className="text-linkColor"
         >
-          {" "}
-          {meta?.data?.nft_metadata?.[0]?.nft_contract_id}{" "}
+          {meta?.data?.nft_metadata?.[0]?.nft_contract_id}
         </Link>
       </p>
       <div className="flex gap-2 items-center">
