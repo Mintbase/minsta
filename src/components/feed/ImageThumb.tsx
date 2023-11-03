@@ -54,7 +54,7 @@ const ImageThumb = ({ token, index }: any) => {
             onClick={(e) => {
               e.preventDefault();
               window.open(
-              `https://twitter.com/intent/tweet?url=%0aCheck%20out%20mine%3A%20${window.location.origin}/meta/${decodeURIComponent(slug)}%2F&via=mintbase&text=${constants.twitterText}`,
+              `https://twitter.com/intent/tweet?url=%0aCheck%20out%20mine%3A%20${window.location.origin}/meta/${decodeURIComponent(token?.metadata_id)}%2F&via=mintbase&text=${constants.twitterText}`,
               "_blank"
             );
             }}
