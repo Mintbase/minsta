@@ -48,7 +48,7 @@ const Header = () => {
     switch (pathname) {
       case "/":
         return (
-          <div className="flex w-full justify-between px-4 lg:px-12  items-center">
+          <div className="flex w-full justify-between px-4 lg:px-12 items-center">
             <div className="flex mt-4">
               <button className="font-bold text-xl" onClick={() => push("/")}>
                 <InlineSVG src="/images/nearcon_logo.svg" />
@@ -79,7 +79,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed left-0 top-0 flex w-full justify-center h-12 bg-primary text-headerText py-8">
+      <header className="fixed left-0 top-0 flex w-full justify-center h-12 bg-primary text-headerText py-8 border-b border-[#D2D4DA]">
         {renderHeaderButtons()}
       </header>
       {isClosed ? (
