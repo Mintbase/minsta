@@ -49,11 +49,11 @@ export const MetaPage = ({ meta, slug }: any) => {
         Owner:{" "}
         <Link
           target="_blank"
-          href={`https://www.mintbase.xyz/contract/${meta?.data?.owners?.[0].owner}`}
+          href={`https://www.mintbase.xyz/contract/${meta?.data?.owners?.[0]?.owner}`}
           className="text-linkColor"
         >
           {" "}
-          {meta?.data?.owners?.[0].owner}{" "}
+          {meta?.data?.owners?.[0]?.owner}{" "}
         </Link>
       </p>
       <p className="text-[14px] text-mainText mb-4">
