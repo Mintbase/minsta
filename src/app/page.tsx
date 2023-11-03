@@ -3,6 +3,7 @@ import { MINSTA_META } from "@/data/fallback";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+    title: `${process.env.NEXT_PUBLIC_META_TITLE} - ${process.env.NEXT_PUBLIC_META_DESCRIPTION} `,
   openGraph: {
     title: process.env.NEXT_PUBLIC_META_TITLE ?? MINSTA_META.title,
     description:
