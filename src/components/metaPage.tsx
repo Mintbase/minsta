@@ -14,9 +14,9 @@ export const MetaPage = ({ meta, slug }: any) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ type: "linear" }}
-      className="flex wrap flex-col h-full  pt-20 md:w-[468px] m-auto"
+      className="flex wrap flex-col h-full w-5/6 mb-[30px] pt-20 md:w-[468px] m-auto"
     >
-      <div className=" aspect-square w-[468px] h-[468px] relative">
+      <div className=" aspect-square md:w-[468px] md:h-[468px] relative">
         <Image
           alt={meta?.data?.nft_metadata?.[0]?.title}
           src={meta?.data?.nft_metadata?.[0]?.media}

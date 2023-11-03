@@ -1,8 +1,6 @@
 import { MetaPage } from "@/components/metaPage";
 import {
   graphQLService,
-  graphQlFetch,
-  graphqlQLServiceNew,
 } from "@/data/graphqlService";
 import { FETCH_META } from "@/data/queries/meta.graphql";
 import Head from "next/head";
