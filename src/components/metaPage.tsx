@@ -24,7 +24,7 @@ export const MetaPage = ({ meta, slug }: any) => {
           height="468"
         />
         <button
-          className="absolute top-3 right-3 bg-black text-white rounded p-1 text-xs px-2 py-1.5"
+          className="absolute top-3 right-3 bg-gradOne text-black rounded p-1 text-xs px-2 py-1.5"
           onClick={(e) => {
             e.preventDefault();
             window.open(
