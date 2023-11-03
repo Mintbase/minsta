@@ -1,11 +1,8 @@
 import { MetaPage } from "@/components/metaPage";
-import {
-  graphQLService,
-} from "@/data/graphqlService";
+import { graphQLService } from "@/data/graphqlService";
 import { FETCH_META } from "@/data/queries/meta.graphql";
 import Head from "next/head";
-import { redirect } from 'next/navigation';
-
+import { redirect } from "next/navigation";
 
 export async function generateMetadata({
   params,
@@ -19,14 +16,31 @@ export async function generateMetadata({
   });
 
   return {
+    metadataBase: new URL('https://nearcon.mintbase.xyz'),
+    title: `${process.env.NEXT_PUBLIC_APP_TITLE} - ${posts?.data?.nft_metadata?.[0]?.title}`,
+    openGraph: {
+      title: `${process.env.NEXT_PUBLIC_APP_TITLE} - ${posts?.data?.nft_metadata?.[0]?.title}`,
+    description:
+      process.env.NEXT_PUBLIC_META_DESCRIPTION,
+      siteName: `${process.env.NEXT_PUBLIC_APP_TITLE}`,
+      images: [
+        {
+          url: posts?.data?.nft_metadata?.[0]?.media,
+          width: 468,
+          height: 468,
+        },
+      ],
+      locale: "en_US",
+      type: "website",
+    },
     twitter: {
       card: "summary_large_image",
-      title: `${process.env.NEXT_PUBLIC_APP_TITLE} - ${posts?.data?.nft_metadata?.[0]?.title}` ,
+      title: `${process.env.NEXT_PUBLIC_APP_TITLE} - ${posts?.data?.nft_metadata?.[0]?.title}`,
       description: posts?.data?.nft_metadata?.[0]?.description,
       siteId: "1467726470533754880",
       creator: "@nextjs",
       creatorId: "1467726470533754880",
-         images: [posts?.data?.nft_metadata?.[0]?.media],
+      images: [posts?.data?.nft_metadata?.[0]?.media],
     },
   };
 }
@@ -38,8 +52,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
     network: "mainnet",
   });
 
-  if(!posts?.data?.nft_metadata?.[0]?.media) {
-    redirect('/')
+  if (!posts?.data?.nft_metadata?.[0]?.media) {
+    redirect("/");
   }
 
   return (
@@ -47,7 +61,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
       <Head>
         <title>My page title</title>
       </Head>
-      {posts?.data?.nft_metadata?.[0]?.media && <MetaPage meta={posts} slug={params.slug} /> } 
+      {posts?.data?.nft_metadata?.[0]?.media && (
+        <MetaPage meta={posts} slug={params.slug} />
+      )}
     </main>
   );
 }
