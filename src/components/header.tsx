@@ -80,7 +80,7 @@ const Header = () => {
       case "/camera":
         return headerButtonsNotHome(() => push("/"));
       default:
-        return null;
+       return headerButtonsNotHome(() => push("/"));
     }
   };
 
