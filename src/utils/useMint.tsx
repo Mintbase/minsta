@@ -1,4 +1,4 @@
-import { useWallet } from "@mintbase-js/react";
+import { useMbWallet } from "@mintbase-js/react";
 import { uploadReference } from "@mintbase-js/storage";
 import { useState } from "react";
 import { convertBase64ToFile } from "./base64ToFile";
@@ -15,7 +15,7 @@ interface ReferenceObject {
 const useMintImage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const { selector, activeAccountId } = useWallet();
+  const { selector, activeAccountId } = useMbWallet();
   const { addRequest } = useReplicate();
 
   const getWallet = async () => {
