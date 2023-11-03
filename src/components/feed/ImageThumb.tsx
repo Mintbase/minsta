@@ -38,7 +38,7 @@ const ImageThumb = ({ token, index }: any) => {
         >
           <Image
             key={token?.metadata_id}
-            src={imageUrl}
+            src={`https://image-cache-service-z3w7d7dnea-ew.a.run.app/thumbnail?url=${imageUrl}`}
             alt={`Token ${index}`}
             className="object-cover h-full w-full"
             width={320}
@@ -47,6 +47,8 @@ const ImageThumb = ({ token, index }: any) => {
             priority={index < 5}
             onError={handleError}
             placeholder="empty"
+
+            unoptimized
           />
           <button
             className="absolute top-3 right-3 bg-black text-white rounded p-1 text-xs px-2 py-1.5"
