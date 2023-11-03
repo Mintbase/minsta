@@ -24,11 +24,15 @@ export const MetaPage = ({ meta, slug }: any) => {
           height="468"
         />
         <button
-          className="absolute top-3 right-3 bg-black text-white rounded p-1 text-xs px-2 py-1.5"
+          className="absolute top-3 right-3 bg-gradOne text-black rounded p-1 text-xs px-2 py-1.5"
           onClick={(e) => {
             e.preventDefault();
             window.open(
-              `https://twitter.com/intent/tweet?url=%0aCheck%20out%20mine%3A%20${window.location.origin}/meta/${decodeURIComponent(slug)}%2F&via=mintbase&text=${constants.twitterText}`,
+              `https://twitter.com/intent/tweet?url=%0aCheck%20out%20mine%3A%20${
+                window.location.origin
+              }/meta/${decodeURIComponent(slug)}%2F&via=mintbase&text=${
+                constants.twitterText
+              }`,
               "_blank"
             );
           }}
