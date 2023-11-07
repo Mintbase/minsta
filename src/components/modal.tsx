@@ -45,7 +45,13 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
       >
         <div className="overflow-y-auto flex-1 h-auto w-full rounded-t-lg text-modalText p-5 max-w-md mx-auto overflow-y-auto flex flex-col">
           <div className="mb-8 flex flex-col gap-2 items-center mt-4">
-            <h1 className="text-3xl font-bold">{process.env.NEXT_PUBLIC_APP_TITLE || "Minsta"}</h1>
+            <h1 className="text-3xl font-bold">
+              {process.env.NEXT_PUBLIC_APP_TITLE || "Minsta"}
+            </h1>
+            <div className="text-xs">
+              <span className="font-bold">Avoid spamming.</span> Only pictures
+              related to NEARCON count for prizes.
+            </div>
           </div>
 
           <div className="text-modalText flex flex-col gap-8 items-start mb-12">
@@ -53,6 +59,8 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
               <InlineSVG
                 src="/images/photo_camera-2.svg"
                 className="fill-current text-icon"
+                width={40}
+                height={40}
               />
               <p className="text-sm">{texts.about.first}</p>
             </div>
@@ -60,13 +68,17 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
               <InlineSVG
                 src="/images/file_arrow_up.svg"
                 className="fill-current text-icon"
+                width={40}
+                height={40}
               />
               <p className="text-sm">{texts.about.sec}</p>
             </div>
-            <div className="flex gap-3 items-center ml-1">
+            <div className="flex gap-3 items-center">
               <InlineSVG
                 src="/images/trophy.svg"
                 className="fill-current text-icon"
+                width={40}
+                height={40}
               />
               <p className="text-sm">{texts.about.third}</p>
             </div>
