@@ -46,22 +46,22 @@
 
 
 :root {
-          --primary: #F3F4F8;
+          --primary: #FFFFFF;
           --secondary: #000;
           --mainBg: #FFFFFF;
-          --gradOne: #4472ad;
-          --gradTwo: #009dea;
+          --gradOne: #00EC97;
+          --gradTwo: #00EC97;
           --cardOne: #E8EAF0;
           --cardTwo: #049BE8;
           --linkColor: #4f58a3;
-          --icon: #4B9CE3;
-          --camera: #FFFFFF;
+          --icon: #9797FF;
+          --camera: #000000;
           --modalText: #000000;
           --leaderboardText: #000000;
           --headerText: #000000;
           --mainText: #000000;
           --freeUseText: #0A7D6C;
           --bgFreeUse: #0A7D6C1A;
-          --primaryBtnText: #FFFFFF;
+          --primaryBtnText: #000000;
           --secondaryBtnText: #000000;
         }

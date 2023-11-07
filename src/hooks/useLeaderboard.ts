@@ -11,8 +11,11 @@ import { useGraphQlQuery } from "@/data/useGraphQlQuery";
 const FetchLeaderboard = `
   query FetchLeaderboard($contractAddress: String) @cached {
     token: mb_views_nft_tokens(
-      where: { nft_contract_id: { _eq: $contractAddress } }
-    ) {
+      where: {
+        nft_contract_id: { _eq: $contractAddress }
+        burned_timestamp: { _is_null: true }
+        metadata_content_flag: { _is_null: true }
+      }) {
       ownerId: owner
     }
   }
@@ -30,12 +33,21 @@ export const useLeaderBoardData = () => {
 
   const texts = {
     prizes: {
-      one: process.env.NEXT_PUBLIC_TEXT_PRIZE_1ST_VAL || MINSTA_TEXTS.prizes.one,
-      two: process.env.NEXT_PUBLIC_TEXT_PRIZE_2ND_VAL || MINSTA_TEXTS.prizes.two,
-      three:process.env.NEXT_PUBLIC_TEXT_PRIZE_3RD_VAL || MINSTA_TEXTS.prizes.three,
-      title_one: process.env.NEXT_PUBLIC_TEXT_PRIZE_1ST_TITLE || MINSTA_TEXTS.prizes.title_one,
-      title_two: process.env.NEXT_PUBLIC_TEXT_PRIZE_2ND_TITLE || MINSTA_TEXTS.prizes.title_two,
-      title_three:  process.env.NEXT_PUBLIC_TEXT_PRIZE_3RD_TITLE || MINSTA_TEXTS.prizes.title_three,
+      one:
+        process.env.NEXT_PUBLIC_TEXT_PRIZE_1ST_VAL || MINSTA_TEXTS.prizes.one,
+      two:
+        process.env.NEXT_PUBLIC_TEXT_PRIZE_2ND_VAL || MINSTA_TEXTS.prizes.two,
+      three:
+        process.env.NEXT_PUBLIC_TEXT_PRIZE_3RD_VAL || MINSTA_TEXTS.prizes.three,
+      title_one:
+        process.env.NEXT_PUBLIC_TEXT_PRIZE_1ST_TITLE ||
+        MINSTA_TEXTS.prizes.title_one,
+      title_two:
+        process.env.NEXT_PUBLIC_TEXT_PRIZE_2ND_TITLE ||
+        MINSTA_TEXTS.prizes.title_two,
+      title_three:
+        process.env.NEXT_PUBLIC_TEXT_PRIZE_3RD_TITLE ||
+        MINSTA_TEXTS.prizes.title_three,
     },
   };
 
@@ -45,7 +57,6 @@ export const useLeaderBoardData = () => {
 
   const leaderboard = useMemo(() => {
     if (loading) return [];
-
 
     const accounts = data?.token;
 
