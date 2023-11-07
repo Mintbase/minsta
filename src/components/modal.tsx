@@ -58,6 +58,8 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
               <InlineSVG
                 src="/images/photo_camera-2.svg"
                 className="fill-current text-icon"
+                width={40}
+                height={40}
               />
               <p className="text-sm">{texts.about.first}</p>
             </div>
@@ -65,13 +67,17 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
               <InlineSVG
                 src="/images/file_arrow_up.svg"
                 className="fill-current text-icon"
+                width={40}
+                height={40}
               />
               <p className="text-sm">{texts.about.sec}</p>
             </div>
-            <div className="flex gap-3 items-center ml-1">
+            <div className="flex gap-3 items-center">
               <InlineSVG
                 src="/images/trophy.svg"
                 className="fill-current text-icon"
+                width={40}
+                height={40}
               />
               <p className="text-sm">{texts.about.third}</p>
             </div>
