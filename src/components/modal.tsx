@@ -48,8 +48,9 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
             <h1 className="text-3xl font-bold">
               {process.env.NEXT_PUBLIC_APP_TITLE || "Minsta"}
             </h1>
-            <div className="text-xs font-bold">
-              Avoid spamming. Only pictures related to NEARCON count for prizes.
+            <div className="text-xs">
+              <span className="font-bold">Avoid spamming.</span> Only pictures
+              related to NEARCON count for prizes.
             </div>
           </div>
 
