@@ -57,7 +57,7 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
                 className="fill-current text-icon"
               />
               <p className="text-sm flex flex-col">
-                {texts.about.first} <span className="text-[8px]">* Avoid spamming. Only pictures related to
+                {texts.about.first} <span className="text-[8px] leading-normal">* Avoid spamming. Only pictures related to
                 NEARCON count for prizes.</span>
               </p>
             </div>
