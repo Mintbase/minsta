@@ -48,6 +48,9 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
             <h1 className="text-3xl font-bold">
               {process.env.NEXT_PUBLIC_APP_TITLE || "Minsta"}
             </h1>
+            <div className="text-xs font-bold">
+              Avoid spamming. Only pictures related to NEARCON count for prizes.
+            </div>
           </div>
 
           <div className="text-modalText flex flex-col gap-8 items-start mb-12">
@@ -56,10 +59,7 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
                 src="/images/photo_camera-2.svg"
                 className="fill-current text-icon"
               />
-              <p className="text-sm flex flex-col">
-                {texts.about.first} <span className="text-[8px] leading-normal">* Avoid spamming. Only pictures related to
-                NEARCON count for prizes.</span>
-              </p>
+              <p className="text-sm">{texts.about.first}</p>
             </div>
             <div className="flex gap-3 items-center">
               <InlineSVG
