@@ -35,9 +35,8 @@ export const LeaderboardPage = () => {
         <div className="flex flex-col gap-4 w-full px-4 pb-24 max-w-3xl text-leaderboardText">
           <div className="flex">
             👤 <b className="pl-1"> {leaderboard.length}</b>{" "}
-            <span className="pl-1"> Minters</span>{" "}
-          </div>
-          <div className="flex">
+            <span className="pl-1 pr-3"> Minters</span>{" "}
+      
             🖼️ <b className="pl-1"> {sum}</b>{" "}
             <span className="pl-1"> Moments</span>{" "}
           </div>
