@@ -1,9 +1,16 @@
 import { HomePage } from "@/components/HomePage";
 import { MINSTA_META } from "@/data/fallback";
+import { getBlockedNfts } from "@/data/getBlockedNfts";
 import { Metadata } from "next";
 
+const getData = async (): Promise<string[]> => {
+  const blockedNfts = await getBlockedNfts();
+
+  return blockedNfts;
+};
+
 export const metadata: Metadata = {
-   title: `${process.env.NEXT_PUBLIC_META_TITLE} - ${process.env.NEXT_PUBLIC_META_DESCRIPTION} `,
+  title: `${process.env.NEXT_PUBLIC_META_TITLE} - ${process.env.NEXT_PUBLIC_META_DESCRIPTION} `,
   openGraph: {
     title: process.env.NEXT_PUBLIC_META_TITLE ?? MINSTA_META.title,
     description:
@@ -30,6 +37,9 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_META_DESCRIPTION ?? MINSTA_META.description,
 };
 
-export default function Home() {
-  return <HomePage />;
+export default async function Home() {
+  // fetch the blocklist server side at first load
+  const blockList = await getData();
+
+  return <HomePage blckd={blockList} />;
 }

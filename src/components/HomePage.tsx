@@ -8,13 +8,13 @@ import { FeedScroll } from "./feed/feedscroll";
 import { MemoizedImageThumb } from "./feed/ImageThumb";
 import { useBlockedNfts } from "@/hooks/useBlockedNfts";
 
-export const HomePage = () => {
+export const HomePage = ({blckd}: {blckd: string[]} ) => {
   const { newToken, tokensFetched, isLoading } = useFirstToken();
 
   const { blockedNfts } = useBlockedNfts();
 
   const firstTokenisBlocked =
-    newToken?.metadata_id && blockedNfts?.includes(newToken?.metadata_id);
+    newToken?.metadata_id && blockedNfts?.includes(newToken?.metadata_id) || newToken?.metadata_id && blckd?.includes(newToken?.metadata_id);
 
   useEffect(() => {
     let reloadTimeout: any;
@@ -31,6 +31,7 @@ export const HomePage = () => {
       clearTimeout(reloadTimeout);
     };
   }, [newToken]);
+
 
   return (
     <>
@@ -54,7 +55,7 @@ export const HomePage = () => {
 
           {tokensFetched?.length > 0 &&
             tokensFetched.map((token: any, index: number) => {
-              if (!!blockedNfts && blockedNfts.includes(token?.metadata_id)) {
+              if (!!blockedNfts && blockedNfts.includes(token?.metadata_id) || !!blckd && blckd.includes(token?.metadata_id)) {
                 return null;
               }
 
@@ -67,7 +68,7 @@ export const HomePage = () => {
               );
             })}
 
-          <FeedScroll blockedNfts={blockedNfts} />
+          <FeedScroll blockedNfts={blckd || blockedNfts} />
         </DynamicGrid>
       </main>
     </>
