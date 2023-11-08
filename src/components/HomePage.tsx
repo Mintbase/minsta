@@ -68,7 +68,7 @@ export const HomePage = ({blckd}: {blckd: string[]} ) => {
               );
             })}
 
-          <FeedScroll blockedNfts={blckd || blockedNfts} />
+          <FeedScroll blockedNfts={blckd} />
         </DynamicGrid>
       </main>
     </>
