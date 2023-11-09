@@ -18,7 +18,7 @@ export const fetchApi = async <T>(
   method: REQUEST_METHODS
 ): Promise<T | any> => {
   try {
-    const result = await fetch(url, REQUEST_OPTIONS(method));
+    const result = await fetch(url, {...REQUEST_OPTIONS(method), cache: 'no-store'});
 
     if (result) {
       return await result.json();
