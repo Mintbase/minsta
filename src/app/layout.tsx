@@ -7,6 +7,7 @@ import Footer from "@/components/footer";
 import Providers from "@/providers/providers";
 import Navigation from "@/components/navigation";
 import Modal from "@/components/modal";
+import MintingClosed from "@/components/MintingClosed";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
@@ -25,9 +26,8 @@ export default function RootLayout({
               <Header />
               <Footer />
             </Navigation>
-
+            <MintingClosed />
             {children}
-
             <Modal></Modal>
           </Providers>
         </div>
