@@ -1,4 +1,5 @@
 import { MetaPage } from "@/components/metaPage";
+import { constants } from "@/constants";
 import { graphQLService } from "@/data/graphqlService";
 import { FETCH_META } from "@/data/queries/meta.graphql";
 import Head from "next/head";
@@ -12,16 +13,15 @@ export async function generateMetadata({
   const posts = await graphQLService({
     query: FETCH_META,
     variables: { metadataId: decodeURIComponent(params.slug) },
-    network: "mainnet",
+    network: constants.network as "testnet" | "mainnet",
   });
 
   return {
-    metadataBase: new URL('https://nearcon.mintbase.xyz'),
+    metadataBase: new URL("https://nearcon.mintbase.xyz"),
     title: `${process.env.NEXT_PUBLIC_APP_TITLE} - ${posts?.data?.nft_metadata?.[0]?.title}`,
     openGraph: {
       title: `${process.env.NEXT_PUBLIC_APP_TITLE} - ${posts?.data?.nft_metadata?.[0]?.title}`,
-    description:
-      process.env.NEXT_PUBLIC_META_DESCRIPTION,
+      description: process.env.NEXT_PUBLIC_META_DESCRIPTION,
       siteName: `${process.env.NEXT_PUBLIC_APP_TITLE}`,
       images: [
         {
@@ -49,7 +49,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const posts = await graphQLService({
     query: FETCH_META,
     variables: { metadataId: decodeURIComponent(params.slug) },
-    network: "mainnet",
+    network: constants.network as "testnet" | "mainnet",
   });
 
   if (!posts?.data?.nft_metadata?.[0]?.media) {

@@ -46,7 +46,6 @@ const ImageThumb = ({ token, index }: any) => {
             priority={index < 5}
             onError={handleError}
             placeholder="empty"
-
             unoptimized
           />
           <button
