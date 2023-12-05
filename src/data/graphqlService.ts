@@ -1,7 +1,7 @@
 import { nearEndpoints } from "./network";
 import { constants } from "@/constants";
 import { extractErrorMessage } from "@/providers/data";
-import request, { gql } from "graphql-request";
+import request from "graphql-request";
 import { toast } from "react-hot-toast";
 
 export type GqlFetchResult<T> = {
@@ -35,18 +35,12 @@ export const graphqlQLServiceNew = async <T>({
     const data = await request(baseUrl, query, variables, headers);
     return { data: data as T };
   } catch (error: unknown) {
-    const isDev =
-      window.location.href.includes("localhost") ||
-      window.location.href.includes("vercel.app");
+    const errMsg = extractErrorMessage(error as Error);
 
-      const errMsg = extractErrorMessage(error as Error)
-
-    if (isDev) {
-      toast.error(` ${errMsg}`, {
-        duration: 40000,
-        position: "bottom-right",
-      });
-    }
+    toast.error(`src/data/graphqlService.ts \n \n Query: ${query} \n \n ${errMsg}`, {
+      duration: 40000,
+      position: "bottom-right",
+    });
 
     throw error;
   }

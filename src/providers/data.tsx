@@ -1,10 +1,13 @@
-import { Alert } from "@/components/Alert";
 import {
   QueryCache,
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
+
+import { useIsClient } from 'usehooks-ts'
+
+import { Alert } from "../components/Alert";
 
 export function extractErrorMessage(error: Error): string {
   if (error instanceof Error) {
@@ -27,16 +30,18 @@ export const queryClient = new QueryClient({
   queryCache: new QueryCache({
     onError: (error) => {
       const errMsg = extractErrorMessage(error as Error);
-      toast.error(errMsg, { duration: 40000, position: "top-center" });
+      toast.error(`src/providers/data.tsx \n \n ${errMsg}`, { duration: 40000, position: "top-center" });
     },
   }),
 });
 
 const DataProvider = ({ children }: { children: React.ReactNode }) => {
+  const isClient = useIsClient()
+
   return (
     <QueryClientProvider client={queryClient}>
       {children}
-      <Alert />
+      {isClient && <Alert /> }
     </QueryClientProvider>
   );
 };
