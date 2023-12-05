@@ -7,9 +7,10 @@ import { useFirstToken } from "@/hooks/useFirstToken";
 import { FeedScroll } from "./feed/feedscroll";
 import { MemoizedImageThumb } from "./feed/ImageThumb";
 import { useBlockedNfts } from "@/hooks/useBlockedNfts";
+import { TokenData } from "@/data/types";
 
 export const HomePage = () => {
-  const { newToken, tokensFetched, isLoading } = useFirstToken();
+  const { newToken, tokensFetched, isLoading, tokenError } = useFirstToken();
 
   const { blockedNfts } = useBlockedNfts();
 
@@ -17,7 +18,7 @@ export const HomePage = () => {
     newToken?.metadata_id && blockedNfts?.includes(newToken?.metadata_id);
 
   useEffect(() => {
-    let reloadTimeout: any;
+    let reloadTimeout: ReturnType<typeof setTimeout>;
 
     if (!newToken?.media) {
       reloadTimeout = setTimeout(() => {
@@ -52,8 +53,9 @@ export const HomePage = () => {
             />
           ) : null}
 
-          {tokensFetched?.length > 0 &&
-            tokensFetched.map((token: any, index: number) => {
+          {tokensFetched &&
+            tokensFetched?.length > 0 &&
+            tokensFetched.map((token: TokenData, index: number) => {
               if (!!blockedNfts && blockedNfts.includes(token?.metadata_id)) {
                 return null;
               }

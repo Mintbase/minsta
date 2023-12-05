@@ -43,6 +43,7 @@ query minsta_fetch_firstToken($accountId: String!, $contractAddress: String) {
     createdAt: minted_timestamp
     media
     title
+    mintbase
     description
     metadata_id
   }

@@ -1,5 +1,6 @@
 import { constants } from "@/constants";
 import { graphqlQLServiceNew } from "@/data/graphqlService";
+import { InfiniteScrollHook, InfiniteScrollHookResult } from "@/data/types";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useReducer } from "react";
 import { useMediaQuery } from "usehooks-ts";
@@ -44,8 +45,8 @@ const reducer = (state: any, action: any) => {
 };
 
 const useInfiniteScrollGQL = (
-  queryKey: any,
-  isVisible: any,
+  queryKey: string,
+  isVisible: boolean,
   graphQLObj?: any
 ) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -63,11 +64,12 @@ const useInfiniteScrollGQL = (
       offset: state.offset === 1 ? 1 : (Number(state.offset) - 1) * fetchNum,
     };
 
-    const data = await graphqlQLServiceNew({
+    const scrollData = await graphqlQLServiceNew<InfiniteScrollHook>({
       query: graphQLObj.query,
       variables: variables,
-    }) as any
+    }) as InfiniteScrollHookResult
 
+    const {data} = scrollData
 
     dispatch({ type: "SET_LOADING", payload: false });
     dispatch({ type: "SET_OFFSET", payload: state.offset + 1 });

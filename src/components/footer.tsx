@@ -5,9 +5,10 @@ import { useApp } from "@/providers/app";
 import { useMbWallet } from "@mintbase-js/react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { ReactEventHandler } from "react";
 import InlineSVG from "react-inlinesvg";
 
-export const FooterButton = ({ onClick }: { onClick: any }) => (
+export const FooterButton = ({ onClick }: { onClick: ReactEventHandler }) => (
   <button
     className="rounded-full h-24 w-24 bg-primary absolute -top-12 flex items-center justify-center"
     onClick={onClick}

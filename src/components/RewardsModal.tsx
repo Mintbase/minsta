@@ -1,6 +1,5 @@
 "use client";
 
-import { constants } from "@/constants";
 import { useApp } from "@/providers/app";
 import { useMbWallet } from "@mintbase-js/react";
 import React, { useEffect } from "react";

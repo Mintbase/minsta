@@ -2,10 +2,11 @@ import { FETCH_FIRST_TOKEN } from "@/data/queries/feed.graphl";
 import { useGraphQlQuery } from "@/data/useGraphQlQuery";
 import { constants } from "@/constants";
 import { useEffect, useState } from "react";
+import { FirstTokenResult, TokenData, TokenFeedData } from "@/data/types";
 
-export const useFirstToken: any = () => {
-  const [newToken, setNewToken] = useState<any>(null);
-  const [tokensFetched, setTokensFetched] = useState<any>(null);
+export const useFirstToken = (): FirstTokenResult => {
+  const [newToken, setNewToken] = useState<TokenData | null>(null);
+  const [tokensFetched, setTokensFetched] = useState<TokenData[] | null>(null);
 
   const queryObj = {
     queryName: "q_FETCH_FIRST_TOKEN",
@@ -17,9 +18,14 @@ export const useFirstToken: any = () => {
     queryOpts: { staleTime: Infinity, refetchInterval: 30000 },
   };
 
-  const { data, isLoading, refetch: refetchToken } = useGraphQlQuery(queryObj);
+  const { data, isLoading, refetch: refetchToken, error } = useGraphQlQuery<TokenFeedData>(queryObj);
 
   useEffect(() => {
+
+    if(error){
+      console.error("GraphQL Error:", error);
+    }
+
     // media delay
 
     if (tokensFetched && tokensFetched?.length > 1) {
@@ -28,7 +34,7 @@ export const useFirstToken: any = () => {
     // new media aint null
     if (data?.token[0]?.media !== null) {
       // but the newToken previous stored is somehow an async bug so it re-state the new media
-      if (newToken?.media == null) {
+      if (newToken?.media == null && data?.token[0]) {
         setNewToken(data?.token[0]);
       }
 
@@ -51,7 +57,7 @@ export const useFirstToken: any = () => {
 
     if (
       (data?.token[0] && !newToken) ||
-      (data?.token[0] && tokensFetched?.length < 1)
+      (data?.token[0] && tokensFetched && tokensFetched?.length < 1)
     ) {
       setNewToken(data?.token[0]);
     }
@@ -63,16 +69,16 @@ export const useFirstToken: any = () => {
       Number(data?.token[0]?.id) === Number(newToken?.id) + 1 &&
       data?.token[0]?.media
     ) {
-      let newTokensFetched = null;
+    let newTokensFetched: TokenData[] = [];
 
       if (!tokensFetched) {
         newTokensFetched = [newToken];
       }
 
-      if (tokensFetched?.length == 1) {
-        newTokensFetched = [newToken, tokensFetched];
+      if (tokensFetched && tokensFetched?.length == 1) {
+        newTokensFetched = [newToken, ...tokensFetched];
       }
-      if (tokensFetched?.length > 1) {
+      if (tokensFetched && tokensFetched?.length > 1) {
         newTokensFetched = [newToken, ...tokensFetched];
       }
 
@@ -85,5 +91,6 @@ export const useFirstToken: any = () => {
     newToken: !isLoading ? newToken : null,
     tokensFetched,
     isLoading,
+    tokenError: error
   };
 };

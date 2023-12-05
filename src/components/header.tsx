@@ -2,6 +2,7 @@
 import { useApp } from "@/providers/app";
 import { useMbWallet } from "@mintbase-js/react";
 import { usePathname, useRouter } from "next/navigation";
+import { ReactEventHandler } from "react";
 import InlineSVG from "react-inlinesvg";
 
 const Header = () => {
@@ -19,7 +20,7 @@ const Header = () => {
     return connect();
   };
 
-  const headerButtonsNotHome = (onClick: any) => (
+  const headerButtonsNotHome = (onClick: ReactEventHandler) => (
     <div className="flex w-full justify-between px-4 lg:px-12 items-center">
       <button className="h-8 w-8 text-headerText" onClick={onClick}>
         <InlineSVG
