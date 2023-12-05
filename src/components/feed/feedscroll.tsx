@@ -9,8 +9,6 @@ export const FeedScroll = ({ blockedNfts }: any) => {
   const entry = useIntersectionObserver(ref, {});
   const isVisible = !!entry?.isIntersecting;
 
-
-
   const { items, loadingItems, total, error } = useInfiniteScrollGQL(
     "q_FETCH_FEED",
     isVisible,
@@ -39,7 +37,16 @@ export const FeedScroll = ({ blockedNfts }: any) => {
   }, [blockedNfts, items]);
 
   if (error) {
-    return <> Error.</>;
+    return (
+      <div className="text-xl inline-block ">
+        {" "}
+        Error. <br/> Please contact Mintbase Team at{" "}
+        <a className="block underline" href="https://t.me/mintdev">
+          {" "}
+          Mintbase DEV Telegram
+        </a>
+      </div>
+    );
   }
 
   return (
