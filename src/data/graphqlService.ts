@@ -40,6 +40,7 @@ export const graphqlQLServiceNew = async <T>({
     toast.error(`src/data/graphqlService.ts \n \n Query: ${query} \n \n ${errMsg}`, {
       duration: 40000,
       position: "bottom-right",
+      id:"graphQl"
     });
 
     throw error;

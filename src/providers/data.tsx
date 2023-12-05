@@ -30,7 +30,7 @@ export const queryClient = new QueryClient({
   queryCache: new QueryCache({
     onError: (error) => {
       const errMsg = extractErrorMessage(error as Error);
-      toast.error(`src/providers/data.tsx \n \n ${errMsg}`, { duration: 40000, position: "top-center" });
+      toast.error(`src/providers/data.tsx \n \n ${errMsg}`, { duration: 40000, position: "bottom-left",   id:"query" });
     },
   }),
 });
