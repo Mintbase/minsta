@@ -26,3 +26,10 @@ export interface FirstTokenResult {
   tokensFetched: TokenData[] | null;
   newToken: TokenData | null;
 }
+
+export interface FirstTokenProps {
+  newToken: TokenData | null;
+  isLoading: boolean;
+  firstTokenisBlocked: boolean;
+  isFirstTokenError:boolean
+}

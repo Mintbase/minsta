@@ -9,6 +9,8 @@ export const FeedScroll = ({ blockedNfts }: any) => {
   const entry = useIntersectionObserver(ref, {});
   const isVisible = !!entry?.isIntersecting;
 
+
+
   const { items, loadingItems, total, error } = useInfiniteScrollGQL(
     "q_FETCH_FEED",
     isVisible,
@@ -26,7 +28,7 @@ export const FeedScroll = ({ blockedNfts }: any) => {
       uniqueMetadataIds.add(token.metadata_id);
 
       // Move the filtering logic here
-      if (!!blockedNfts && blockedNfts.includes(token?.metadata_id)) {
+      if (!!blockedNfts && blockedNfts?.includes(token?.metadata_id)) {
         return false;
       }
 
