@@ -10,6 +10,13 @@ export const LeaderboardPage = () => {
   const { openModal, leaderboard, activeAccountId, texts } =
     useLeaderBoardData();
 
+  const nfts: any = [];
+  leaderboard?.forEach(({ count }) => {
+    nfts.push(count);
+  });
+
+  const sum = nfts?.reduce((x: number, y: number) => x + y, 0);
+
   return (
     <>
       <main className="pt-20 flex flex-col gap-6 items-center justify-center text-mainText">
@@ -26,6 +33,12 @@ export const LeaderboardPage = () => {
           ) : null}
         </div>
         <div className="flex flex-col gap-4 w-full px-4 pb-24 max-w-3xl text-leaderboardText">
+          <div className="flex">
+            👤 <b className="pl-1"> {leaderboard.length}</b>{" "}
+            <span className="pl-1 pr-3"> Minters</span> 🖼️{" "}
+            <b className="pl-1"> {sum}</b>{" "}
+            <span className="pl-1"> Moments</span>{" "}
+          </div>
           {leaderboard?.map(({ account, count }, index) => {
             const isCurrentUser = account === activeAccountId;
             const isFirst = index === 0;

@@ -52,8 +52,8 @@ export const HomePage = () => {
             />
           ) : null}
 
-          {tokensFetched?.length > 0 &&
-            tokensFetched.map((token: any, index: number) => {
+          {tokensFetched?.length > 0 ? (
+            tokensFetched?.map((token: any, index: number) => {
               if (!!blockedNfts && blockedNfts.includes(token?.metadata_id)) {
                 return null;
               }
@@ -65,7 +65,10 @@ export const HomePage = () => {
                   index={index}
                 />
               );
-            })}
+            })
+          ) : (
+            <p>Nothing here yet 👀</p>
+          )}
 
           <FeedScroll blockedNfts={blockedNfts} />
         </DynamicGrid>
