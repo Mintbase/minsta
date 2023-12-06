@@ -38,7 +38,7 @@ export const FeedScroll = ({ blockedNfts }: any) => {
 
   if (error) {
     return (
-      <div className="text-xl inline-block ">
+      <div className="text-mainText text-xl inline-block ">
         {" "}
         Error. <br/> Please contact Mintbase Team at{" "}
         <a className="block underline" href="https://t.me/mintdev">
