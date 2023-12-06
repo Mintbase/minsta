@@ -52,20 +52,19 @@ export const HomePage = () => {
             />
           ) : null}
 
-          {tokensFetched?.length > 0 &&
-            tokensFetched.map((token: any, index: number) => {
-              if (!!blockedNfts && blockedNfts.includes(token?.metadata_id)) {
-                return null;
-              }
+          {tokensFetched?.map((token: any, index: number) => {
+            if (!!blockedNfts && blockedNfts.includes(token?.metadata_id)) {
+              return null;
+            }
 
-              return (
-                <MemoizedImageThumb
-                  key={token?.metadata_id}
-                  token={token}
-                  index={index}
-                />
-              );
-            })}
+            return (
+              <MemoizedImageThumb
+                key={token?.metadata_id}
+                token={token}
+                index={index}
+              />
+            );
+          })}
 
           <FeedScroll blockedNfts={blockedNfts} />
         </DynamicGrid>
