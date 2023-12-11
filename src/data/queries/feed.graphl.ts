@@ -23,7 +23,6 @@ export const FETCH_FEED = gql`
       id: token_id
       createdAt: minted_timestamp
       media
-      mintbase
       title
       description
       metadata_id
@@ -44,7 +43,6 @@ query minsta_fetch_firstToken($accountId: String!, $contractAddress: String) {
     createdAt: minted_timestamp
     media
     title
-    mintbase
     description
     metadata_id
   }
