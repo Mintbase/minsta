@@ -26,7 +26,7 @@ export const FeedScroll = ({ blockedNfts }: any) => {
       uniqueMetadataIds.add(token.metadata_id);
 
       // Move the filtering logic here
-      if (!!blockedNfts && blockedNfts.includes(token?.metadata_id)) {
+      if (!!blockedNfts && blockedNfts?.includes(token?.metadata_id)) {
         return false;
       }
 
@@ -37,7 +37,16 @@ export const FeedScroll = ({ blockedNfts }: any) => {
   }, [blockedNfts, items]);
 
   if (error) {
-    return <> Error.</>;
+    return (
+      <div className="text-mainText text-xl inline-block ">
+        {" "}
+        Error. <br/> Please contact Mintbase Team at{" "}
+        <a className="block underline" href="https://t.me/mintdev">
+          {" "}
+          Mintbase DEV Telegram
+        </a>
+      </div>
+    );
   }
 
   return (

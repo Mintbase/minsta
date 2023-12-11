@@ -1,3 +1,18 @@
+import { ReactNode } from "react";
+
+interface GridProps {
+  children: ReactNode;
+  nCols?: number;
+  nColsXl?: number;
+  nColsXXl?: number;
+  mdCols?: number;
+  lgCols?: number;
+  noMargin?: number;
+  nColsXXXl?: number;
+  nGap?: number;
+  nGapMobile?: number;
+}
+
 export const DynamicGrid = ({
   children,
   nCols,
@@ -9,18 +24,7 @@ export const DynamicGrid = ({
   noMargin,
   nGap,
   nGapMobile,
-}: {
-  children: any;
-  nCols?: any;
-  nColsXl?: any;
-  nColsXXl?: any;
-  mdCols?: any;
-  lgCols?: any;
-  noMargin?: any;
-  nColsXXXl?: any;
-  nGap?: any;
-  nGapMobile?: any;
-}) => {
+}: GridProps): JSX.Element => {
   const colsXXl = nColsXXl ? `xxl:grid-cols-${nColsXXl} ` : `xxl:grid-cols-5`;
 
   const colsMd = mdCols ? `md:grid-cols-${mdCols}` : ` md:grid-cols-2`;

@@ -1,7 +1,10 @@
 import { constants } from "@/constants";
 import { graphqlQLServiceNew } from "@/data/graphqlService";
+import { InfiniteScrollHook, InfiniteScrollHookResult } from "@/data/types";
+import { extractErrorMessage } from "@/providers/data";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useReducer } from "react";
+import { toast } from "react-hot-toast";
 import { useMediaQuery } from "usehooks-ts";
 
 const initialState = {
@@ -44,8 +47,8 @@ const reducer = (state: any, action: any) => {
 };
 
 const useInfiniteScrollGQL = (
-  queryKey: any,
-  isVisible: any,
+  queryKey: string,
+  isVisible: boolean,
   graphQLObj?: any
 ) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -63,11 +66,12 @@ const useInfiniteScrollGQL = (
       offset: state.offset === 1 ? 1 : (Number(state.offset) - 1) * fetchNum,
     };
 
-    const data = await graphqlQLServiceNew({
+    const scrollData = (await graphqlQLServiceNew<InfiniteScrollHook>({
       query: graphQLObj.query,
       variables: variables,
-    }) as any
+    })) as InfiniteScrollHookResult;
 
+    const { data } = scrollData;
 
     dispatch({ type: "SET_LOADING", payload: false });
     dispatch({ type: "SET_OFFSET", payload: state.offset + 1 });
@@ -105,6 +109,9 @@ const useInfiniteScrollGQL = (
     if (error) {
       console.error(error);
       dispatch({ type: "SET_ERROR", payload: error });
+
+      const errMsg = extractErrorMessage(error as Error);
+       toast.error(`src/hooks/useInfiniteScroll.ts \n \n Query: ${queryKey} \n \n ${errMsg}`, { duration: 40000, position: "bottom-left",   id:"scroll" });
     }
   }, [error]);
 

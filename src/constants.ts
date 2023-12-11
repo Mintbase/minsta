@@ -12,8 +12,7 @@ const mintbaseBaseUrl =
   process.env.NEXT_PUBLIC_BASE_URL || "https://mintbase.xyz";
 
 const mintbaseWalletUrl =
-  process.env.NEXT_PUBLIC_MINTBASE_WALLET_URL ||
-  "https://wallet.mintbase.xyz";
+  process.env.NEXT_PUBLIC_MINTBASE_WALLET_URL || "https://wallet.mintbase.xyz";
 
 const twitterText =
   process.env.NEXT_PUBLIC_TWITTER ||

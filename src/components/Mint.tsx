@@ -5,8 +5,8 @@ export function Mint({
   backStep,
   currentPhoto,
 }: {
-  backStep: () => any;
-  currentPhoto: any;
+  backStep: () => void;
+  currentPhoto: string;
 }) {
   const { isLoading, mintImage } = useApp();
 

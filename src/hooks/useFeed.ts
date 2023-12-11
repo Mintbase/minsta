@@ -1,6 +1,7 @@
 import { useMemo } from "react";
-import { FETCH_FEED, FETCH_FIRST_TOKEN } from "../data/queries/feed.graphl";
+import { FETCH_FEED } from "../data/queries/feed.graphl";
 import { useGraphQlQuery } from "@/data/useGraphQlQuery";
+import { TokenData, TokenFeedData } from "@/data/types";
 
 
 
@@ -18,13 +19,14 @@ const useFeed = (props: any) => {
     data,
     isLoading,
     isFetching,
+    error,
     refetch: refetchNfts,
-  } = useGraphQlQuery(queryObj);
+  } = useGraphQlQuery<TokenFeedData>(queryObj);
 
   const memoizedData = useMemo(() => {
     const uniqueMetadataIds = new Set<string>();
 
-    const filteredData =  data?.data?.token?.filter((token: any) => {
+    const filteredData =  data?.token?.filter((token: TokenData) => {
       if (uniqueMetadataIds.has(token.metadata_id)) {
         return false;
       }
@@ -42,6 +44,7 @@ const useFeed = (props: any) => {
     isLoading,
     isFetching,
     refetchNfts,
+    tokenFeedError: error
   };
 };
 

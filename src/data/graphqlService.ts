@@ -1,21 +1,23 @@
 import { nearEndpoints } from "./network";
 import { constants } from "@/constants";
-import request, { gql } from "graphql-request";
+import { extractErrorMessage } from "@/providers/data";
+import request from "graphql-request";
+import { toast } from "react-hot-toast";
 
 export type GqlFetchResult<T> = {
   data?: T;
-  error?: string;
+  error?: unknown;
 };
 
-export const graphqlQLServiceNew = async ({
+export const graphqlQLServiceNew = async <T>({
   query,
   variables,
   network,
 }: {
-  query: any;
+  query: string;
   variables?: Record<string, unknown>;
   network?: "testnet" | "mainnet";
-}) => {
+}): Promise<GqlFetchResult<T>> => {
   const net = network ?? constants.network;
   const isTestnet = net === "testnet";
 
@@ -26,12 +28,23 @@ export const graphqlQLServiceNew = async ({
   const headers = {
     "content-type": "application/json",
     "mb-api-key": "anon",
-    "Access-Control-Allow-Origin": "*"
+    "Access-Control-Allow-Origin": "*",
   };
 
-  const queryLoad = () => request(baseUrl, query, variables, headers);
+  try {
+    const data = await request(baseUrl, query, variables, headers);
+    return { data: data as T };
+  } catch (error: unknown) {
+    const errMsg = extractErrorMessage(error as Error);
 
-  return await queryLoad();
+    toast.error(`src/data/graphqlService.ts \n \n Query: ${query} \n \n ${errMsg}`, {
+      duration: 40000,
+      position: "bottom-right",
+      id:"graphQl"
+    });
+
+    throw error;
+  }
 };
 
 export const graphQLService = async ({
@@ -39,7 +52,7 @@ export const graphQLService = async ({
   variables,
   network,
 }: {
-  query: any;
+  query: string;
   variables?: Record<string, unknown>;
   network?: "testnet" | "mainnet";
 }) => {
@@ -60,7 +73,7 @@ export const graphQLService = async ({
 
 export const graphQlFetch = async (
   query: string,
-  variables: any,
+  variables?: Record<string, unknown>,
   network?: "testnet" | "mainnet"
 ): Promise<Response> => {
   const net = network ?? constants.network;
