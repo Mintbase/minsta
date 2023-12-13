@@ -6,8 +6,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { constants } from "@/constants";
 import InlineSVG from "react-inlinesvg";
+import { getImageUrl } from "@/utils/imageUrl";
 
 export const MetaPage = ({ meta, slug }: any) => {
+  const finalUrl = getImageUrl(meta?.data?.nft_metadata?.[0]?.media);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -19,7 +22,7 @@ export const MetaPage = ({ meta, slug }: any) => {
       <div className="md:w-[468px] md:h-[468px] relative">
         <Image
           alt={meta?.data?.nft_metadata?.[0]?.title}
-          src={meta?.data?.nft_metadata?.[0]?.media}
+          src={finalUrl}
           width="468"
           height="468"
         />
@@ -28,7 +31,11 @@ export const MetaPage = ({ meta, slug }: any) => {
           onClick={(e) => {
             e.preventDefault();
             window.open(
-              `https://twitter.com/intent/tweet?url=%0aCheck%20out%20mine%3A%20${window.location.origin}/meta/${decodeURIComponent(slug)}%2F&via=mintbase&text=${constants.twitterText}`,
+              `https://twitter.com/intent/tweet?url=%0aCheck%20out%20mine%3A%20${
+                window.location.origin
+              }/meta/${decodeURIComponent(slug)}%2F&via=mintbase&text=${
+                constants.twitterText
+              }`,
               "_blank"
             );
           }}

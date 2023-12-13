@@ -5,6 +5,7 @@ import { constants } from "@/constants";
 
 import Image from "next/image";
 import Link from "next/link";
+import { getImageUrl } from "@/utils/imageUrl";
 
 const ImageThumb = ({ token, index }: any) => {
   const imageUrl = token?.media;
@@ -27,9 +28,7 @@ const ImageThumb = ({ token, index }: any) => {
     );
 
   if (imageUrl) {
-    const finalUrl = imageUrl.includes("https://arweave.net")
-      ? imageUrl
-      : `https://arweave.net/${imageUrl}`;
+    const finalUrl = getImageUrl(imageUrl);
 
     return (
       <div className=" aspect-square  sm:w-full md:w-72 h-72 xl:w-80 xl:h-80 relative">
