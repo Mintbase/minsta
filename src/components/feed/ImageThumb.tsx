@@ -5,6 +5,7 @@ import { constants } from "@/constants";
 
 import Image from "next/image";
 import Link from "next/link";
+import { getImageUrl } from "@/utils/imageUrl";
 
 const ImageThumb = ({ token, index }: any) => {
   const imageUrl = token?.media;
@@ -27,6 +28,8 @@ const ImageThumb = ({ token, index }: any) => {
     );
 
   if (imageUrl) {
+    const finalUrl = getImageUrl(imageUrl);
+
     return (
       <div className=" aspect-square  sm:w-full md:w-72 h-72 xl:w-80 xl:h-80 relative">
         <Link
@@ -37,7 +40,7 @@ const ImageThumb = ({ token, index }: any) => {
         >
           <Image
             key={token?.metadata_id}
-            src={`https://image-cache-service-z3w7d7dnea-ew.a.run.app/thumbnail?url=${imageUrl}`}
+            src={`https://image-cache-service-z3w7d7dnea-ew.a.run.app/thumbnail?url=${finalUrl}`}
             alt={`Token ${index}`}
             className="object-cover h-full w-full"
             width={320}
@@ -53,9 +56,13 @@ const ImageThumb = ({ token, index }: any) => {
             onClick={(e) => {
               e.preventDefault();
               window.open(
-              `https://twitter.com/intent/tweet?url=%0aCheck%20out%20mine%3A%20${window.location.origin}/meta/${decodeURIComponent(token?.metadata_id)}%2F&via=mintbase&text=${constants.twitterText}`,
-              "_blank"
-            );
+                `https://twitter.com/intent/tweet?url=%0aCheck%20out%20mine%3A%20${
+                  window.location.origin
+                }/meta/${decodeURIComponent(
+                  token?.metadata_id
+                )}%2F&via=mintbase&text=${constants.twitterText}`,
+                "_blank"
+              );
             }}
           >
             Share
