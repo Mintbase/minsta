@@ -15,6 +15,8 @@ export const FeedScroll = ({ blockedNfts }: any) => {
     { query: FETCH_FEED }
   );
 
+  console.log({ items });
+
   const memoizedData = useMemo(() => {
     const uniqueMetadataIds = new Set<string>();
 
@@ -40,7 +42,7 @@ export const FeedScroll = ({ blockedNfts }: any) => {
     return (
       <div className="text-mainText text-xl inline-block ">
         {" "}
-        Error. <br/> Please contact Mintbase Team at{" "}
+        Error. <br /> Please contact Mintbase Team at{" "}
         <a className="block underline" href="https://t.me/mintdev">
           {" "}
           Mintbase DEV Telegram
