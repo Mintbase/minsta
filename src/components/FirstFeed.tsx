@@ -18,8 +18,6 @@ export const FirstFeed = ({
   tokensFetched,
   blockedNfts,
 }: FirstFeed): JSX.Element | null => {
-  console.log({ tokensFetched });
-  console.log("WTF::", { tokensFetched, blockedNfts });
   if (!tokensFetched) return null;
 
   const filteredTokens = tokensFetched.filter((token: TokenData) => {

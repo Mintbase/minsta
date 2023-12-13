@@ -9,7 +9,13 @@ import { FirstToken } from "./FirstToken";
 import { FeedScroll } from "./feed/feedscroll";
 
 export const HomePage = () => {
-  const { firstTokenProps, tokensFetched, blockedNfts } = useHomePageData();
+  const {
+    firstTokenProps,
+    tokensFetched,
+    blockedNfts,
+    totalLoading,
+    totalNfts,
+  } = useHomePageData();
   const { connect, isConnected } = useMbWallet();
 
   const router = useRouter();
@@ -22,18 +28,17 @@ export const HomePage = () => {
     }
   };
 
-  // return !firstTokenProps?.isLoading && !firstTokenProps?.newToken ? (
-  //   <main className="flex flex-col items-center justify-center h-screen">
-  //     <p className="text-mainText">Nothing here yet 👀</p>
-  //     <button
-  //       className="gradientButton w-auto text-primaryBtnText rounded px-8 py-2 mt-4"
-  //       onClick={handleLetsGoBtn}
-  //     >
-  //       Let&apos;s Go
-  //     </button>
-  //   </main>
-  // ) : (
-  return (
+  return !totalLoading && !totalNfts ? (
+    <main className="flex flex-col items-center justify-center h-screen">
+      <p className="text-mainText">Nothing here yet 👀</p>
+      <button
+        className="gradientButton w-auto text-primaryBtnText rounded px-8 py-2 mt-4"
+        onClick={handleLetsGoBtn}
+      >
+        Let&apos;s Go
+      </button>
+    </main>
+  ) : (
     <main className="px-4 lg:px-12 mx-auto flex flex-col items-center justify-center space-y-4 ">
       <DynamicGrid mdCols={2} nColsXl={4} nColsXXl={6}>
         <FirstToken {...firstTokenProps} />
@@ -42,5 +47,4 @@ export const HomePage = () => {
       </DynamicGrid>
     </main>
   );
-  // );
 };

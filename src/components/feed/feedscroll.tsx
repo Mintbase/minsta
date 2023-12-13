@@ -15,8 +15,6 @@ export const FeedScroll = ({ blockedNfts }: any) => {
     { query: FETCH_FEED }
   );
 
-  console.log({ items });
-
   const memoizedData = useMemo(() => {
     const uniqueMetadataIds = new Set<string>();
 
