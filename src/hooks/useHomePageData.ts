@@ -1,6 +1,9 @@
+import { FirstTokenProps, InfiniteScrollHook } from "@/data/types";
 import { useBlockedNfts } from "@/hooks/useBlockedNfts";
-import { FirstTokenProps } from "@/data/types";
 
+import { constants } from "@/constants";
+import { FETCH_FEED } from "@/data/queries/feed.graphl";
+import { useGraphQlQuery } from "@/data/useGraphQlQuery";
 import { useFirstToken } from "@/hooks/useFirstToken";
 import { useEffect } from "react";
 
@@ -10,6 +13,21 @@ export const useHomePageData = () => {
   const isFirstTokenError = tokenError !== null;
 
   const { blockedNfts } = useBlockedNfts();
+
+  const queryObj = {
+    queryName: "q_FETCH_FEED",
+    query: FETCH_FEED,
+    variables: {
+      accountId: constants.proxyContractAddress,
+      contractAddress: constants.tokenContractAddress,
+      limit: 1,
+      offset: 0,
+    },
+    queryOpts: { staleTime: Infinity },
+  };
+
+  const { data, isLoading: totalLoading } =
+    useGraphQlQuery<InfiniteScrollHook>(queryObj);
 
   const firstTokenisBlocked: boolean =
     newToken?.metadata_id && blockedNfts?.includes(newToken?.metadata_id);
@@ -38,6 +56,8 @@ export const useHomePageData = () => {
   };
 
   return {
+    totalLoading,
+    totalNfts: data?.mb_views_nft_tokens_aggregate?.aggregate?.count,
     firstTokenProps,
     tokensFetched,
     blockedNfts,
