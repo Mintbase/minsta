@@ -1,18 +1,26 @@
 # Minsta
+<img src="https://i.imgur.com/5K5NgUA.jpg" width="0" />
+This repository hosts the primary codebase for the Minsta app.
+
+[![Demo](https://img.shields.io/badge/Demo-Visit%20Demo-brightgreen)](https://minsta-app.vercel.app/)
+[![Deploy](https://img.shields.io/badge/Deploy-on%20Vercel-blue)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMintbase%2FminstFsimple-token-drop)
+
+**Tooling:**
+
+[![Use Case](https://img.shields.io/badge/Use%20Case-Selfie%20Minting-blue)](#)
+[![Tools](https://img.shields.io/badge/Tools-@mintbase.js/react%2C%20@mintbase.js/storage%2C%20Arweave%2C%20Mintbase%20Wallet-blue)](#)
+[![Framework](https://img.shields.io/badge/Framework-Next.js%2014-blue)](#)
+
+**Author:**
+
+[![Author](https://img.shields.io/twitter/follow/microchipgnu?style=social&logo=twitter)](https://twitter.com/microchipgnu)  [![Organization](https://img.shields.io/badge/Mintbase-blue)](https://www.mintbase.xyz)
+
+
+## Project Walkthrough
 
 This repository hosts the primary codebase for the [Minsta App](https://minsta.me), originally created and developed by [@microchipgnu](https://github.com/microchipgnu). 
 
 All new Minsta instances should be derived from this repository.
-
-## Demo
-
-Check out the live demo here: [minsta demo](https://minsta-app.vercel.app/).
-
-## One-Click Deploy
-
-Deploy this project using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMintbase%2Fminsta)
 
 ## Getting Started
 
