@@ -1,5 +1,5 @@
 # Minsta
-<img src="https://aaa.com" width="0" />
+<img src="https://i.imgur.com/5K5NgUA.jpg" width="0" />
 This repository hosts the primary codebase for the Minsta app.
 
 [![Demo](https://img.shields.io/badge/Demo-Visit%20Demo-brightgreen)](https://minsta-app.vercel.app/)
