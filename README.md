@@ -1,5 +1,5 @@
 # Minsta
-<img src="https://i.imgur.com/ye8v4Dm.jpg" alt="cover_image"  width="0" />
+<img src="https://i.imgur.com/J85RM1o.png" alt="cover_image"  width="0" />
 
 This repository hosts the primary codebase for the Minsta app.
 
