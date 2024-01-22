@@ -1,5 +1,5 @@
 # Minsta
-<img src="https://i.imgur.com/p4HS3Sq.png" alt="cover_image"  width="0" />
+<img src="https://i.imgur.com/ye8v4Dm.jpg" alt="cover_image"  width="0" />
 
 This repository hosts the primary codebase for the Minsta app.
 
@@ -78,3 +78,7 @@ If you have deployed your project on Vercel, follow these steps to update your e
 4. Trigger a redeployment of your app to apply the changes.
 
 By following these steps, you can ensure that your project uses the updated environment variables.
+
+
+
+<img src="https://i.imgur.com/p4HS3Sq.png" alt="detail_image"  width="0" />
