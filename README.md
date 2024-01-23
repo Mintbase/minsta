@@ -9,7 +9,7 @@ This repository hosts the primary codebase for the Minsta app.
 **Tooling:**
 
 [![Use Case](https://img.shields.io/badge/Use%20Case-Selfie%20Minting-blue)](#)
-[![Tools](https://img.shields.io/badge/Tools-@mintbase.js/react%2C%20@mintbase.js/storage%2C%20Arweave%2C%20Mintbase%20Wallet-blue)](#)
+[![Tools](https://img.shields.io/badge/Tools-@mintbase.js/react%2C@mintbase.js/storage%2CArweave%2CMintbase%20Wallet-blue)](#)
 [![Framework](https://img.shields.io/badge/Framework-Next.js%2014-blue)](#)
 
 **Author:**
