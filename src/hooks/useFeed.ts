@@ -8,7 +8,6 @@ const useFeed = (props: {
   legacyProxyAddresses: string[];
   contractAddress: string;
 }) => {
-  // FIXME: props where this is being used
   const { accountId, legacyProxyAddresses, contractAddress } = props;
   const accountIds = [accountId, legacyProxyAddresses];
   const queryObj = {
