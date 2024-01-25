@@ -3,15 +3,18 @@ import { FETCH_FEED } from "../data/queries/feed.graphl";
 import { useGraphQlQuery } from "@/data/useGraphQlQuery";
 import { TokenData, TokenFeedData } from "@/data/types";
 
-
-
-const useFeed = (props: any) => {
-  const { accountId, contractAddress } = props;
-
+const useFeed = (props: {
+  accountId: string;
+  legacyProxyAddresses: string[];
+  contractAddress: string;
+}) => {
+  // FIXME: props where this is being used
+  const { accountId, legacyProxyAddresses, contractAddress } = props;
+  const accountIds = [accountId, legacyProxyAddresses];
   const queryObj = {
     queryName: "q_FETCH_FEED",
     query: FETCH_FEED,
-    variables: { accountId, contractAddress, limit: 11, offset: 1 },
+    variables: { accountIds, contractAddress, limit: 11, offset: 1 },
     queryOpts: { staleTime: Infinity },
   };
 
@@ -26,7 +29,7 @@ const useFeed = (props: any) => {
   const memoizedData = useMemo(() => {
     const uniqueMetadataIds = new Set<string>();
 
-    const filteredData =  data?.token?.filter((token: TokenData) => {
+    const filteredData = data?.token?.filter((token: TokenData) => {
       if (uniqueMetadataIds.has(token.metadata_id)) {
         return false;
       }
@@ -44,7 +47,7 @@ const useFeed = (props: any) => {
     isLoading,
     isFetching,
     refetchNfts,
-    tokenFeedError: error
+    tokenFeedError: error,
   };
 };
 

@@ -18,7 +18,10 @@ export const useHomePageData = () => {
     queryName: "q_FETCH_FEED",
     query: FETCH_FEED,
     variables: {
-      accountId: constants.proxyContractAddress,
+      accountIds: [
+        constants.proxyContractAddress,
+        ...constants.legacyProxyAddresses,
+      ],
       contractAddress: constants.tokenContractAddress,
       limit: 1,
       offset: 0,
