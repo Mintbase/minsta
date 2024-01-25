@@ -3,14 +3,14 @@ import { gql } from 'graphql-request';
 
 export const FETCH_FEED = gql`
   query minsta_fetch_feed_minted_tokens(
-    $accountId: String!
+    $accountIds: [String!]!
     $contractAddress: String
     $limit: Int
     $offset: Int
   ) {
     token: mb_views_nft_tokens(
       where: {
-        minter: { _eq: $accountId }
+        minter: { _in: $accountIds }
         nft_contract_id: { _eq: $contractAddress }
         burned_timestamp: { _is_null: true }
         metadata_content_flag: { _is_null: true }

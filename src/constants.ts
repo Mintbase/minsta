@@ -5,6 +5,8 @@ const network = process.env.NEXT_PUBLIC_NETWORK || "mainnet";
 const proxyContractAddress =
   process.env.NEXT_PUBLIC_PROXY_MINTER_CONTRACT_ADDRESS ||
   "1.minsta.mintbus.near";
+const legacyProxyAddresses =
+  process.env.NEXT_PUBLIC_LEGACY_PROXY_ADDRESSES?.split(",") || [];
 const tokenContractAddress =
   process.env.NEXT_PUBLIC_NFT_CONTRACT_ADDRESS || "moments.mintbase1.near";
 
@@ -21,6 +23,7 @@ const twitterText =
 export const constants = {
   appName,
   proxyContractAddress,
+  legacyProxyAddresses,
   tokenContractAddress,
   network,
   mintbaseBaseUrl,

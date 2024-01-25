@@ -61,7 +61,10 @@ const useInfiniteScrollGQL = (
 
     const variables = {
       limit: fetchNum,
-      accountId: constants.proxyContractAddress,
+      accountIds: [
+        constants.proxyContractAddress,
+        ...constants.legacyProxyAddresses,
+      ],
       contractAddress: constants.tokenContractAddress,
       offset: state.offset === 1 ? 1 : (Number(state.offset) - 1) * fetchNum,
     };
@@ -111,7 +114,10 @@ const useInfiniteScrollGQL = (
       dispatch({ type: "SET_ERROR", payload: error });
 
       const errMsg = extractErrorMessage(error as Error);
-       toast.error(`src/hooks/useInfiniteScroll.ts \n \n Query: ${queryKey} \n \n ${errMsg}`, { duration: 40000, position: "bottom-left",   id:"scroll" });
+      toast.error(
+        `src/hooks/useInfiniteScroll.ts \n \n Query: ${queryKey} \n \n ${errMsg}`,
+        { duration: 40000, position: "bottom-left", id: "scroll" }
+      );
     }
   }, [error]);
 
