@@ -1,7 +1,6 @@
 "use client";
 
 import { useApp } from "@/providers/app";
-import { useMbWallet } from "@mintbase-js/react";
 import React, { useEffect } from "react";
 import InlineSVG from "react-inlinesvg";
 
@@ -13,7 +12,6 @@ const RewardsModal = ({
   texts: any;
 }) => {
   const { isRewardsModalOpen, closeModal } = useApp();
-  const { connect, isConnected, activeAccountId } = useMbWallet();
 
   useEffect(() => {
     if (!isRewardsModalOpen) return;

@@ -48,9 +48,13 @@ const Header = () => {
       case "/":
         return (
           <div className="flex w-full justify-between px-4 lg:px-12  items-center">
-            <div>
-              <button className="font-bold text-xl" onClick={() => push("/")}>
-                {process.env.NEXT_PUBLIC_APP_TITLE || "Minsta"}
+            <div className="w-[20%] md:w-full">
+              <button className="flex items-center" onClick={() => push("/")}>
+                <InlineSVG src="/images/dragon_face.svg" className="w-24" />
+                <InlineSVG
+                  src="/images/blackdragon_logo.svg"
+                  className="hidden md:block "
+                />
               </button>
             </div>
             <div className="flex gap-4">
@@ -78,7 +82,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed left-0 top-0 flex w-full justify-center h-12 bg-primary text-headerText">
+      <header className="fixed left-0 top-0 flex w-full justify-center h-16 bg-primary text-headerText">
         {renderHeaderButtons()}
       </header>
     </>
