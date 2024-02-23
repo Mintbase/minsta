@@ -4,13 +4,13 @@
 
 .storeImg {
   height: 320px;
-  width:100%;
+  width: 100%;
   min-width: 320px;
 }
 
 @media (min-width: 768px) {
-  .storeImg{
-    width: 18rem!important;  
+  .storeImg {
+    width: 18rem !important;
   }
 }
 
@@ -106,4 +106,9 @@ header {
 
 .gradientButton {
   background: linear-gradient(to right, var(--gradOne), var(--gradTwo));
+}
+
+.cardBorderGradient {
+  border-image: linear-gradient(to right, var(--gradOne), var(--gradTwo));
+  border-image-slice: 1;
 }

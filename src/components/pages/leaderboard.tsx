@@ -43,35 +43,41 @@ export const LeaderboardPage = () => {
             const isCurrentUser = account === activeAccountId;
             const isFirst = index === 0;
             return (
-              <Link
+              <div
                 key={`${account}-${index}`}
-                className={`w-full h-16 flex p-4 items-center justify-between rounded-xl bg-cardOne ${
-                  isCurrentUser ? "border-2 border-cardTwo" : ""
+                className={`${
+                  isCurrentUser
+                    ? "rounded-xl cursor-pointer bg-gradient-to-b from-gradOne to-gradTwo p-[2px]"
+                    : ""
                 }`}
-                target="_blank"
-                rel="noopener noreferrer"
-                passHref
-                href={`${constants.mintbaseBaseUrl}/human/${account}/owned/0`}
               >
-                <div className="flex w-5/6 md:w-full">
-                  {isCurrentUser && (
-                    <span role="img" aria-label="silhouette" className="mr-2">
-                      👤
-                    </span>
-                  )}
-                  {isFirst && (
-                    <span role="img" aria-label="fire" className="mr-2">
-                      🔥
-                    </span>
-                  )}
-                  <p className="w-full truncate">{account}</p>
-                </div>
-                <div>
-                  <div className="rounded-full bg-mainBg text-leaderboardText h-10 w-10 flex items-center justify-center">
-                    {count}
+                <Link
+                  className="w-full h-16 flex p-4 items-center justify-between rounded-xl bg-cardOne"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  passHref
+                  href={`${constants.mintbaseBaseUrl}/human/${account}/owned/0`}
+                >
+                  <div className="flex w-5/6 md:w-full">
+                    {isCurrentUser && (
+                      <span role="img" aria-label="silhouette" className="mr-2">
+                        👤
+                      </span>
+                    )}
+                    {isFirst && (
+                      <span role="img" aria-label="fire" className="mr-2">
+                        🔥
+                      </span>
+                    )}
+                    <p className="w-full truncate">{account}</p>
                   </div>
-                </div>
-              </Link>
+                  <div>
+                    <div className="rounded-full bg-mainBg text-leaderboardText h-10 w-10 flex items-center justify-center">
+                      {count}
+                    </div>
+                  </div>
+                </Link>
+              </div>
             );
           })}
         </div>
