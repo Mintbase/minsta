@@ -46,22 +46,22 @@
 
 
 :root {
-          --primary: #F3F4F8;
-          --secondary: #000;
-          --mainBg: #FFFFFF;
-          --gradOne: #4472ad;
-          --gradTwo: #009dea;
-          --cardOne: #E8EAF0;
-          --cardTwo: #049BE8;
-          --linkColor: #4f58a3;
-          --icon: #4B9CE3;
-          --camera: #FFFFFF;
-          --modalText: #000000;
-          --leaderboardText: #000000;
-          --headerText: #000000;
-          --mainText: #000000;
-          --freeUseText: #0A7D6C;
-          --bgFreeUse: #0A7D6C1A;
-          --primaryBtnText: #FFFFFF;
-          --secondaryBtnText: #000000;
+          --primary: #000000;
+          --secondary: #1A1B20;
+          --mainBg: #000000;
+          --gradOne: #56BCCA;
+          --gradTwo: #6E3BDF;
+          --cardOne: #1E1E1E;
+          --cardTwo: #1E1E1E;
+          --linkColor: #C5D0FF;
+          --icon: #56BCCA;
+          --camera: #000000;
+          --modalText: #FFFFFF;
+          --leaderboardText: #FFFFFF;
+          --headerText: #FFFFFF;
+          --mainText: #FFFFFF;
+          --freeUseText: #9FED8F;
+          --bgFreeUse: #9FED8F1A;
+          --primaryBtnText: #000000;
+          --secondaryBtnText: #FFFFFF;
         }
