@@ -40,7 +40,7 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
       onClick={closeModal}
     >
       <div
-        className="bg-mainBg rounded-xl shadow-lg max-w-md mx-auto flex flex-col h-auto"
+        className="bg-[#1A1B20] rounded-xl shadow-lg max-w-md mx-auto flex flex-col h-auto"
         onClick={stopPropagation}
       >
         <div className="overflow-y-auto flex-1 h-auto w-full rounded-t-lg text-modalText p-5 max-w-md mx-auto overflow-y-auto flex flex-col">
@@ -70,6 +70,7 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
               <InlineSVG
                 src="/images/trophy.svg"
                 className="fill-current text-icon"
+                width={40}
               />
               <p className="text-sm">{texts.about.third}</p>
             </div>
