@@ -32,7 +32,7 @@ export function Mint({
               Try again
             </button>
             <button
-              className="gradientButton w-full text-primaryBtnText rounded px-4 py-2"
+              className="gradientButton w-full text-white rounded px-4 py-2"
               onClick={() => mintImage(currentPhoto)}
             >
               Upload

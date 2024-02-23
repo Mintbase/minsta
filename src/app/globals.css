@@ -105,7 +105,7 @@ header {
 }
 
 .gradientButton {
-  background: linear-gradient(to right, var(--gradOne), var(--gradTwo));
+  background: linear-gradient(to bottom, var(--gradOne), var(--gradTwo));
 }
 
 .cardBorderGradient {
