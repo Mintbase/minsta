@@ -82,7 +82,7 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
             }`}
           >
             <button
-              className="gradientButton text-primaryBtnText rounded px-14 py-3 text-sm font-light"
+              className="bg-white text-primaryBtnText rounded px-14 py-3 text-sm font-light"
               onClick={!isConnected ? () => connect() : () => closeModal()}
             >
               OK
