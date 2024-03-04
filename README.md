@@ -78,6 +78,8 @@ To start with this project:
 
 ### Theming Envs
 
+you need to pass hex colors as strings.
+
 - COLOR_PRIMARY
 - COLOR_SECONDARY
 - COLOR_MAIN_BACKGROUND
