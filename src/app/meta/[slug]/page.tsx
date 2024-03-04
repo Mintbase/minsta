@@ -17,12 +17,12 @@ export async function generateMetadata({
   });
 
   return {
-    metadataBase: new URL("https://nearcon.mintbase.xyz"),
-    title: `${process.env.NEXT_PUBLIC_APP_TITLE} - ${posts?.data?.nft_metadata?.[0]?.title}`,
+    metadataBase: new URL("https://minsta.mintbase.xyz"),
+    title: `${process.env.NEXT_PUBLIC_APP_TITLE || 'My Minsta Dapp'} - ${posts?.data?.nft_metadata?.[0]?.title}`,
     openGraph: {
-      title: `${process.env.NEXT_PUBLIC_APP_TITLE} - ${posts?.data?.nft_metadata?.[0]?.title}`,
-      description: process.env.NEXT_PUBLIC_META_DESCRIPTION,
-      siteName: `${process.env.NEXT_PUBLIC_APP_TITLE}`,
+      title: `${process.env.NEXT_PUBLIC_APP_TITLE || 'My Minsta Dapp'} - ${posts?.data?.nft_metadata?.[0]?.title}`,
+      description: process.env.NEXT_PUBLIC_META_DESCRIPTION || 'Minsta Example Dapp',
+      siteName: `${process.env.NEXT_PUBLIC_APP_TITLE || 'My Minsta Dapp'}`,
       images: [
         {
           url: posts?.data?.nft_metadata?.[0]?.media,

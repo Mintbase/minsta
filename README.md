@@ -4,7 +4,7 @@
 This repository hosts the primary codebase for the Minsta app.
 
 [![Demo](https://img.shields.io/badge/Demo-Visit%20Demo-brightgreen)](https://minsta-app.vercel.app/)
-[![Deploy](https://img.shields.io/badge/Deploy-on%20Vercel-blue)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMintbase%2FminstFsimple-token-drop)
+[![Deploy](https://img.shields.io/badge/Deploy-on%20Vercel-blue)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMintbase%2Fminsta&env=REPLICATE_API_TOKEN,NEXT_PUBLIC_APP_TITLE,NEXT_PUBLIC_PROXY_MINTER_CONTRACT_ADDRESS,NEXT_PUBLIC_LEGACY_PROXY_ADDRESSES,NEXT_PUBLIC_MINTING_CLOSED,NEXT_PUBLIC_SHOW_REWARDS,NEXT_PUBLIC_NFT_CONTRACT_ADDRESS,NEXT_PUBLIC_NETWORK,NEXT_PUBLIC_META_DESCRIPTION,NEXT_PUBLIC_META_TITLE&envDescription=API%20Keys%20for%20Minsta%20Project)
 
 **Tooling:**
 
@@ -19,7 +19,7 @@ This repository hosts the primary codebase for the Minsta app.
 
 ## Project Walkthrough
 
-This repository hosts the primary codebase for the [Minsta App](https://minsta.me), originally created and developed by [@microchipgnu](https://github.com/microchipgnu). 
+This repository hosts the primary codebase for the [Minsta App](https://minsta.me), originally created and developed by [@microchipgnu](https://github.com/microchipgnu).
 
 All new Minsta instances should be derived from this repository.
 
@@ -33,7 +33,7 @@ To start with this project:
    ```bash
    npm install -g pnpm
    ```
-   
+
 3. Then, install the required dependencies:
 
      ```bash
@@ -42,7 +42,42 @@ To start with this project:
 
 ## Environment Variables
 
-Refer to the **.env.example** file for the environment variables used in this project. 
+
+### SETUP Envs ( Mandatory Envs )
+
+| ENV Variable                              | Type             | What it does?                                                                                                                                                                         | Mandatory |
+|-------------------------------------------|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
+| NEXT_PUBLIC_APP_TITLE                     | string           | sets the Title of your deployed application                                                                                                                                           | YES       |
+| NEXT_PUBLIC_NFT_CONTRACT_ADDRESS          | contract address | this is the near contract where you want to showcase the user mints                                                                                                                   | YES       |
+| NEXT_PUBLIC_NETWORK                       | Near Network     | sets Wallet login to the desired near network. "testnet" \| "mainnet"                                                                                                                 | YES       |
+| NEXT_PUBLIC_PROXY_MINTER_CONTRACT_ADDRESS | contract address | this is the contract address that will do proxy minting so any user on near could mint it. It should be added as a minter on your contract (same as NEXT_PUBLIC_NFT_CONTRACT_ADDRESS) | YES       |
+
+
+
+### SETUP Envs (not mandatory)
+
+| ENV Variable                       | Type             | What it does?                                                                                               | Mandatory |
+|------------------------------------|------------------|-------------------------------------------------------------------------------------------------------------|-----------|
+| REPLICATE_API_TOKEN                | api token        | adds replicate functionality that analyzes the image taken by the user and add title + description using AI | NO        |
+| NEXT_PUBLIC_LEGACY_PROXY_ADDRESSES | contract address | a second proxy address in case first fail                                                                   | NO        |
+| NEXT_PUBLIC_MINTBASE_WALLET_URL    | URL              | "https://testnet.wallet.mintbase.xyz" or "https://wallet.mintbase.xyz"                                      | NO        |
+| NEXT_PUBLIC_SHOW_REWARDS           | boolean          | this is to opt for rewards modal and show users                                                             | NO        |
+| NEXT_PUBLIC_MINTING_CLOSED         | boolean          | this is to close the dapp for new mints                                                                     | NO        |
+
+
+### META Envs
+
+
+### Theming Envs
+
+
+### Rewards Envs
+
+
+### Instruction Envs
+
+
+Refer to the **.env.example** file for the environment variables used in this project.
 
 If you don't set up a `.env` file or environment variables with your provider, the project will retrieve values from the following files:
 
