@@ -43,7 +43,7 @@ To start with this project:
 ## Environment Variables
 
 
-### SETUP Envs ( Mandatory Envs )
+### SETUP Envs ( mndatory Envs )
 
 | ENV Variable                              | Type             | What it does?                                                                                                                                                                         | Mandatory |
 |-------------------------------------------|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
@@ -53,6 +53,7 @@ To start with this project:
 | NEXT_PUBLIC_PROXY_MINTER_CONTRACT_ADDRESS | contract address | this is the contract address that will do proxy minting so any user on near could mint it. It should be added as a minter on your contract (same as NEXT_PUBLIC_NFT_CONTRACT_ADDRESS) | YES       |
 
 
+<br />
 
 ### SETUP Envs (not mandatory)
 
@@ -64,17 +65,56 @@ To start with this project:
 | NEXT_PUBLIC_SHOW_REWARDS           | boolean          | this is to opt for rewards modal and show users                                                             | NO        |
 | NEXT_PUBLIC_MINTING_CLOSED         | boolean          | this is to close the dapp for new mints                                                                     | NO        |
 
+<br/>
 
 ### META Envs
+| ENV Variable                 | Type    | What it does?                                   | Mandatory |
+|------------------------------|---------|-------------------------------------------------|-----------|
+| NEXT_PUBLIC_META_DESCRIPTION | string  | OG Meta description                             | NO        |
+| NEXT_PUBLIC_META_TITLE       | string  | OG Meta Title                                   | NO        |
+| NEXT_PUBLIC_TWITTER          | string  | The message to be shared on twitter share.      | NO        |
 
+<br/>
 
 ### Theming Envs
 
+- COLOR_PRIMARY
+- COLOR_SECONDARY
+- COLOR_MAIN_BACKGROUND
+- COLOR_GRADONE
+- COLOR_GRADTWO
+- COLOR_CARDONE
+- COLOR_CARDTWO
+- COLOR_LINKCOLOR
+- COLOR_ICON
+- COLOR_CAMERA
+- COLOR_MODAL_TEXT
+- COLOR_LEADERBOARD_TEXT
+- COLOR_HEADER_TEXT
+- COLOR_MAIN_TEXT
+- COLOR_FREE_USE_TEXT
+- COLOR_PRIMARY_BTN_TEXT
+- COLOR_SECONDARY_BTN_TEXT
+
+<br />
 
 ### Rewards Envs
 
+- NEXT_PUBLIC_TEXT_PRIZE_1ST_VAL
+- NEXT_PUBLIC_TEXT_PRIZE_2ND_VAL
+- NEXT_PUBLIC_TEXT_PRIZE_3RD_VAL
+- NEXT_PUBLIC_TEXT_PRIZE_1ST_TITLE
+- NEXT_PUBLIC_TEXT_PRIZE_2ND_TITLE
+- NEXT_PUBLIC_TEXT_PRIZE_3RD_TITLE
+
+<br />
 
 ### Instruction Envs
+
+
+- NEXT_PUBLIC_TEXT_ABOUT_1ST
+- NEXT_PUBLIC_TEXT_ABOUT_2ND
+- NEXT_PUBLIC_TEXT_ABOUT_3RD
 
 
 Refer to the **.env.example** file for the environment variables used in this project.
