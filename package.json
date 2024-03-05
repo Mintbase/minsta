@@ -1,5 +1,17 @@
 {
-  "name": "minsta-main",
+  "name": "Mintbase-Templates-Minsta",
+  "keywords": [
+    "templates",
+    "mintbase",
+    "web3",
+    "nextjs",
+    "react",
+    "selfie",
+    "minting"
+  ],
+  "repository": "https://github.com/mintbase/minsta.git",
+  "homepage": "https;//templates.mintbase.xyz/minsta",
+  "author": "Mintbase Team <eng@mintbase.xyz>",
   "version": "0.1.0",
   "private": true,
   "scripts": {
