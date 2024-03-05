@@ -53,7 +53,7 @@ To start with this project:
 | NEXT_PUBLIC_PROXY_MINTER_CONTRACT_ADDRESS | contract address | this is the contract address that will do proxy minting so any user on near could mint it. It should be added as a minter on your contract (same as NEXT_PUBLIC_NFT_CONTRACT_ADDRESS) | YES       |
 
 
-<br />
+
 
 ### SETUP Envs (not mandatory)
 
@@ -65,7 +65,7 @@ To start with this project:
 | NEXT_PUBLIC_SHOW_REWARDS           | boolean          | this is to opt for rewards modal and show users                                                             | NO        |
 | NEXT_PUBLIC_MINTING_CLOSED         | boolean          | this is to close the dapp for new mints                                                                     | NO        |
 
-<br/>
+
 
 ### META Envs
 | ENV Variable                 | Type    | What it does?                                   | Mandatory |
@@ -74,7 +74,7 @@ To start with this project:
 | NEXT_PUBLIC_META_TITLE       | string  | OG Meta Title                                   | NO        |
 | NEXT_PUBLIC_TWITTER          | string  | The message to be shared on twitter share.      | NO        |
 
-<br/>
+
 
 ### Theming Envs
 
@@ -98,7 +98,7 @@ you need to pass hex colors as strings.
 - COLOR_PRIMARY_BTN_TEXT
 - COLOR_SECONDARY_BTN_TEXT
 
-<br />
+
 
 ### Rewards Envs
 
@@ -109,7 +109,7 @@ you need to pass hex colors as strings.
 - NEXT_PUBLIC_TEXT_PRIZE_2ND_TITLE
 - NEXT_PUBLIC_TEXT_PRIZE_3RD_TITLE
 
-<br />
+
 
 ### Instruction Envs
 
