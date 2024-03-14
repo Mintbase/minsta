@@ -7,6 +7,7 @@ https://github.com/Mintbase/minsta/assets/838839/9fe8064c-8965-4d08-b7ef-ac3da39
 
 
 This repository hosts the primary codebase for the Minsta app.
+[Video Tutorial on Setting up](https://www.loom.com/share/d5a038fb341c40be9ae131dd82f199a80)
 
 [![Demo](https://img.shields.io/badge/Demo-Visit%20Demo-brightgreen)](https://minsta-app.vercel.app/)
 [![Deploy](https://img.shields.io/badge/Deploy-on%20Vercel-blue)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMintbase%2Fminsta&env=NEXT_PUBLIC_APP_TITLE,NEXT_PUBLIC_PROXY_MINTER_CONTRACT_ADDRESS,NEXT_PUBLIC_SHOW_REWARDS,NEXT_PUBLIC_NFT_CONTRACT_ADDRESS,NEXT_PUBLIC_NETWORK&envDescription=API%20Keys%20for%20Minsta%20Project&envLink=https%3A%2F%2Fgithub.com%2FMintbase%2Fminsta%2Ftree%2Fminsta-improvements%23environment-variables)
