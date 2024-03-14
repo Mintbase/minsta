@@ -1,6 +1,11 @@
 # Minsta
 <img src="https://i.imgur.com/J85RM1o.png" alt="cover_image"  width="0" />
 
+
+
+https://github.com/Mintbase/minsta/assets/838839/9fe8064c-8965-4d08-b7ef-ac3da394e4fa
+
+
 This repository hosts the primary codebase for the Minsta app.
 
 [![Demo](https://img.shields.io/badge/Demo-Visit%20Demo-brightgreen)](https://minsta-app.vercel.app/)
