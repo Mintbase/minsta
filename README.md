@@ -50,7 +50,7 @@ To start with this project:
 | NEXT_PUBLIC_APP_TITLE                     | string           | sets the Title of your deployed application                                                                                                                                           | YES       |
 | NEXT_PUBLIC_NFT_CONTRACT_ADDRESS          | contract address | this is the near contract where you want to showcase the user mints                                                                                                                   | YES       |
 | NEXT_PUBLIC_NETWORK                       | Near Network     | sets Wallet login to the desired near network. "testnet" \| "mainnet"                                                                                                                 | YES       |
-| NEXT_PUBLIC_PROXY_MINTER_CONTRACT_ADDRESS | contract address | this is the contract address that will do proxy minting so any user on near could mint it. It should be added as a minter on your contract (same as NEXT_PUBLIC_NFT_CONTRACT_ADDRESS) | YES       |
+| NEXT_PUBLIC_PROXY_MINTER_CONTRACT_ADDRESS | contract address | `0.drop.proxy.mintbase.near` can work as a default, this is the contract address that will do proxy minting so any user on near could mint it. It should be added as a minter on your contract (same as NEXT_PUBLIC_NFT_CONTRACT_ADDRESS) | YES       |
 
 
 <br />
