@@ -50,23 +50,23 @@ To start with this project:
 
 ### SETUP Envs ( mandatory Envs )
 
-| ENV Variable                              | Type             | What it does?                                                                                                                                                                         | Mandatory |
+| ENV Variable                              | Type             | Description                                                                                                                                                                        | Mandatory |
 |-------------------------------------------|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
 | NEXT_PUBLIC_APP_TITLE                     | string           | sets the Title of your deployed application                                                                                                                                           | YES       |
-| NEXT_PUBLIC_NFT_CONTRACT_ADDRESS          | contract address | this is the Mintbase NFT contract where you want to showcase the user mints, you can [deploy one here](https://www.mintbase.xyz/launchpad/contracts/0)                                                                                                                | YES       |
-| NEXT_PUBLIC_NETWORK                       | Near Network     | sets Wallet login to the desired near network. "testnet" \| "mainnet"                                                                                                                 | YES       |
-| NEXT_PUBLIC_PROXY_MINTER_CONTRACT_ADDRESS | contract address | Can use `0.drop.proxy.mintbase.near` as a default. This is the contract address that will do proxy minting so any user on near could mint it. It should be added as a minter on your contract (same as NEXT_PUBLIC_NFT_CONTRACT_ADDRESS) | YES       |
+| NEXT_PUBLIC_NFT_CONTRACT_ADDRESS          | string           | this is the Mintbase NFT contract where you want to showcase the user mints, you can [deploy one here](https://www.mintbase.xyz/launchpad/contracts/0)                                                                                                                | YES       |
+| NEXT_PUBLIC_NETWORK                       | string           | sets Wallet login to the desired near network. "testnet" \| "mainnet"                                                                                                                 | YES       |
+| NEXT_PUBLIC_PROXY_MINTER_CONTRACT_ADDRESS | string           | Can use `0.drop.proxy.mintbase.near` as a default. This is the contract address that will do proxy minting so any user on near could mint it. It should be added as a minter on your contract (same as NEXT_PUBLIC_NFT_CONTRACT_ADDRESS) | YES       |
 
 
 
 
 ### SETUP Envs (not mandatory)
 
-| ENV Variable                       | Type             | What it does?                                                                                               | Mandatory |
+| ENV Variable                       | Type             | Description                                                                                               | Mandatory |
 |------------------------------------|------------------|-------------------------------------------------------------------------------------------------------------|-----------|
-| REPLICATE_API_TOKEN                | api token        | adds replicate functionality that analyzes the image taken by the user and add title + description using AI | NO        |
-| NEXT_PUBLIC_LEGACY_PROXY_ADDRESSES | contract address | a second proxy address in case first fail                                                                   | NO        |
-| NEXT_PUBLIC_MINTBASE_WALLET_URL    | URL              | "https://testnet.wallet.mintbase.xyz" or "https://wallet.mintbase.xyz"                                      | NO        |
+| REPLICATE_API_TOKEN                | string           | API token adds replicate functionality that analyzes the image taken by the user and add title + description using AI | NO        |
+| NEXT_PUBLIC_LEGACY_PROXY_ADDRESSES | string           | contract address of a second proxy address in case first fail                                                                   | NO        |
+| NEXT_PUBLIC_MINTBASE_WALLET_URL    | string           | "https://testnet.wallet.mintbase.xyz" or "https://wallet.mintbase.xyz"                                      | NO        |
 | NEXT_PUBLIC_SHOW_REWARDS           | boolean          | this is to opt for rewards modal and show users                                                             | NO        |
 | NEXT_PUBLIC_MINTING_CLOSED         | boolean          | this is to close the dapp for new mints                                                                     | NO        |
 
