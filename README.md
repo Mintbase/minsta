@@ -39,7 +39,7 @@ All new Minsta instances should be derived from this repository.
 ### Deploying a Near Contract on Mintbase:
 1. Login on Mintbase and access [Contracts Page](https://www.mintbase.xyz/launchpad/contracts/0)
 2. Click on New Contract
-3. Choose Store Name (this will be the contract address to add on your minsta instance, this need to be added on the `process.env.NEXT_PUBLIC_NFT_CONTRACT_ADDRESS` env var.) and Store Symbol
+3. Choose Store Name (this will be the contract address to add on your minsta instance, this need to be added on the `process.env.NEXT_PUBLIC_NFT_CONTRACT_ADDRESS` environment variable) and Store Symbol
 4. Proceed to transaction.
 5. Succeeded
 6. Go to Contract Settings
