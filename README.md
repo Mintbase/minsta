@@ -3,7 +3,7 @@
 
 
 
-This repository hosts the primary codebase for the Minsta app.  
+This repository hosts the primary codebase for the Minsta app.
 
 [![Demo](https://img.shields.io/badge/Demo-Visit%20Demo-brightgreen)](https://minsta-app.vercel.app/)
 [![Deploy](https://img.shields.io/badge/Deploy-on%20Vercel-blue)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMintbase%2Fminsta)
@@ -23,9 +23,39 @@ This repository hosts the primary codebase for the Minsta app.
 
 This repository hosts the primary codebase for the [Minsta App](https://minsta.me), originally created and developed by [@microchipgnu](https://github.com/microchipgnu).
 
-All new Minsta instances should be derived from this repository.  
+All new Minsta instances should be derived from this repository.
 
-[Video Tutorial on Setting up](https://www.loom.com/share/d5a038fb341c40be9ae131dd82f199a80)
+
+## Video Tutorial
+
+
+
+https://github.com/Mintbase/minsta/assets/8454267/d4a97073-5f88-4c4e-8a92-c0a296e1c301
+
+
+
+
+## Pre-Setup - Proxy Contract
+
+1. You need to have a NEAR Contract where you add a proxy contract as a minter.
+2. The proxy contract enables non-minter users to mint images on Minsta.
+3. The Near Contract will be where the NFT images will be minted
+4. The proxy contract will be the minter
+5. The user wallet address will be the owner of the NFT.
+
+### Deploying a Near Contract on Mintbase:
+1. Login on Mintbase and access [Contracts Page](https://www.mintbase.xyz/launchpad/contracts/0)
+2. Click on New Contract
+3. Choose Store Name (this will be the contract address to add on your minsta instance, this need to be added on the `process.env.NEXT_PUBLIC_NFT_CONTRACT_ADDRESS` environment variable) and Store Symbol
+4. Proceed to transaction.
+5. Succeeded
+6. Go to Contract Settings
+
+### Add Proxy Minter Contract
+1. Under Contract Settings go to Minters
+2. add `0.drop.proxy.mintbase.near` (this is the contract address that need to be added on `process.env.NEXT_PUBLIC_PROXY_MINTER_CONTRACT_ADDRESS`), and click Add Minters.
+3. Proceed to transaction.
+4. Succeeded
 
 
 ## Getting Started

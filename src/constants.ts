@@ -4,7 +4,7 @@ const appName: string = process.env.NEXT_PUBLIC_APP_TITLE || "MINTBASE";
 const network = process.env.NEXT_PUBLIC_NETWORK || "mainnet";
 const proxyContractAddress =
   process.env.NEXT_PUBLIC_PROXY_MINTER_CONTRACT_ADDRESS ||
-  "1.minsta.mintbus.near";
+  "0.drop.proxy.mintbase.near";
 const legacyProxyAddresses =
   process.env.NEXT_PUBLIC_LEGACY_PROXY_ADDRESSES?.split(",") || [];
 const tokenContractAddress =
