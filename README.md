@@ -48,7 +48,7 @@ All new Minsta instances should be derived from this repository.
 1. Under Contract Settings go to Minters
 2. add `0.drop.proxy.mintbase.near` (this is the contract address that need to be added on `process.env.NEXT_PUBLIC_PROXY_MINTER_CONTRACT_ADDRESS`), and click Add Minters.
 3. Proceed to transaction.
-54. Succeeded
+4. Succeeded
 
 
 ## Getting Started
