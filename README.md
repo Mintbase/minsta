@@ -30,7 +30,7 @@ All new Minsta instances should be derived from this repository.
 
 ## Pre-Setup - Proxy Contract
 
-1. You got to have a NEAR Contract where you add a proxy contract as a minter.
+1. You need to have a NEAR Contract where you add a proxy contract as a minter.
 2. The proxy contract is meant for let any user who is not a minter, to be able to mint images on Minsta.
 3. The Near Contract will be where the NFT images will be minted
 4. The proxy contract will be the minter
